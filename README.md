@@ -1,1 +1,0 @@
-# semparuk_desa

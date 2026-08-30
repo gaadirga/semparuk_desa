@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DESA SEMPARUK · Beranda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="beranda">
+<div class="backdrop"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+<header class="topbar">
+  <div class="brand">SEMPARUK <small>Kampung Halaman</small></div>
+  <nav class="chapters" id="chapters">
+    <span class="nav-indicator" id="navIndicator"></span>
+    <button data-target="beranda"><span class="n">01</span>Beranda</button>
+    <button data-target="profil"><span class="n">02</span>Profil</button>
+    <button data-target="galeri"><span class="n">03</span>Galeri</button>
+    <button data-target="peta"><span class="n">04</span>Peta</button>
+    <button data-target="kontak"><span class="n">05</span>Kontak</button>
+  </nav>
+  <button class="nav-cta" onclick="window.location.href='peta.html'">Lihat Peta<span class="arrow">↗</span></button>
+</header>
+<main id="app">
+<section id="beranda" class="page active">
+    <div class="hero">
+      <div class="eyebrow">Perkenalan Kampung Halaman</div>
+      <h1>Semparuk</h1>
+      <p class="hero-sub">Desa kecil di tepi kehidupan sehari-hari — bukan desa wisata, bukan tujuan liburan. Hanya kampung dengan sawah, sungai, pasar pagi, dan orang-orang yang pulang ke rumah yang sama setiap hari.</p>
+      <div class="hero-meta">
+        <span class="chip">Kec. Semparuk</span><span class="chip">Kab. Sambas</span><span class="chip">Kalimantan Barat</span><span class="chip">1°11′ LU · 109°05′ BT</span>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="window.location.href='profil.html'">Kenali Desanya <span class="arrow">→</span></button>
+        <button class="btn btn-ghost" onclick="window.location.href='galeri.html'">Lihat Galeri</button>
+      </div>
+    </div>
+    <div class="ticker">
+      <div class="track">
+        <span>PASAR PAGI</span><span>PERSAWAHAN</span><span>SUNGAI</span><span>SEKOLAH</span><span>PELABUHAN RORO</span><span>LAPANGAN BOLA</span><span>KANTOR DESA</span>
+        <span>PASAR PAGI</span><span>PERSAWAHAN</span><span>SUNGAI</span><span>SEKOLAH</span><span>PELABUHAN RORO</span><span>LAPANGAN BOLA</span><span>KANTOR DESA</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="filmfoot">© SEMPARUK · SITUS PERKENALAN DESA · KALIMANTAN BARAT</footer>
+<script src="script.js"></script>
+</body>
+</html>

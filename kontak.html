@@ -4,9 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DESA SEMPARUK · Kontak</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,6 +21,7 @@
 </div>
 
 <header class="topbar">
+
   <div class="brand">
     SEMPARUK <small>Kampung Halaman</small>
   </div>
@@ -49,120 +53,173 @@
   <button class="nav-cta" onclick="window.location.href='peta.html'">
     Lihat Peta<span class="arrow">↗</span>
   </button>
+
 </header>
+
 
 <main id="app">
 
 <section id="kontak" class="page active">
 
-    <div class="wrap sec-head">
-      <div class="eyebrow">Halaman 05 · Penutup</div>
+  <div class="wrap sec-head">
 
-      <h2>Terima kasih sudah berkunjung.</h2>
+    <div class="eyebrow">
+      Halaman 05 · Penutup
+    </div>
 
-      <p class="lede">
-        Situs ini adalah upaya sederhana memperkenalkan Semparuk — kampung yang tidak mengejar sorotan, tapi berhak dikenal oleh siapa pun yang ingin tahu.
+    <h2>
+      Terima kasih sudah berkunjung.
+    </h2>
+
+    <p class="lede">
+      Situs ini adalah upaya sederhana memperkenalkan Semparuk —
+      kampung yang tidak mengejar sorotan, tapi berhak dikenal oleh
+      siapa pun yang ingin tahu.
+    </p>
+
+  </div>
+
+
+  <div class="wrap credit-cols">
+
+    <div class="card">
+      <div class="role">Lokasi</div>
+
+      <div class="name">
+        Desa Semparuk
+      </div>
+
+      <p class="desc">
+        Kecamatan Semparuk, Kabupaten Sambas,
+        Kalimantan Barat, Indonesia.
       </p>
     </div>
 
 
-    <div class="wrap credit-cols">
+    <div class="card">
+      <div class="role">Kode Pos</div>
 
-      <div class="card">
-        <div class="role">Lokasi</div>
-        <div class="name">Desa Semparuk</div>
-        <p class="desc">
-          Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat, Indonesia.
-        </p>
+      <div class="name">
+        79457
       </div>
 
-      <div class="card">
-        <div class="role">Kode Pos</div>
-        <div class="name">79457</div>
-        <p class="desc">
-          Berlaku untuk seluruh kelurahan/desa di Kecamatan Semparuk.
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="role">Status</div>
-        <div class="name">Desa Non-Wisata</div>
-        <p class="desc">
-          Dikenalkan apa adanya — agraris, perairan, dan administratif.
-        </p>
-      </div>
-
+      <p class="desc">
+        Berlaku untuk seluruh kelurahan/desa
+        di Kecamatan Semparuk.
+      </p>
     </div>
 
 
-    <!-- FORM ASPIRASI -->
-    <div class="wrap aspiration-box">
+    <div class="card">
+      <div class="role">Status</div>
 
-      <div class="card">
-
-        <div class="role">Aspirasi Masyarakat</div>
-
-        <div class="name">Sampaikan Pesanmu</div>
-
-        <p class="desc">
-          Punya saran, kritik, atau aspirasi untuk Desa Semparuk?
-          Silakan sampaikan melalui form di bawah.
-        </p>
-
-        <form id="aspirationForm">
-
-          <input
-            type="text"
-            id="nama"
-            placeholder="Nama"
-            required
-          >
-
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            required
-          >
-
-          <textarea
-            id="pesan"
-            placeholder="Tulis aspirasi atau pesan kamu..."
-            rows="5"
-            required
-          ></textarea>
-
-          <button type="submit" class="btn btn-primary">
-            Kirim Aspirasi <span class="arrow">→</span>
-          </button>
-
-          <p id="formStatus"></p>
-
-        </form>
-
+      <div class="name">
+        Desa Non-Wisata
       </div>
 
+      <p class="desc">
+        Dikenalkan apa adanya — agraris,
+        perairan, dan administratif.
+      </p>
     </div>
 
+  </div>
 
-    <div class="wrap closing">
 
-      <button
-        class="btn btn-primary"
-        onclick="window.location.href='index.html'"
-      >
-        Kembali ke Beranda <span class="arrow">→</span>
-      </button>
+  <!-- ==========================================
+       ASPIRASI MASYARAKAT
+       ========================================== -->
+
+  <div class="wrap aspiration-box">
+
+    <div class="card">
+
+      <div class="role">
+        Aspirasi Masyarakat
+      </div>
+
+      <div class="name">
+        Sampaikan Pesanmu
+      </div>
+
+      <p class="desc">
+        Punya saran, kritik, atau aspirasi untuk
+        Desa Semparuk? Silakan sampaikan melalui
+        form di bawah.
+      </p>
+
+
+      <form id="aspirationForm">
+
+        <input
+          type="text"
+          id="nama"
+          placeholder="Nama"
+          autocomplete="name"
+          required
+        >
+
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          autocomplete="email"
+          required
+        >
+
+
+        <textarea
+          id="pesan"
+          placeholder="Tulis aspirasi atau pesan kamu..."
+          rows="5"
+          required
+        ></textarea>
+
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
+          Kirim Aspirasi
+          <span class="arrow">→</span>
+        </button>
+
+
+        <!-- PEMBERITAHUAN -->
+        <p
+          id="formStatus"
+          aria-live="polite"
+        ></p>
+
+      </form>
 
     </div>
 
-  </section>
+  </div>
+
+
+  <div class="wrap closing">
+
+    <button
+      class="btn btn-primary"
+      onclick="window.location.href='index.html'"
+    >
+      Kembali ke Beranda
+      <span class="arrow">→</span>
+    </button>
+
+  </div>
+
+</section>
 
 </main>
+
 
 <footer class="filmfoot">
   © SEMPARUK · SITUS PERKENALAN DESA · KALIMANTAN BARAT
 </footer>
+
 
 <script src="script.js"></script>
 

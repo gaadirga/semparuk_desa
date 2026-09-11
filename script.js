@@ -369,7 +369,7 @@ document.addEventListener('keydown', e => {
 
 // URL GOOGLE APPS SCRIPT BARU
 const ASPIRATION_API =
-  'https://script.google.com/macros/s/AKfycbxysGLc1SL-aWrF8EZq3lIwIRqU9XOUO0-qrSzJoUx-V91ndqPxY2L0mmGAgta3KW5h2g/exec';
+  'https://script.google.com/macros/s/AKfycbz4VzpsodnRxXqajDnQe1L11PXqoUzkDg9QWILcnIkHMZWG8IEMH7ZXtNk9GWWgGCUTlg/exec';
 
 
 const aspirationForm =

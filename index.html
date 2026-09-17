@@ -26,69 +26,6 @@
 
 
 /* =========================================================
-   NAVBAR
-========================================================= */
-
-.chapters{
-  display:flex;
-  align-items:center;
-  gap:3px;
-}
-
-.chapters .nav-link{
-  position:relative;
-  z-index:2;
-
-  display:flex;
-  align-items:center;
-  gap:7px;
-
-  padding:10px 14px;
-
-  border-radius:999px;
-  color:var(--blue-700);
-
-  font-size:12px;
-  font-weight:600;
-
-  text-decoration:none;
-
-  white-space:nowrap;
-
-  transition:
-    color .25s ease,
-    background .25s ease,
-    transform .25s ease;
-}
-
-.chapters .nav-link .n{
-  font-family:"IBM Plex Mono",monospace;
-  font-size:9px;
-  opacity:.55;
-}
-
-.chapters .nav-link:hover{
-  color:var(--blue-600);
-  background:rgba(255,255,255,.75);
-  transform:translateY(-1px);
-}
-
-.chapters .nav-link.active{
-  color:#fff;
-  background:linear-gradient(
-    135deg,
-    var(--blue-500),
-    var(--blue-700)
-  );
-  box-shadow:var(--shadow-blue-sm);
-}
-
-.chapters .nav-link.active .n{
-  opacity:.85;
-}
-
-
-/* =========================================================
    HERO
 ========================================================= */
 
@@ -1020,30 +957,6 @@
 
 
 @media(max-width:700px){
-
-  .chapters{
-    max-width:100%;
-
-    overflow-x:auto;
-
-    scrollbar-width:none;
-  }
-
-  .chapters::-webkit-scrollbar{
-    display:none;
-  }
-
-  .chapters .nav-link{
-    flex:0 0 auto;
-
-    padding:8px 10px;
-
-    font-size:10px;
-  }
-
-  .chapters .nav-link .n{
-    display:none;
-  }
 
   .home-gallery{
     grid-template-columns:1fr 1fr;

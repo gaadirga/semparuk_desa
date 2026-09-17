@@ -3,50 +3,1078 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DESA SEMPARUK · Beranda</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================================================
+   BERANDA ENHANCEMENT
+   Tambahan khusus index.html
+========================================================= */
+
+.home-content{
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* HERO */
+
+.home-hero{
+  min-height: 610px;
+  display:grid;
+  grid-template-columns: 1.25fr .75fr;
+  align-items:center;
+  gap:60px;
+  padding:90px 0 70px;
+}
+
+.home-hero-copy{
+  max-width:720px;
+}
+
+.home-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 14px;
+  border:1px solid rgba(37,107,184,.18);
+  border-radius:999px;
+  background:rgba(255,255,255,.65);
+  font-family:"IBM Plex Mono", monospace;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--blue-600, #256bb8);
+  margin-bottom:22px;
+}
+
+.home-kicker::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--blue-500, #3a87d8);
+}
+
+.home-title{
+  font-family:"Fraunces", serif;
+  font-size:clamp(70px, 10vw, 135px);
+  line-height:.82;
+  font-weight:500;
+  letter-spacing:-.055em;
+  margin:0 0 28px;
+  color:#173b60;
+}
+
+.home-description{
+  max-width:650px;
+  font-size:17px;
+  line-height:1.85;
+  color:#52677b;
+  margin:0 0 28px;
+}
+
+.home-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:30px;
+}
+
+.home-chip{
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(37,107,184,.12);
+  font-size:12px;
+  color:#49677f;
+}
+
+.home-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* HERO VISUAL */
+
+.home-visual{
+  position:relative;
+  min-height:450px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.home-orbit{
+  position:absolute;
+  width:390px;
+  height:390px;
+  border:1px solid rgba(58,135,216,.18);
+  border-radius:50%;
+}
+
+.home-orbit::before{
+  content:"";
+  position:absolute;
+  inset:35px;
+  border:1px dashed rgba(58,135,216,.18);
+  border-radius:50%;
+}
+
+.home-card{
+  position:relative;
+  z-index:2;
+  width:min(340px, 90%);
+  padding:28px;
+  border-radius:26px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 25px 70px rgba(38,92,137,.13);
+  backdrop-filter:blur(16px);
+}
+
+.home-card-label{
+  font-family:"IBM Plex Mono", monospace;
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#7892a8;
+  margin-bottom:18px;
+}
+
+.home-card h3{
+  font-family:"Fraunces", serif;
+  font-size:35px;
+  font-weight:500;
+  line-height:1;
+  color:#214c73;
+  margin:0 0 16px;
+}
+
+.home-card p{
+  color:#63798d;
+  font-size:13px;
+  line-height:1.7;
+  margin:0 0 24px;
+}
+
+.home-card-line{
+  height:1px;
+  background:rgba(37,107,184,.12);
+  margin-bottom:18px;
+}
+
+.home-coordinates{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  font-family:"IBM Plex Mono", monospace;
+  font-size:10px;
+  color:#698198;
+}
+
+/* SECTION GENERAL */
+
+.home-section{
+  padding:95px 0;
+}
+
+.home-section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:38px;
+}
+
+.home-section-number{
+  font-family:"IBM Plex Mono", monospace;
+  font-size:11px;
+  color:#6e8aa2;
+  margin-bottom:10px;
+}
+
+.home-section-title{
+  font-family:"Fraunces", serif;
+  font-size:clamp(38px, 5vw, 64px);
+  line-height:.98;
+  font-weight:500;
+  color:#1b4267;
+  margin:0;
+}
+
+.home-section-desc{
+  max-width:470px;
+  color:#6a7e91;
+  font-size:14px;
+  line-height:1.75;
+}
+
+/* ABOUT */
+
+.home-about{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:55px;
+  align-items:stretch;
+}
+
+.home-about-box{
+  border-radius:28px;
+  padding:38px;
+  background:linear-gradient(145deg, rgba(232,243,254,.9), rgba(255,255,255,.8));
+  border:1px solid rgba(93,165,232,.14);
+}
+
+.home-about-box h3{
+  font-family:"Fraunces", serif;
+  font-size:34px;
+  font-weight:500;
+  color:#214c73;
+  margin:0 0 18px;
+}
+
+.home-about-box p{
+  color:#60768a;
+  line-height:1.85;
+  font-size:14px;
+  margin:0;
+}
+
+.home-about-text{
+  padding:20px 0;
+}
+
+.home-about-text p{
+  color:#60768a;
+  font-size:15px;
+  line-height:1.9;
+  margin:0 0 20px;
+}
+
+.home-text-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#256bb8;
+  font-size:13px;
+  font-weight:600;
+  text-decoration:none;
+}
+
+.home-text-link:hover{
+  gap:12px;
+}
+
+/* HIGHLIGHTS */
+
+.home-highlights{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.home-highlight{
+  padding:28px;
+  min-height:180px;
+  border-radius:22px;
+  background:rgba(255,255,255,.66);
+  border:1px solid rgba(37,107,184,.1);
+  transition:.3s ease;
+}
+
+.home-highlight:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 45px rgba(37,107,184,.1);
+}
+
+.home-highlight-icon{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#e8f3fe;
+  color:#256bb8;
+  margin-bottom:22px;
+  font-size:18px;
+}
+
+.home-highlight h3{
+  font-family:"Fraunces", serif;
+  font-size:25px;
+  font-weight:500;
+  color:#234d72;
+  margin:0 0 9px;
+}
+
+.home-highlight p{
+  color:#718396;
+  font-size:12px;
+  line-height:1.65;
+  margin:0;
+}
+
+/* LIFE */
+
+.home-life{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.home-life-card{
+  min-height:280px;
+  border-radius:26px;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#eef7ff,#ffffff);
+  border:1px solid rgba(37,107,184,.1);
+}
+
+.home-life-card:nth-child(2){
+  background:linear-gradient(145deg,#f3f9ff,#e5f2fd);
+}
+
+.home-life-card:nth-child(3){
+  background:linear-gradient(145deg,#ffffff,#edf6ff);
+}
+
+.home-life-number{
+  font-family:"IBM Plex Mono", monospace;
+  font-size:11px;
+  color:#7891a8;
+  margin-bottom:65px;
+}
+
+.home-life-card h3{
+  font-family:"Fraunces", serif;
+  font-size:34px;
+  font-weight:500;
+  color:#214c73;
+  margin:0 0 10px;
+}
+
+.home-life-card p{
+  color:#6d8193;
+  font-size:13px;
+  line-height:1.7;
+  max-width:300px;
+  margin:0;
+}
+
+.home-life-mark{
+  position:absolute;
+  right:-35px;
+  bottom:-60px;
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  border:1px solid rgba(58,135,216,.15);
+}
+
+/* GALLERY PREVIEW */
+
+.home-gallery{
+  display:grid;
+  grid-template-columns:1.4fr .8fr .8fr;
+  grid-template-rows:190px 190px;
+  gap:12px;
+}
+
+.home-gallery-item{
+  overflow:hidden;
+  border-radius:20px;
+  background:#e8f3fe;
+  position:relative;
+}
+
+.home-gallery-item:first-child{
+  grid-row:1 / 3;
+}
+
+.home-gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s ease;
+}
+
+.home-gallery-item:hover img{
+  transform:scale(1.04);
+}
+
+.home-gallery-label{
+  position:absolute;
+  left:14px;
+  bottom:14px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  color:#365a78;
+  font-size:10px;
+  backdrop-filter:blur(8px);
+}
+
+/* LOCATION */
+
+.home-location{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.home-location-info{
+  padding:40px;
+  border-radius:28px;
+  background:#173f64;
+  color:white;
+}
+
+.home-location-info .home-section-number{
+  color:#b6d7f3;
+}
+
+.home-location-info h3{
+  font-family:"Fraunces", serif;
+  font-size:42px;
+  line-height:1;
+  font-weight:500;
+  margin:0 0 20px;
+}
+
+.home-location-info p{
+  color:#c4d7e8;
+  font-size:14px;
+  line-height:1.8;
+  margin:0 0 25px;
+}
+
+.home-location-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.home-location-detail{
+  padding:16px;
+  border-radius:15px;
+  background:rgba(255,255,255,.08);
+}
+
+.home-location-detail small{
+  display:block;
+  color:#a9c4db;
+  font-family:"IBM Plex Mono", monospace;
+  font-size:9px;
+  margin-bottom:6px;
+}
+
+.home-location-detail strong{
+  font-size:12px;
+  font-weight:500;
+}
+
+.home-map-card{
+  min-height:360px;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(93,165,232,.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 65%, rgba(93,165,232,.18) 0 2px, transparent 3px),
+    linear-gradient(135deg,#edf7ff,#dceefd);
+  background-size:45px 45px, 60px 60px, auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(37,107,184,.1);
+}
+
+.home-map-pin{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.75);
+  border:1px solid rgba(37,107,184,.14);
+  box-shadow:0 20px 45px rgba(37,107,184,.12);
+  font-size:30px;
+}
+
+/* CTA */
+
+.home-cta{
+  padding:70px 45px;
+  border-radius:32px;
+  text-align:center;
+  background:linear-gradient(135deg,#e7f3ff,#f8fbff);
+  border:1px solid rgba(37,107,184,.1);
+}
+
+.home-cta h2{
+  font-family:"Fraunces", serif;
+  font-size:clamp(40px,6vw,70px);
+  line-height:.95;
+  font-weight:500;
+  color:#1e496e;
+  margin:0 0 18px;
+}
+
+.home-cta p{
+  max-width:560px;
+  margin:0 auto 28px;
+  color:#687d90;
+  line-height:1.8;
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .home-hero{
+    grid-template-columns:1fr;
+    gap:35px;
+    padding-top:65px;
+  }
+
+  .home-visual{
+    min-height:350px;
+  }
+
+  .home-highlights{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .home-about,
+  .home-location{
+    grid-template-columns:1fr;
+  }
+
+  .home-life{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .home-content{
+    width:min(100% - 28px, 1180px);
+  }
+
+  .home-hero{
+    min-height:auto;
+    padding:50px 0 45px;
+  }
+
+  .home-title{
+    font-size:78px;
+  }
+
+  .home-description{
+    font-size:14px;
+  }
+
+  .home-visual{
+    min-height:290px;
+  }
+
+  .home-orbit{
+    width:270px;
+    height:270px;
+  }
+
+  .home-card{
+    width:290px;
+    padding:23px;
+  }
+
+  .home-card h3{
+    font-size:29px;
+  }
+
+  .home-section{
+    padding:65px 0;
+  }
+
+  .home-section-head{
+    display:block;
+  }
+
+  .home-section-desc{
+    margin-top:15px;
+  }
+
+  .home-highlights{
+    grid-template-columns:1fr;
+  }
+
+  .home-gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:170px 170px 170px;
+  }
+
+  .home-gallery-item:first-child{
+    grid-column:1 / 3;
+    grid-row:auto;
+  }
+
+  .home-location-details{
+    grid-template-columns:1fr;
+  }
+
+  .home-location-info{
+    padding:28px;
+  }
+
+  .home-location-info h3{
+    font-size:35px;
+  }
+
+  .home-cta{
+    padding:55px 22px;
+  }
+
+}
+
+</style>
 </head>
+
 <body data-page="beranda">
-<div class="backdrop"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+
+<div class="backdrop">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+</div>
+
 <header class="topbar">
-  <div class="brand">SEMPARUK <small>Kampung Halaman</small></div>
+
+  <div class="brand">
+    SEMPARUK
+    <small>Kampung Halaman</small>
+  </div>
+
   <nav class="chapters" id="chapters">
     <span class="nav-indicator" id="navIndicator"></span>
-    <button data-target="beranda"><span class="n">01</span>Beranda</button>
-    <button data-target="profil"><span class="n">02</span>Profil</button>
-    <button data-target="galeri"><span class="n">03</span>Galeri</button>
-    <button data-target="peta"><span class="n">04</span>Peta</button>
-    <button data-target="kontak"><span class="n">05</span>Kontak</button>
-  </nav>
-  <button class="nav-cta" onclick="window.location.href='peta.html'">Lihat Peta<span class="arrow">↗</span></button>
-</header>
-<main id="app">
-<section id="beranda" class="page active">
-    <div class="hero">
-      <div class="eyebrow">Perkenalan Kampung Halaman</div>
-      <h1>Semparuk</h1>
-      <p class="hero-sub">Desa kecil di tepi kehidupan sehari-hari — bukan desa wisata, bukan tujuan liburan. Hanya kampung dengan sawah, sungai, pasar pagi, dan orang-orang yang pulang ke rumah yang sama setiap hari.</p>
-      <div class="hero-meta">
-        <span class="chip">Kec. Semparuk</span><span class="chip">Kab. Sambas</span><span class="chip">Kalimantan Barat</span><span class="chip">1°11′ LU · 109°05′ BT</span>
-      </div>
-      <div class="hero-actions">
-        <button class="btn btn-primary" onclick="window.location.href='profil.html'">Kenali Desanya <span class="arrow">→</span></button>
-        <button class="btn btn-ghost" onclick="window.location.href='galeri.html'">Lihat Galeri</button>
-      </div>
-    </div>
-    <div class="ticker">
-      <div class="track">
-        <span>PASAR PAGI</span><span>PERSAWAHAN</span><span>SUNGAI</span><span>SEKOLAH</span><span>PELABUHAN RORO</span><span>LAPANGAN BOLA</span><span>KANTOR DESA</span>
-        <span>PASAR PAGI</span><span>PERSAWAHAN</span><span>SUNGAI</span><span>SEKOLAH</span><span>PELABUHAN RORO</span><span>LAPANGAN BOLA</span><span>KANTOR DESA</span>
-      </div>
-    </div>
-  </section>
 
-</main>
-<footer class="filmfoot">© SEMPARUK · SITUS PERKENALAN DESA · KALIMANTAN BARAT</footer>
-<script src="script.js"></script>
-</body>
-</html>
+    <button data-target="beranda">
+      <span class="n">01</span>Beranda
+    </button>
+
+    <button data-target="profil">
+      <span class="n">02</span>Profil
+    </button>
+
+    <button data-target="galeri">
+      <span class="n">03</span>Galeri
+    </button>
+
+    <button data-target="peta">
+      <span class="n">04</span>Peta
+    </button>
+
+    <button data-target="kontak">
+      <span class="n">05</span>Kontak
+    </button>
+  </nav>
+
+  <button class="nav-cta" onclick="window.location.href='peta.html'">
+    Lihat Peta
+    <span class="arrow">↗</span>
+  </button>
+
+</header>
+
+
+<main id="app">
+
+<section id="beranda" class="page active">
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
+  <div class="home-content">
+
+    <div class="home-hero">
+
+      <div class="home-hero-copy">
+
+        <div class="home-kicker">
+          Perkenalan Kampung Halaman
+        </div>
+
+        <h1 class="home-title">
+          Semparuk
+        </h1>
+
+        <p class="home-description">
+          Desa kecil di Kabupaten Sambas yang tumbuh bersama
+          sawah, sungai, pasar pagi, sekolah, dan kehidupan
+          masyarakatnya. Sebuah tempat yang sederhana,
+          tetapi menyimpan banyak cerita.
+        </p>
+
+        <div class="home-meta">
+          <span class="home-chip">Kec. Semparuk</span>
+          <span class="home-chip">Kab. Sambas</span>
+          <span class="home-chip">Kalimantan Barat</span>
+          <span class="home-chip">1°11′ LU · 109°05′ BT</span>
+        </div>
+
+        <div class="home-actions">
+
+          <button
+            class="btn btn-primary"
+            onclick="window.location.href='profil.html'">
+            Kenali Desanya
+            <span class="arrow">→</span>
+          </button>
+
+          <button
+            class="btn btn-ghost"
+            onclick="window.location.href='galeri.html'">
+            Lihat Galeri
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="home-visual">
+
+        <div class="home-orbit"></div>
+
+        <div class="home-card">
+
+          <div class="home-card-label">
+            DESA SEMPARUK
+          </div>
+
+          <h3>
+            Tempat untuk pulang.
+          </h3>
+
+          <p>
+            Mengenal sebuah desa bukan hanya tentang
+            tempatnya, tetapi juga tentang ruang,
+            aktivitas, dan cerita yang hidup di dalamnya.
+          </p>
+
+          <div class="home-card-line"></div>
+
+          <div class="home-coordinates">
+            <span>01°11′ LU</span>
+            <span>109°05′ BT</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TICKER
+    ====================================================== -->
+
+    <div class="ticker">
+
+      <div class="track">
+
+        <span>PASAR PAGI</span>
+        <span>PERSAWAHAN</span>
+        <span>SUNGAI</span>
+        <span>SEKOLAH</span>
+        <span>PELABUHAN RORO</span>
+        <span>LAPANGAN BOLA</span>
+        <span>KANTOR DESA</span>
+
+        <span>PASAR PAGI</span>
+        <span>PERSAWAHAN</span>
+        <span>SUNGAI</span>
+        <span>SEKOLAH</span>
+        <span>PELABUHAN RORO</span>
+        <span>LAPANGAN BOLA</span>
+        <span>KANTOR DESA</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TENTANG DESA
+    ====================================================== -->
+
+    <section class="home-section">
+
+      <div class="home-section-head">
+
+        <div>
+          <div class="home-section-number">
+            01 / TENTANG
+          </div>
+
+          <h2 class="home-section-title">
+            Mengenal<br>Semparuk
+          </h2>
+        </div>
+
+        <p class="home-section-desc">
+          Setiap desa punya karakter sendiri. Semparuk
+          tumbuh dari keseharian masyarakat dan ruang-ruang
+          sederhana yang menjadi bagian dari kehidupan warga.
+        </p>
+
+      </div>
+
+
+      <div class="home-about">
+
+        <div class="home-about-box">
+
+          <h3>
+            Bukan sekadar nama tempat.
+          </h3>
+
+          <p>
+            Semparuk adalah ruang tempat masyarakat
+            menjalani aktivitas sehari-hari, bertemu,
+            bekerja, belajar, dan membangun kehidupan
+            bersama.
+          </p>
+
+        </div>
+
+
+        <div class="home-about-text">
+
+          <p>
+            Dari pasar pagi hingga persawahan, dari sekolah
+            hingga tepian sungai, berbagai tempat di Semparuk
+            memiliki perannya masing-masing.
+          </p>
+
+          <p>
+            Website ini dibuat sebagai ruang sederhana untuk
+            memperkenalkan Desa Semparuk melalui profil,
+            galeri, lokasi, dan informasi yang tersedia.
+          </p>
+
+          <a href="profil.html" class="home-text-link">
+            Selengkapnya tentang desa
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HIGHLIGHTS
+    ====================================================== -->
+
+    <section class="home-section">
+
+      <div class="home-section-head">
+
+        <div>
+          <div class="home-section-number">
+            02 / RUANG DESA
+          </div>
+
+          <h2 class="home-section-title">
+            Bagian dari<br>keseharian
+          </h2>
+        </div>
+
+        <p class="home-section-desc">
+          Beberapa tempat yang menjadi bagian dari
+          kehidupan dan aktivitas masyarakat Semparuk.
+        </p>
+
+      </div>
+
+
+      <div class="home-highlights">
+
+        <div class="home-highlight">
+
+          <div class="home-highlight-icon">⌂</div>
+
+          <h3>Pasar</h3>
+
+          <p>
+            Ruang pertemuan masyarakat dan aktivitas
+            ekonomi yang hadir sejak pagi.
+          </p>
+
+        </div>
+
+
+        <div class="home-highlight">
+
+          <div class="home-highlight-icon">⌁</div>
+
+          <h3>Sungai</h3>
+
+          <p>
+            Bagian dari lanskap desa yang menjadi
+            salah satu karakter lingkungan Semparuk.
+          </p>
+
+        </div>
+
+
+        <div class="home-highlight">
+
+          <div class="home-highlight-icon">□</div>
+
+          <h3>Sekolah</h3>
+
+          <p>
+            Ruang belajar dan tempat tumbuhnya generasi
+            masyarakat desa.
+          </p>
+
+        </div>
+
+
+        <div class="home-highlight">
+
+          <div class="home-highlight-icon">+</div>
+
+          <h3>Fasilitas</h3>
+
+          <p>
+            Berbagai fasilitas yang mendukung kebutuhan
+            dan aktivitas masyarakat.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         KEHIDUPAN DESA
+    ====================================================== -->
+
+    <section class="home-section">
+
+      <div class="home-section-head">
+
+        <div>
+          <div class="home-section-number">
+            03 / KEHIDUPAN
+          </div>
+
+          <h2 class="home-section-title">
+            Cerita yang<br>dekat
+          </h2>
+        </div>
+
+        <p class="home-section-desc">
+          Hal-hal sederhana yang membuat sebuah kampung
+          terasa hidup dan memiliki identitas.
+        </p>
+
+      </div>
+
+
+      <div class="home-life">
+
+        <article class="home-life-card">
+
+          <div class="home-life-number">
+            01 — PAGI
+          </div>
+
+          <h3>Pasar Pagi</h3>
+
+          <p>
+            Aktivitas dimulai sejak pagi. Warga bertemu,
+            berbelanja, dan menjalankan aktivitas
+            sehari-hari.
+          </p>
+
+          <div class="home-life-mark"></div>
+
+        </article>
+
+
+        <article class="home-life-card">
+
+          <div class="home-life-number">
+            02 — RUANG
+          </div>
+
+          <h3>Persawahan</h3>
+
+          <p>
+            Hamparan lahan menjadi salah satu bagian
+            dari lanskap dan kehidupan masyarakat desa.
+          </p>
+
+          <div class="home-life-mark"></div>
+
+        </article>
+
+
+        <article class="home-life-card">
+
+          <div class="home-life-number">
+            03 — BERTEMU
+          </div>
+
+          <h3>Sungai</h3>
+
+          <p>
+            Ruang alam yang menjadi bagian dari
+            lingkungan dan cerita keseharian Semparuk.
+          </p>
+
+          <div class="home-life-mark"></div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALERI PREVIEW
+    ====================================================== -->
+
+    <section class="home-section">
+
+      <div class="home-section-head">
+
+        <div>
+          <div class="home-section-number">
+            04 / GALERI
+          </div>
+
+          <h2 class="hom

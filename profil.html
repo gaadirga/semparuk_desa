@@ -3,100 +3,1319 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DESA SEMPARUK · Profil Desa</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* =========================================================
+   PROFIL PAGE
+========================================================= */
+
+body[data-page="profil"]{
+  background:
+    radial-gradient(circle at 8% 10%, rgba(120,190,255,.16), transparent 28%),
+    radial-gradient(circle at 92% 30%, rgba(90,160,235,.10), transparent 28%),
+    #f8fbff;
+  color:#142333;
+}
+
+/* agar navbar benar-benar bisa diklik */
+body[data-page="profil"] .chapters{
+  position:relative;
+  z-index:50;
+}
+
+body[data-page="profil"] .chapters .nav-link{
+  position:relative;
+  z-index:51;
+  text-decoration:none;
+}
+
+body[data-page="profil"] .nav-indicator{
+  pointer-events:none !important;
+}
+
+body[data-page="profil"] .topbar{
+  position:relative;
+  z-index:100;
+}
+
+/* ---------------------------------------------------------
+   MAIN
+--------------------------------------------------------- */
+
+.profil-page{
+  padding:70px 0 100px;
+}
+
+.profil-wrap{
+  width:min(1160px, calc(100% - 40px));
+  margin:auto;
+}
+
+/* ---------------------------------------------------------
+   HERO
+--------------------------------------------------------- */
+
+.profil-hero{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:55px;
+  align-items:center;
+  min-height:520px;
+  padding:35px 0 70px;
+}
+
+.profil-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#4385bd;
+  margin-bottom:20px;
+}
+
+.profil-kicker::before{
+  content:"";
+  width:30px;
+  height:1px;
+  background:#6da9db;
+}
+
+.profil-title{
+  font-family:"Fraunces",serif;
+  font-size:clamp(46px,6vw,78px);
+  line-height:.98;
+  font-weight:500;
+  letter-spacing:-.045em;
+  margin:0 0 25px;
+  max-width:700px;
+}
+
+.profil-title em{
+  color:#4e92ca;
+  font-style:italic;
+}
+
+.profil-lede{
+  max-width:650px;
+  color:#607386;
+  font-size:16px;
+  line-height:1.9;
+  margin:0 0 30px;
+}
+
+.profil-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+
+.profil-tag{
+  border:1px solid rgba(69,133,190,.22);
+  background:rgba(255,255,255,.7);
+  border-radius:999px;
+  padding:9px 13px;
+  color:#47799f;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+}
+
+/* ---------------------------------------------------------
+   VISUAL CARD
+--------------------------------------------------------- */
+
+.profil-visual{
+  position:relative;
+  min-height:410px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.profil-orbit{
+  width:340px;
+  height:340px;
+  border:1px solid rgba(77,145,204,.25);
+  border-radius:50%;
+  position:absolute;
+}
+
+.profil-orbit::before,
+.profil-orbit::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(77,145,204,.14);
+}
+
+.profil-orbit::before{
+  inset:28px;
+}
+
+.profil-orbit::after{
+  inset:65px;
+}
+
+.profil-card{
+  width:min(320px,80%);
+  padding:30px;
+  border-radius:28px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.97),rgba(237,247,255,.93));
+  border:1px solid rgba(73,140,198,.18);
+  box-shadow:
+    0 25px 70px rgba(51,104,148,.15),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  position:relative;
+  z-index:2;
+}
+
+.profil-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:55px;
+}
+
+.profil-card-label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  letter-spacing:.14em;
+  color:#6691b2;
+  text-transform:uppercase;
+}
+
+.profil-card-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#6aa8da;
+  box-shadow:0 0 0 7px rgba(106,168,218,.12);
+}
+
+.profil-card h3{
+  font-family:"Fraunces",serif;
+  font-size:40px;
+  font-weight:500;
+  letter-spacing:-.04em;
+  margin:0 0 8px;
+}
+
+.profil-card p{
+  color:#728395;
+  line-height:1.7;
+  font-size:14px;
+  margin:0;
+}
+
+.profil-card-bottom{
+  display:flex;
+  gap:12px;
+  margin-top:28px;
+}
+
+.profil-mini{
+  flex:1;
+  padding:12px;
+  border-radius:14px;
+  background:rgba(219,237,251,.55);
+}
+
+.profil-mini span{
+  display:block;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9px;
+  color:#6c8da8;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.profil-mini strong{
+  font-size:13px;
+}
+
+/* ---------------------------------------------------------
+   SECTION HEAD
+--------------------------------------------------------- */
+
+.profil-section{
+  padding:85px 0;
+  border-top:1px solid rgba(72,126,169,.13);
+}
+
+.profil-section-head{
+  display:grid;
+  grid-template-columns:.55fr 1fr;
+  gap:50px;
+  margin-bottom:42px;
+}
+
+.profil-section-label{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  color:#5c91b8;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.profil-section-title{
+  font-family:"Fraunces",serif;
+  font-size:clamp(34px,4vw,53px);
+  line-height:1.05;
+  font-weight:500;
+  letter-spacing:-.035em;
+  margin:0;
+}
+
+.profil-section-desc{
+  color:#6d7e8e;
+  line-height:1.8;
+  margin:14px 0 0;
+  max-width:650px;
+}
+
+/* ---------------------------------------------------------
+   IDENTITY / FACTS
+--------------------------------------------------------- */
+
+.profil-facts{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.profil-fact{
+  padding:25px 22px;
+  min-height:145px;
+  border-radius:20px;
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(67,130,181,.13);
+  transition:.25s ease;
+}
+
+.profil-fact:hover{
+  transform:translateY(-4px);
+  border-color:rgba(67,130,181,.28);
+  box-shadow:0 15px 35px rgba(49,105,150,.09);
+}
+
+.profil-fact-number{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  color:#7a9bb4;
+  margin-bottom:22px;
+}
+
+.profil-fact strong{
+  display:block;
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+.profil-fact span{
+  font-size:13px;
+  line-height:1.5;
+  color:#718191;
+}
+
+/* ---------------------------------------------------------
+   FACILITIES
+--------------------------------------------------------- */
+
+.fasilitas-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.fasilitas-card{
+  display:grid;
+  grid-template-columns:58px 1fr;
+  gap:18px;
+  padding:24px;
+  border-radius:22px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(67,130,181,.13);
+  transition:.25s ease;
+}
+
+.fasilitas-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 38px rgba(48,100,143,.09);
+  border-color:rgba(67,130,181,.27);
+}
+
+.fasilitas-icon{
+  width:52px;
+  height:52px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:16px;
+  color:#4388bd;
+  background:#eaf5ff;
+}
+
+.fasilitas-icon svg{
+  width:23px;
+  height:23px;
+}
+
+.fasilitas-number{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  color:#7a9bb4;
+  margin-bottom:7px;
+}
+
+.fasilitas-card h3{
+  font-family:"Fraunces",serif;
+  font-size:23px;
+  font-weight:500;
+  margin:0 0 7px;
+  letter-spacing:-.02em;
+}
+
+.fasilitas-card p{
+  margin:0;
+  color:#718191;
+  line-height:1.65;
+  font-size:13px;
+}
+
+/* ---------------------------------------------------------
+   STORY
+--------------------------------------------------------- */
+
+.profil-story{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:55px;
+  align-items:start;
+}
+
+.story-stamp{
+  position:sticky;
+  top:100px;
+  padding:30px;
+  border-radius:24px;
+  background:#eaf5ff;
+  border:1px solid rgba(69,137,191,.15);
+}
+
+.story-stamp small{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  color:#5d8bad;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+}
+
+.story-stamp strong{
+  display:block;
+  font-family:"Fraunces",serif;
+  font-size:42px;
+  font-weight:500;
+  line-height:1;
+  margin:18px 0 12px;
+}
+
+.story-stamp p{
+  color:#6d8191;
+  font-size:13px;
+  line-height:1.7;
+  margin:0;
+}
+
+.story-copy p{
+  color:#657788;
+  font-size:16px;
+  line-height:1.9;
+  margin:0 0 20px;
+}
+
+.story-copy p:last-child{
+  margin-bottom:0;
+}
+
+/* ---------------------------------------------------------
+   QUOTE
+--------------------------------------------------------- */
+
+.profil-quote{
+  padding:75px 0 25px;
+}
+
+.quote-box{
+  position:relative;
+  padding:55px 60px;
+  border-radius:30px;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,#e9f5ff 0%,#f8fbff 100%);
+  border:1px solid rgba(73,139,193,.15);
+}
+
+.quote-box::before{
+  content:"“";
+  position:absolute;
+  right:30px;
+  top:-30px;
+  font-family:"Fraunces",serif;
+  font-size:180px;
+  line-height:1;
+  color:rgba(67,136,190,.09);
+}
+
+.quote-box blockquote{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+  font-family:"Fraunces",serif;
+  font-size:clamp(27px,4vw,46px);
+  line-height:1.2;
+  letter-spacing:-.025em;
+  margin:0;
+}
+
+.quote-credit{
+  position:relative;
+  z-index:2;
+  margin-top:24px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  letter-spacing:.1em;
+  color:#7193aa;
+  text-transform:uppercase;
+}
+
+/* ---------------------------------------------------------
+   BOTTOM CTA
+--------------------------------------------------------- */
+
+.profil-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+  padding:35px 0 15px;
+}
+
+.profil-bottom-text{
+  color:#728394;
+  font-size:13px;
+  line-height:1.7;
+  max-width:600px;
+}
+
+.profil-bottom-text strong{
+  display:block;
+  color:#263b4c;
+  font-family:"Fraunces",serif;
+  font-size:25px;
+  margin-bottom:4px;
+}
+
+.profil-back{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  text-decoration:none;
+  color:#3d7eaf;
+  border:1px solid rgba(61,126,175,.22);
+  padding:12px 17px;
+  border-radius:999px;
+  font-size:12px;
+  background:#fff;
+  transition:.2s ease;
+}
+
+.profil-back:hover{
+  transform:translateY(-2px);
+  background:#edf7ff;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+
+@media(max-width:900px){
+
+  .profil-hero{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding-top:30px;
+  }
+
+  .profil-visual{
+    min-height:360px;
+  }
+
+  .profil-section-head{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .profil-facts{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .profil-story{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .story-stamp{
+    position:static;
+  }
+}
+
+@media(max-width:650px){
+
+  .profil-wrap{
+    width:min(100% - 28px,1160px);
+  }
+
+  .profil-page{
+    padding-top:35px;
+  }
+
+  .profil-title{
+    font-size:47px;
+  }
+
+  .profil-lede{
+    font-size:14px;
+    line-height:1.8;
+  }
+
+  .profil-visual{
+    min-height:320px;
+  }
+
+  .profil-orbit{
+    width:270px;
+    height:270px;
+  }
+
+  .profil-card{
+    width:275px;
+    padding:24px;
+  }
+
+  .profil-card-top{
+    margin-bottom:38px;
+  }
+
+  .profil-card h3{
+    font-size:33px;
+  }
+
+  .profil-facts{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .profil-fact{
+    padding:18px;
+    min-height:130px;
+  }
+
+  .profil-fact strong{
+    font-size:15px;
+  }
+
+  .fasilitas-grid{
+    grid-template-columns:1fr;
+  }
+
+  .fasilitas-card{
+    padding:20px;
+  }
+
+  .profil-section{
+    padding:60px 0;
+  }
+
+  .quote-box{
+    padding:38px 28px;
+  }
+
+  .profil-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
 </head>
+
 <body data-page="profil">
-<div class="backdrop"><div class="blob blob1"></div><div class="blob blob2"></div></div>
+
+<div class="backdrop">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+</div>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="topbar">
-  <div class="brand">SEMPARUK <small>Kampung Halaman</small></div>
+
+  <a href="index.html" class="brand" style="text-decoration:none;color:inherit;">
+    SEMPARUK
+    <small>Kampung Halaman</small>
+  </a>
+
   <nav class="chapters" id="chapters">
+
     <span class="nav-indicator" id="navIndicator"></span>
-    <button data-target="beranda"><span class="n">01</span>Beranda</button>
-    <button data-target="profil"><span class="n">02</span>Profil</button>
-    <button data-target="galeri"><span class="n">03</span>Galeri</button>
-    <button data-target="peta"><span class="n">04</span>Peta</button>
-    <button data-target="kontak"><span class="n">05</span>Kontak</button>
+
+    <a class="nav-link" href="index.html">
+      <span class="n">01</span>Beranda
+    </a>
+
+    <a class="nav-link active" href="profil.html">
+      <span class="n">02</span>Profil
+    </a>
+
+    <a class="nav-link" href="galeri.html">
+      <span class="n">03</span>Galeri
+    </a>
+
+    <a class="nav-link" href="peta.html">
+      <span class="n">04</span>Peta
+    </a>
+
+    <a class="nav-link" href="kontak.html">
+      <span class="n">05</span>Kontak
+    </a>
+
   </nav>
-  <button class="nav-cta" onclick="window.location.href='peta.html'">Lihat Peta<span class="arrow">↗</span></button>
+
+  <a class="nav-cta" href="peta.html">
+    Lihat Peta
+    <span class="arrow">↗</span>
+  </a>
+
 </header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main id="app">
-<section id="profil" class="page active">
-    <div class="wrap sec-head">
-      <div class="eyebrow">Halaman 02 · Profil Desa</div>
-      <h2>Desa kecil yang tidak buru-buru dikenal siapa pun.</h2>
-      <p class="lede">Semparuk adalah salah satu desa di Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat. Tidak ada baliho "destinasi wisata" di gerbangnya — yang ada hanya jalan utama menuju pasar, sawah yang menghijau tergantung musim, dan sungai yang mengalir seperti biasa. Justru di situ letak jujurnya: ini kampung untuk dijalani, bukan untuk dikunjungi sebentar lalu difoto.</p>
-      <div class="tag-row">
-        <span class="tag">Bukan Desa Wisata</span>
-        <span class="tag">Agraris &amp; Perairan</span>
-        <span class="tag">Kec. Semparuk</span>
-        <span class="tag">Kab. Sambas</span>
+
+<section class="profil-page">
+
+<div class="profil-wrap">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="profil-hero">
+
+  <div>
+
+    <div class="profil-kicker">
+      Halaman 02 · Profil Desa
+    </div>
+
+    <h1 class="profil-title">
+      Mengenal Semparuk<br>
+      dari <em>dekat.</em>
+    </h1>
+
+    <p class="profil-lede">
+      Semparuk adalah salah satu desa di Kecamatan Semparuk,
+      Kabupaten Sambas, Kalimantan Barat. Sebuah kampung yang
+      tumbuh dari keseharian warganya — sawah, sungai, pasar,
+      jalan utama, dan ruang-ruang tempat masyarakat bertemu.
+    </p>
+
+    <div class="profil-tags">
+      <span class="profil-tag">Kec. Semparuk</span>
+      <span class="profil-tag">Kab. Sambas</span>
+      <span class="profil-tag">Kalimantan Barat</span>
+      <span class="profil-tag">Agraris &amp; Perairan</span>
+    </div>
+
+  </div>
+
+
+  <div class="profil-visual">
+
+    <div class="profil-orbit"></div>
+
+    <div class="profil-card">
+
+      <div class="profil-card-top">
+        <span class="profil-card-label">
+          Desa Semparuk
+        </span>
+
+        <span class="profil-card-dot"></span>
+      </div>
+
+      <h3>Kampung<br>Halaman.</h3>
+
+      <p>
+        Tempat kehidupan berjalan dengan ritmenya sendiri,
+        dari aktivitas pagi hingga suasana sore di jalan desa.
+      </p>
+
+      <div class="profil-card-bottom">
+
+        <div class="profil-mini">
+          <span>Wilayah</span>
+          <strong>Sambas</strong>
+        </div>
+
+        <div class="profil-mini">
+          <span>Provinsi</span>
+          <strong>Kalbar</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     IDENTITAS
+===================================================== -->
+
+<section class="profil-section">
+
+  <div class="profil-section-head">
+
+    <div>
+      <div class="profil-section-label">
+        02.01 · Identitas
       </div>
     </div>
 
-    <div class="wrap grid-cards">
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10v6c0 1.5 3 3 6 3s6-1.5 6-3v-6"/></svg></div>
-        <div class="num">FASILITAS 01</div><h3>Sekolah</h3>
-        <p>Tempat generasi desa memulai harinya untuk menuntut ilmu.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 19c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"/><path d="M5 19l1-8h12l1 8"/><path d="M9 11V6h4l3 5"/></svg></div>
-        <div class="num">FASILITAS 02</div><h3>Pelabuhan Kapal</h3>
-        <p>Titik keluar-masuk desa lewat air — jalur kapal yang menghubungkan Semparuk dengan wilayah pulau-pulau seberang.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="12" rx="1.5"/><circle cx="12" cy="12" r="3"/><path d="M3 9h1M3 15h1M20 9h1M20 15h1"/></svg></div>
-        <div class="num">FASILITAS 03</div><h3>Lapangan Sepak Bola</h3>
-        <p>Ruang temu warga sore hari — dari latihan anak-anak sampai pertandingan antar dusun.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10l4-5 4 5-4 5-4-5Z"/><path d="M11 10l4-5 4 5-4 5-4-5Z"/><path d="M3 19h18"/></svg></div>
-        <div class="num">FASILITAS 04</div><h3>Pasar di Jalan Utama</h3>
-        <p>Pasar yang menghidupkan jalan utama desa, tempat transaksi paling nyata setiap hari.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10l4-5 4 5-4 5-4-5Z"/><path d="M11 10l4-5 4 5-4 5-4-5Z"/><path d="M3 19h18"/></svg></div>
-        <div class="num">FASILITAS 05</div><h3>Pasar pagi</h3>
-        <p>Pasar pagi yang dikunjungi warga setiap pagi untuk berbelanja kebutuhan dapur, tempat transaksi paling nyata setiap hari.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 20c4-3 6 3 10 0s6 3 10 0"/><path d="M2 14c4-3 6 3 10 0s6 3 10 0"/><path d="M2 8c4-3 6 3 10 0s6 3 10 0"/></svg></div>
-        <div class="num">FASILITAS 06</div><h3>Pompa Air Persawahan</h3>
-        <p>Pompa air yang mengalirkan air ke persawahan, menyelamatkan sawah dari kekeringan akibat kemarau.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6c4 4 6-2 10 2s6-2 8 2"/><path d="M3 14c4 4 6-2 10 2s6-2 8 2"/></svg></div>
-        <div class="num">FASILITAS 07</div><h3>Jembatan</h3>
-        <p>Jembatan yang menghubungkan kan desa semparuk dengan desa seberang, menjadi jalus transportasi utama yang membantu warga desa menyebrangi sungai</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/><path d="M4 10h16"/></svg></div>
-        <div class="num">FASILITAS 08</div><h3>Masjid besar</h3>
-        <p>Sebuah masjid yang terletak di tepi jalan pusat pasar desa, Masjid yang menjadi tempat ibadah umat muslim di desa</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/><path d="M4 10h16"/></svg></div>
-        <div class="num">FASILITAS 09</div><h3>Kantor Camat</h3>
-        <p>Pusat administrasi warga — kantor kantor camat melayani keperluan sehari-hari.</p>
-      </div>
-      <div class="card">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/><path d="M4 10h16"/></svg></div>
-        <div class="num">FASILITAS 10</div><h3>Kantor Desa</h3>
-        <p>Pusat administrasi warga — kantor desa berdiri melayani keperluan warga desa sehari-hari.</p>
+    <div>
+      <h2 class="profil-section-title">
+        Sedikit data,<br>
+        banyak cerita.
+      </h2>
+
+      <p class="profil-section-desc">
+        Beberapa hal sederhana yang membantu mengenali posisi
+        dan karakter Desa Semparuk.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="profil-facts">
+
+    <div class="profil-fact">
+      <div class="profil-fact-number">01 / WILAYAH</div>
+      <strong>Semparuk</strong>
+      <span>Kecamatan tempat desa ini berada.</span>
+    </div>
+
+    <div class="profil-fact">
+      <div class="profil-fact-number">02 / KABUPATEN</div>
+      <strong>Sambas</strong>
+      <span>Bagian dari wilayah Kabupaten Sambas.</span>
+    </div>
+
+    <div class="profil-fact">
+      <div class="profil-fact-number">03 / PROVINSI</div>
+      <strong>Kalimantan Barat</strong>
+      <span>Terletak di bagian barat Pulau Kalimantan.</span>
+    </div>
+
+    <div class="profil-fact">
+      <div class="profil-fact-number">04 / KARAKTER</div>
+      <strong>Agraris &amp; Perairan</strong>
+      <span>Lingkungan desa dekat dengan sawah dan jalur air.</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FASILITAS
+===================================================== -->
+
+<section class="profil-section">
+
+  <div class="profil-section-head">
+
+    <div>
+      <div class="profil-section-label">
+        02.02 · Fasilitas Desa
       </div>
     </div>
 
-    <div class="wrap quote-block">
-      <blockquote>"Desa ini tidak perlu ramai untuk terasa hidup — cukup sawah yang hijau tepat waktu, dan pasar yang buka setiap pagi."</blockquote>
+    <div>
+      <h2 class="profil-section-title">
+        Ruang yang membuat<br>
+        desa tetap berjalan.
+      </h2>
+
+      <p class="profil-section-desc">
+        Fasilitas bukan hanya bangunan. Di tempat-tempat inilah
+        aktivitas warga berlangsung setiap hari.
+      </p>
     </div>
-  </section>
+
+  </div>
+
+
+  <div class="fasilitas-grid">
+
+
+    <!-- 01 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21h18"/>
+          <path d="M5 21V8l7-5 7 5v13"/>
+          <path d="M9 21v-6h6v6"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 01</div>
+        <h3>Sekolah</h3>
+        <p>
+          Tempat generasi desa memulai perjalanan belajar
+          dan menuntut ilmu setiap harinya.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 02 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18h18"/>
+          <path d="M5 18l2-7h10l2 7"/>
+          <path d="M8 11V7h5l3 4"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 02</div>
+        <h3>Pelabuhan Kapal</h3>
+        <p>
+          Titik keluar-masuk melalui jalur air yang membantu
+          menghubungkan warga dengan wilayah seberang.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 03 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M7 19v-4"/>
+          <path d="M17 19v-4"/>
+          <circle cx="12" cy="12" r="2.5"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 03</div>
+        <h3>Lapangan Sepak Bola</h3>
+        <p>
+          Ruang berkumpul warga pada sore hari, mulai dari
+          latihan anak-anak hingga pertandingan antar dusun.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 04 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20h16"/>
+          <path d="M5 20v-7l7-5 7 5v7"/>
+          <path d="M8 13h8"/>
+          <path d="M9 10h6"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 04</div>
+        <h3>Pasar di Jalan Utama</h3>
+        <p>
+          Salah satu ruang aktivitas ekonomi warga yang
+          menghidupkan jalan utama desa.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 05 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 20h16"/>
+          <path d="M6 20v-6"/>
+          <path d="M18 20v-6"/>
+          <path d="M4 14h16"/>
+          <path d="M7 11h10"/>
+          <path d="M9 8h6"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 05</div>
+        <h3>Pasar Pagi</h3>
+        <p>
+          Tempat warga mencari kebutuhan dapur dan melakukan
+          transaksi sejak pagi hari.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 06 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round">
+          <path d="M2 17c4-3 6 3 10 0s6 3 10 0"/>
+          <path d="M2 11c4-3 6 3 10 0s6 3 10 0"/>
+          <path d="M12 7V3"/>
+          <path d="M9 5l3-2 3 2"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 06</div>
+        <h3>Pompa Air Persawahan</h3>
+        <p>
+          Membantu mengalirkan air ke area persawahan,
+          terutama ketika kondisi kemarau.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 07 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round">
+          <path d="M3 18h18"/>
+          <path d="M3 14h18"/>
+          <path d="M6 14v4"/>
+          <path d="M10 14v4"/>
+          <path d="M14 14v4"/>
+          <path d="M18 14v4"/>
+          <path d="M4 14l3-6 3 6 3-6 3 6 3-6"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 07</div>
+        <h3>Jembatan</h3>
+        <p>
+          Penghubung antara Desa Semparuk dengan wilayah
+          seberang sekaligus jalur transportasi warga.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 08 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+          <path d="M4 21V10l8-6 8 6v11"/>
+          <path d="M9 21v-6h6v6"/>
+          <path d="M4 10h16"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 08</div>
+        <h3>Masjid Besar</h3>
+        <p>
+          Tempat ibadah yang berada di kawasan pusat aktivitas
+          warga dan dekat dengan jalan utama desa.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 09 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+          <path d="M4 21V7h16v14"/>
+          <path d="M8 11h2"/>
+          <path d="M14 11h2"/>
+          <path d="M8 15h2"/>
+          <path d="M14 15h2"/>
+          <path d="M10 21v-3h4v3"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 09</div>
+        <h3>Kantor Camat</h3>
+        <p>
+          Pusat administrasi kecamatan yang melayani berbagai
+          kebutuhan administrasi masyarakat.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- 10 -->
+
+    <div class="fasilitas-card">
+
+      <div class="fasilitas-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+          <path d="M4 21V9l8-5 8 5v12"/>
+          <path d="M8 21v-5h8v5"/>
+          <path d="M9 10h6"/>
+          <path d="M12 7v6"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="fasilitas-number">FASILITAS 10</div>
+        <h3>Kantor Desa</h3>
+        <p>
+          Pusat pelayanan dan administrasi yang menjadi salah
+          satu tempat utama warga mengurus keperluan desa.
+        </p>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CERITA DESA
+===================================================== -->
+
+<section class="profil-section">
+
+  <div class="profil-section-head">
+
+    <div>
+      <div class="profil-section-label">
+        02.03 · Tentang Semparuk
+      </div>
+    </div>
+
+    <div>
+      <h2 class="profil-section-title">
+        Bukan sekadar<br>
+        titik di peta.
+      </h2>
+
+      <p class="profil-section-desc">
+        Sebuah desa lebih mudah dipahami lewat kehidupan
+        yang berlangsung di dalamnya.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="profil-story">
+
+    <div class="story-stamp">
+
+      <small>Catatan kecil</small>
+
+      <strong>Sehari<br>di desa.</strong>
+
+      <p>
+        Pagi dimulai dengan aktivitas pasar dan perjalanan
+        warga. Siang berjalan dengan pekerjaan masing-masing.
+        Menjelang sore, ruang publik kembali ramai.
+      </p>
+
+    </div>
+
+
+    <div class="story-copy">
+
+      <p>
+        Semparuk tidak harus tampil sebagai tempat yang dibuat
+        khusus untuk dikunjungi. Nilainya justru terasa dari
+        bagaimana masyarakat menjalani kehidupan sehari-hari.
+      </p>
+
+      <p>
+        Jalan utama menjadi jalur aktivitas, pasar menjadi
+        tempat bertemu, sawah menjadi bagian dari kehidupan
+        masyarakat, sementara sungai dan jembatan menjadi
+        penghubung antarwilayah.
+      </p>
+
+      <p>
+        Di antara semua itu terdapat sekolah, tempat ibadah,
+        lapangan, kantor pemerintahan, serta fasilitas lain
+        yang membuat kehidupan desa terus bergerak.
+      </p>
+
+      <p>
+        Karena itu, mengenal Semparuk bukan hanya tentang
+        mengetahui letaknya. Tetapi juga tentang memahami
+        ruang-ruang yang digunakan dan kehidupan yang terjadi
+        di dalamnya.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUOTE
+===================================================== -->
+
+<section class="profil-quote">
+
+  <div class="quote-box">
+
+    <blockquote>
+      “Desa ini tidak perlu ramai untuk terasa hidup —
+      cukup sawah yang hijau tepat waktu, dan pasar yang
+      buka setiap pagi.”
+    </blockquote>
+
+    <div class="quote-credit">
+      Semparuk · Kampung Halaman
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     BOTTOM
+===================================================== -->
+
+<div class="profil-bottom">
+
+  <div class="profil-bottom-text">
+
+    <strong>Masih ingin menjelajah?</strong>
+
+    Lihat sisi lain Desa Semparuk melalui galeri,
+    lokasi, dan ruang aspirasi warga.
+
+  </div>
+
+  <a href="galeri.html" class="profil-back">
+    Lanjut ke Galeri
+    <span>→</span>
+  </a>
+
+</div>
+
+
+</div>
+</section>
 
 </main>
-<footer class="filmfoot">© SEMPARUK · SITUS PERKENALAN DESA · KALIMANTAN BARAT</footer>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="filmfoot">
+  © SEMPARUK · SITUS PERKENALAN DESA · KALIMANTAN BARAT
+</footer>
+
+
 <script src="script.js"></script>
+
 </body>
 </html>

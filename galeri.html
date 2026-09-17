@@ -3,234 +3,1924 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DESA SEMPARUK · Galeri</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================================================
+   GALERI — DESAIN KHUSUS HALAMAN
+   ========================================================= */
+
+.gallery-page{
+  overflow:hidden;
+}
+
+/* HERO */
+
+.gallery-hero{
+  padding:85px 0 70px;
+}
+
+.gallery-hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:70px;
+  align-items:end;
+}
+
+.gallery-hero .eyebrow{
+  margin-bottom:22px;
+}
+
+.gallery-hero h1{
+  margin:0;
+  max-width:850px;
+  font-family:"Fraunces",serif;
+  font-size:clamp(55px,8vw,100px);
+  line-height:.91;
+  letter-spacing:-.055em;
+  color:var(--blue-800);
+}
+
+.gallery-hero h1 span{
+  color:var(--blue-500);
+  font-style:italic;
+}
+
+.gallery-hero-text{
+  max-width:460px;
+  padding-bottom:8px;
+}
+
+.gallery-hero-text p{
+  margin:0 0 25px;
+  font-size:15px;
+  line-height:1.85;
+  color:var(--blue-700);
+}
+
+.gallery-counter{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:11px;
+  color:var(--blue-500);
+}
+
+.gallery-counter-line{
+  width:55px;
+  height:1px;
+  background:var(--blue-300);
+}
+
+
+/* INFO CARDS */
+
+.gallery-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin:0 auto 95px;
+  border-top:1px solid var(--sky-200);
+  border-bottom:1px solid var(--sky-200);
+}
+
+.gallery-info-card{
+  padding:28px 30px;
+  border-right:1px solid var(--sky-200);
+}
+
+.gallery-info-card:last-child{
+  border-right:none;
+}
+
+.gallery-info-card .num{
+  display:block;
+  margin-bottom:13px;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  color:var(--blue-500);
+  letter-spacing:.08em;
+}
+
+.gallery-info-card h3{
+  margin:0 0 9px;
+  font-family:"Fraunces",serif;
+  font-size:27px;
+  line-height:1.1;
+  color:var(--blue-800);
+}
+
+.gallery-info-card p{
+  margin:0;
+  max-width:330px;
+  font-size:13px;
+  line-height:1.75;
+  color:var(--blue-700);
+}
+
+
+/* CERITA PILIHAN */
+
+.gallery-story{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:65px;
+  align-items:center;
+  margin:0 auto 110px;
+}
+
+.gallery-story-image{
+  position:relative;
+  min-height:470px;
+  overflow:hidden;
+  border-radius:28px;
+  background:var(--sky-100);
+  box-shadow:0 25px 60px rgba(37,107,184,.13);
+}
+
+.gallery-story-image img{
+  width:100%;
+  height:100%;
+  min-height:470px;
+  display:block;
+  object-fit:cover;
+  transition:transform .7s ease;
+}
+
+.gallery-story-image:hover img{
+  transform:scale(1.035);
+}
+
+.gallery-story-number{
+  position:absolute;
+  top:20px;
+  left:20px;
+  padding:9px 13px;
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(10px);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10px;
+  color:var(--blue-700);
+}
+
+.gallery-story-content .eyebrow{
+  margin-bottom:16px;
+}
+
+.gallery-story-content h2{
+  margin:0 0 22px;
+  max-width:570px;
+  font-family:"Fraunces",serif;
+  font-size:clamp(42px,5.5vw,67px);
+  line-height:.98;
+  letter-spacing:-.045em;
+  color:var(--blue-800);
+}
+
+.gallery-story-content p{
+  max-width:500px;
+  margin:0 0 17px;
+  font-size:14px;
+  line-height:1.85;
+  color:var(--blue-700);
+}
+
+.story-meta{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:27px;
+}
+
+.story-meta span{
+  padding:8px 12px;
+  border:1px solid var(--sky-200);
+  border-radius:999px;
+  background:rgba(255,255,255,.7);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9px;
+  color:var(--blue-600);
+}
+
+
+/* JUDUL KOLEKSI */
+
+.gallery-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:35px;
+  margin-bottom:32px;
+}
+
+.gallery-heading .eyebrow{
+  margin-bottom:15px;
+}
+
+.gallery-heading h2{
+  margin:0;
+  font-family:"Fraunces",serif;
+  font-size:clamp(42px,5.5vw,65px);
+  line-height:.95;
+  letter-spacing:-.045em;
+  color:var(--blue-800);
+}
+
+.gallery-heading p{
+  max-width:370px;
+  margin:0;
+  font-size:13px;
+  line-height:1.8;
+  color:var(--blue-700);
+}
+
+
+/* FILTER */
+
+.gallery-filter-wrap{
+  margin-bottom:35px;
+}
+
+.gal-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:25px;
+}
+
+.gal-filter{
+  padding:9px 15px;
+  border:1px solid var(--sky-200);
+  border-radius:999px;
+  background:rgba(255,255,255,.65);
+  color:var(--blue-700);
+  font-family:"Inter",sans-serif;
+  font-size:11px;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.gal-filter:hover{
+  border-color:var(--blue-300);
+  transform:translateY(-1px);
+}
+
+.gal-filter.active{
+  background:var(--blue-600);
+  border-color:var(--blue-600);
+  color:#fff;
+}
+
+
+/* GALLERY GRID */
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.gallery-item{
+  position:relative;
+  min-width:0;
+  cursor:pointer;
+  overflow:hidden;
+  border-radius:20px;
+  background:var(--sky-100);
+  box-shadow:0 10px 30px rgba(37,107,184,.07);
+  animation:galleryReveal .65s ease both;
+  animation-delay:calc(var(--i) * 35ms);
+}
+
+.gallery-item:nth-child(3n+1){
+  min-height:340px;
+}
+
+.gallery-item:nth-child(3n+2){
+  min-height:285px;
+}
+
+.gallery-item:nth-child(3n+3){
+  min-height:315px;
+}
+
+.gallery-item .frame{
+  width:100%;
+  height:100%;
+  min-height:inherit;
+  overflow:hidden;
+}
+
+.gallery-item .frame img{
+  width:100%;
+  height:100%;
+  min-height:inherit;
+  display:block;
+  object-fit:cover;
+  transition:transform .65s ease;
+}
+
+.gallery-item:hover .frame img{
+  transform:scale(1.06);
+}
+
+.gallery-item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(12,48,84,.72),
+    rgba(12,48,84,.04) 58%,
+    transparent
+  );
+  opacity:.9;
+  pointer-events:none;
+}
+
+.gallery-item .badge{
+  position:absolute;
+  top:15px;
+  left:15px;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(8px);
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9px;
+  color:var(--blue-700);
+}
+
+.gallery-item .expand{
+  position:absolute;
+  top:15px;
+  right:15px;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:rgba(255,255,255,.86);
+  color:var(--blue-700);
+  opacity:0;
+  transform:translateY(-5px);
+  transition:.3s ease;
+}
+
+.gallery-item:hover .expand{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.gallery-item .overlay{
+  position:absolute;
+  right:18px;
+  bottom:17px;
+  left:18px;
+  z-index:2;
+  color:#fff;
+}
+
+.gallery-item .overlay h3{
+  margin:0 0 7px;
+  font-family:"Fraunces",serif;
+  font-size:24px;
+  line-height:1.05;
+  letter-spacing:-.02em;
+}
+
+.gallery-item .meta{
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.gallery-item .meta .cat{
+  font-size:10px;
+  opacity:.9;
+}
+
+.gallery-item .meta .tag-mono{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:9px;
+  opacity:.75;
+}
+
+
+/* CLOSING */
+
+.gallery-closing{
+  margin:105px auto 45px;
+  padding:80px 30px;
+  border:1px solid var(--sky-200);
+  border-radius:30px;
+  text-align:center;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(183,220,251,.38),
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(232,243,254,.85),
+      rgba(255,255,255,.96)
+    );
+}
+
+.gallery-closing .eyebrow{
+  margin-bottom:18px;
+}
+
+.gallery-closing h2{
+  max-width:780px;
+  margin:0 auto 20px;
+  font-family:"Fraunces",serif;
+  font-size:clamp(42px,6vw,72px);
+  line-height:.95;
+  letter-spacing:-.05em;
+  color:var(--blue-800);
+}
+
+.gallery-closing p{
+  max-width:570px;
+  margin:0 auto 30px;
+  font-size:14px;
+  line-height:1.8;
+  color:var(--blue-700);
+}
+
+.gallery-closing a{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:13px 19px;
+  border-radius:999px;
+  background:var(--blue-600);
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:600;
+  transition:.25s ease;
+}
+
+.gallery-closing a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(37,107,184,.2);
+}
+
+.gallery-closing a span{
+  font-size:16px;
+}
+
+
+/* ANIMASI */
+
+@keyframes galleryReveal{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .gallery-hero{
+    padding:60px 0 50px;
+  }
+
+  .gallery-hero-grid{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+  .gallery-hero h1{
+    font-size:clamp(55px,12vw,85px);
+  }
+
+  .gallery-hero-text{
+    max-width:600px;
+  }
+
+  .gallery-info{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-info-card{
+    border-right:none;
+    border-bottom:1px solid var(--sky-200);
+  }
+
+  .gallery-info-card:last-child{
+    border-bottom:none;
+  }
+
+  .gallery-story{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .gallery-story-content{
+    max-width:700px;
+  }
+
+  .gallery-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery-item:nth-child(3n+1),
+  .gallery-item:nth-child(3n+2),
+  .gallery-item:nth-child(3n+3){
+    min-height:300px;
+  }
+}
+
+
+@media(max-width:600px){
+
+  .gallery-hero{
+    padding:45px 0 40px;
+  }
+
+  .gallery-hero h1{
+    font-size:54px;
+    line-height:.94;
+  }
+
+  .gallery-hero-text p{
+    font-size:14px;
+  }
+
+  .gallery-info{
+    margin-bottom:65px;
+  }
+
+  .gallery-info-card{
+    padding:23px 20px;
+  }
+
+  .gallery-story{
+    gap:28px;
+    margin-bottom:75px;
+  }
+
+  .gallery-story-image,
+  .gallery-story-image img{
+    min-height:300px;
+  }
+
+  .gallery-story-content h2{
+    font-size:43px;
+  }
+
+  .gallery-heading{
+    display:block;
+    margin-bottom:25px;
+  }
+
+  .gallery-heading h2{
+    font-size:45px;
+  }
+
+  .gallery-heading p{
+    margin-top:18px;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .gallery-item:nth-child(3n+1),
+  .gallery-item:nth-child(3n+2),
+  .gallery-item:nth-child(3n+3){
+    min-height:330px;
+  }
+
+  .gallery-item .expand{
+    opacity:1;
+    transform:none;
+  }
+
+  .gallery-closing{
+    margin-top:75px;
+    padding:58px 20px;
+    border-radius:24px;
+  }
+
+  .gallery-closing h2{
+    font-size:45px;
+  }
+}
+
+</style>
 </head>
+
+
 <body data-page="galeri">
-<div class="backdrop"><div class="blob blob1"></div><div class="blob blob2"></div></div>
-<header class="topbar">
-  <div class="brand">SEMPARUK <small>Kampung Halaman</small></div>
-  <nav class="chapters" id="chapters">
-    <span class="nav-indicator" id="navIndicator"></span>
-    <button data-target="beranda"><span class="n">01</span>Beranda</button>
-    <button data-target="profil"><span class="n">02</span>Profil</button>
-    <button data-target="galeri"><span class="n">03</span>Galeri</button>
-    <button data-target="peta"><span class="n">04</span>Peta</button>
-    <button data-target="kontak"><span class="n">05</span>Kontak</button>
-  </nav>
-  <button class="nav-cta" onclick="window.location.href='peta.html'">Lihat Peta<span class="arrow">↗</span></button>
-</header>
-<main id="app">
-<section id="galeri" class="page active">
-  <div class="wrap sec-head">
-    <div class="eyebrow">Halaman 03 · Galeri</div>
-    <h2>Beberapa potongan gambar dari keseharian desa.</h2>
-    <p class="lede">Sentuh salah satu gambar untuk melihatnya lebih besar.</p>
-    <div class="gal-filters" id="galFilters">
-      <button class="gal-filter active" data-filter="semua">Semua</button>
-      <button class="gal-filter" data-filter="kehidupan">Kehidupan</button>
-      <button class="gal-filter" data-filter="alam">Alam</button>
-      <button class="gal-filter" data-filter="fasilitas">Fasilitas</button>
-    </div>
-  </div>
 
-  <div class="wrap gallery-grid" id="galleryGrid">
-
-    <div class="gallery-item" style="--i:0" data-cat="kehidupan" data-title="Pasar Pagi" data-num="01/24">
-      <div class="frame"><img src="ppagi.jpg" alt="Pasar Pagi"></div>
-      <div class="badge">01</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Pasar Pagi</h3><div class="meta"><span class="cat">Kehidupan</span><span class="tag-mono">01/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:1" data-cat="kehidupan" data-title="Pasar Jalan Utama" data-num="02/24">
-      <div class="frame"><img src="pasar.jpg" alt="Pasar Jalan Utama"></div>
-      <div class="badge">02</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Pasar Jalan Utama</h3><div class="meta"><span class="cat">Kehidupan</span><span class="tag-mono">02/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:1" data-cat="kehidupan" data-title="Jembatan" data-num="03/24">
-      <div class="frame"><img src="jembatan.jpg" alt="Jembatan"></div>
-      <div class="badge">03</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Jembatan</h3><div class="meta"><span class="cat">Kehidupan</span><span class="tag-mono">03/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Masjid Pasar Pusat" data-num="04/24">
-      <div class="frame"><img src="mpusat.jpg" alt="Masjid Pasar Pusat"></div>
-      <div class="badge">04</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Masjid Pasar Pusat</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">04/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:3" data-cat="alam" data-title="Sungai" data-num="05/24">
-      <div class="frame"><img src="sungai.jpg" alt="Sungai"></div>
-      <div class="badge">05</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Sungai</h3><div class="meta"><span class="cat">Alam</span><span class="tag-mono">05/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:4" data-cat="alam" data-title="Pemandangan Langit" data-num="06/24">
-      <div class="frame"><img src="matahari.jpg" alt="Pemandangan Langit"></div>
-      <div class="badge">06</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Pemandangan Langit</h3><div class="meta"><span class="cat">Alam</span><span class="tag-mono">06/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:4" data-cat="alam" data-title="Persawahan" data-num="07/24">
-      <div class="frame"><img src="sawah.jpg" alt="Persawahan"></div>
-      <div class="badge">07</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Persawahan</h3><div class="meta"><span class="cat">Alam</span><span class="tag-mono">07/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Masjid Nurul huda" data-num="08/24">
-      <div class="frame"><img src="mhuda.jpg" alt="Masjid Nurul Huda"></div>
-      <div class="badge">08</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Masjid Nurul Huda</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">08/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Masjid Sebangkau" data-num="09/24">
-      <div class="frame"><img src="msbkw.jpg" alt="Masjid Sebangkau"></div>
-      <div class="badge">09</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Masjid Sebangkau</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">09/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Gereja" data-num="10/24">
-      <div class="frame"><img src="gereja.jpg" alt="Gereja"></div>
-      <div class="badge">10</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Gereja</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">10/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Kelenteng" data-num="11/24">
-      <div class="frame"><img src="kelenteng.jpg" alt="Kelenteng"></div>
-      <div class="badge">11</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Kelenteng</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">11/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="SMKN 1 Semparuk" data-num="12/24">
-      <div class="frame"><img src="smk.jpg" alt="SMKN 1 Semparuk"></div>
-      <div class="badge">12</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>SMKN 1 Semparuk</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">12/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="MTsN 2 Sambas" data-num="13/24">
-      <div class="frame"><img src="mts.jpg" alt="MTsN 2 Sambas"></div>
-      <div class="badge">13</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>MTsN 2 Sambas</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">13/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="SDN 6 Semparuk" data-num="14/24">
-      <div class="frame"><img src="sd6.jpg" alt="SDN 6 Semparuk"></div>
-      <div class="badge">14</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>SDN 6 Semparuk</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">14/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="SDN 12 Semparuk" data-num="15/24">
-      <div class="frame"><img src="sd12.jpg" alt="SDN 12 Semparuk"></div>
-      <div class="badge">15</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>SDN 12 Semparuk</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">15/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Kantor Camat Semparuk" data-num="16/24">
-      <div class="frame"><img src="kcamat.jpg" alt="Kantor Camat Semparuk"></div>
-      <div class="badge">16</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Kantor Camat Semparuk</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">16/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Kantor Desa Semparuk" data-num="17/24">
-      <div class="frame"><img src="kdesa.jpg" alt="Kantor Desa Semparuk"></div>
-      <div class="badge">17</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Kantor Desa Semparuk</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">17/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="KUA" data-num="18/24">
-      <div class="frame"><img src="kua.jpg" alt="SDN 6 Semparuk"></div>
-      <div class="badge">18</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>KUA</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">18/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Pelabuhan kapal" data-num="19/24">
-      <div class="frame"><img src="pelabuhan.jpg" alt="Pelabuhan Kapal"></div>
-      <div class="badge">19</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Pelabuhan Kapal</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">19/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:3" data-cat="alam" data-title="Lapangan Sepak Bola" data-num="20/24">
-      <div class="frame"><img src="bola.jpg" alt="Lapangan Sepak Bola"></div>
-      <div class="badge">20</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Lapangan Sepak Bola</h3><div class="meta"><span class="cat">Alam</span><span class="tag-mono">20/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Puskesmas Semparuk" data-num="21/24">
-      <div class="frame"><img src="puskesmas.jpg" alt="Puskesmas"></div>
-      <div class="badge">21</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Puskesmas</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">21/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="PDAM" data-num="22/24">
-      <div class="frame"><img src="pdam.jpg" alt="PDAM"></div>
-      <div class="badge">22</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>PDAM</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">22/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="SiteRadar TNI AU" data-num="23/24">
-      <div class="frame"><img src="siteradar.jpg" alt="SiteRadar TNI AU"></div>
-      <div class="badge">23</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>SiteRadar TNI AU</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">23/24</span></div></div>
-    </div>
-
-    <div class="gallery-item" style="--i:2" data-cat="fasilitas" data-title="Polsek Semparuk" data-num="24/24">
-      <div class="frame"><img src="polsek.jpg" alt="Polsek Semparuk"></div>
-      <div class="badge">24</div>
-      <div class="expand"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
-      <div class="overlay"><h3>Polsek Semparuk</h3><div class="meta"><span class="cat">Fasilitas</span><span class="tag-mono">22/24</span></div></div>
-    </div>
-    
-
-  </div>
-</section>
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-inner">
-    <button class="lb-btn lb-close" id="lbClose" aria-label="Tutup">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
-    </button>
-    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Sebelumnya">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <button class="lb-btn lb-next" id="lbNext" aria-label="Berikutnya">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
-    <div class="lightbox-media" id="lbMedia"></div>
-    <div class="lightbox-cap">
-      <div><h3 id="lbTitle"></h3><div class="cat" id="lbCat"></div></div>
-      <div class="tag-mono" id="lbNum"></div>
-    </div>
-  </div>
+<div class="backdrop">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
 </div>
+
+
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
+
+<header class="topbar">
+
+  <div class="brand">
+    SEMPARUK
+    <small>Kampung Halaman</small>
+  </div>
+
+  <nav class="chapters" id="chapters">
+
+    <span class="nav-indicator" id="navIndicator"></span>
+
+    <button data-target="beranda">
+      <span class="n">01</span>Beranda
+    </button>
+
+    <button data-target="profil">
+      <span class="n">02</span>Profil
+    </button>
+
+    <button data-target="galeri">
+      <span class="n">03</span>Galeri
+    </button>
+
+    <button data-target="peta">
+      <span class="n">04</span>Peta
+    </button>
+
+    <button data-target="kontak">
+      <span class="n">05</span>Kontak
+    </button>
+
+  </nav>
+
+  <button class="nav-cta" onclick="window.location.href='peta.html'">
+    Lihat Peta
+    <span class="arrow">↗</span>
+  </button>
+
+</header>
+
+
+<main id="app">
+
+<section id="galeri" class="page active gallery-page">
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="gallery-hero">
+
+  <div class="wrap gallery-hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Halaman 03 · Galeri
+      </div>
+
+      <h1>
+        Cerita
+        <span>Semparuk</span>
+        <br>
+        dalam bingkai.
+      </h1>
+
+    </div>
+
+
+    <div class="gallery-hero-text">
+
+      <p>
+        Setiap foto menyimpan potongan kecil tentang bagaimana
+        Semparuk tumbuh, bergerak, dan menjadi rumah bagi
+        masyarakatnya.
+      </p>
+
+      <div class="gallery-counter">
+        <span class="gallery-counter-line"></span>
+        24 FOTO · 03 KATEGORI
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INFO SINGKAT
+     ===================================================== -->
+
+<section class="wrap gallery-info">
+
+  <div class="gallery-info-card">
+
+    <span class="num">
+      01 · KEHIDUPAN
+    </span>
+
+    <h3>
+      Aktivitas Warga
+    </h3>
+
+    <p>
+      Pasar, jalan, jembatan, dan berbagai aktivitas
+      yang menjadi bagian dari keseharian desa.
+    </p>
+
+  </div>
+
+
+  <div class="gallery-info-card">
+
+    <span class="num">
+      02 · ALAM
+    </span>
+
+    <h3>
+      Ruang Terbuka
+    </h3>
+
+    <p>
+      Sungai, persawahan, langit, dan bentang alam
+      yang membentuk karakter Semparuk.
+    </p>
+
+  </div>
+
+
+  <div class="gallery-info-card">
+
+    <span class="num">
+      03 · FASILITAS
+    </span>
+
+    <h3>
+      Ruang Bersama
+    </h3>
+
+    <p>
+      Tempat ibadah, sekolah, lapangan, dan fasilitas
+      yang digunakan bersama oleh masyarakat.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CERITA PILIHAN
+     ===================================================== -->
+
+<section class="wrap gallery-story">
+
+  <div class="gallery-story-image">
+
+    <img
+      src="sawah.jpg"
+      alt="Persawahan Semparuk"
+    >
+
+    <span class="gallery-story-number">
+      07 / 24
+    </span>
+
+  </div>
+
+
+  <div class="gallery-story-content">
+
+    <div class="eyebrow">
+      Cerita Pilihan
+    </div>
+
+    <h2>
+      Ruang sederhana,
+      cerita yang panjang.
+    </h2>
+
+    <p>
+      Persawahan menjadi salah satu bagian dari lanskap
+      Semparuk. Di ruang terbuka seperti ini, kehidupan desa
+      berjalan dengan ritmenya sendiri.
+    </p>
+
+    <p>
+      Bagi sebagian orang mungkin hanya terlihat sebagai
+      hamparan sawah. Tetapi bagi warga, tempat seperti ini
+      merupakan bagian dari lingkungan yang dekat dengan
+      kehidupan sehari-hari.
+    </p>
+
+    <div class="story-meta">
+      <span>ALAM</span>
+      <span>SEMPARUK</span>
+      <span>07 / 24</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     JUDUL GALERI
+     ===================================================== -->
+
+<div class="wrap gallery-heading">
+
+  <div>
+
+    <div class="eyebrow">
+      Koleksi Foto
+    </div>
+
+    <h2>
+      24 potongan
+      <br>
+      Semparuk.
+    </h2>
+
+  </div>
+
+
+  <p>
+    Jelajahi berbagai sudut desa melalui foto-foto
+    yang merekam kehidupan, alam, dan ruang bersama
+    masyarakat Semparuk.
+  </p>
+
+</div>
+
+
+
+<!-- =====================================================
+     FILTER
+     ===================================================== -->
+
+<div class="wrap gallery-filter-wrap">
+
+  <div class="gal-filters" id="galFilters">
+
+    <button
+      class="gal-filter active"
+      data-filter="semua">
+      Semua
+    </button>
+
+    <button
+      class="gal-filter"
+      data-filter="kehidupan">
+      Kehidupan
+    </button>
+
+    <button
+      class="gal-filter"
+      data-filter="alam">
+      Alam
+    </button>
+
+    <button
+      class="gal-filter"
+      data-filter="fasilitas">
+      Fasilitas
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     24 FOTO
+     ===================================================== -->
+
+<div class="wrap gallery-grid" id="galleryGrid">
+
+
+<!-- 01 -->
+
+<div class="gallery-item"
+     style="--i:0"
+     data-cat="kehidupan"
+     data-title="Pasar Pagi"
+     data-num="01/24">
+
+  <div class="frame">
+    <img src="ppagi.jpg" alt="Pasar Pagi">
+  </div>
+
+  <div class="badge">01</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Pasar Pagi</h3>
+    <div class="meta">
+      <span class="cat">Kehidupan</span>
+      <span class="tag-mono">01/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="gallery-item"
+     style="--i:1"
+     data-cat="kehidupan"
+     data-title="Pasar Jalan Utama"
+     data-num="02/24">
+
+  <div class="frame">
+    <img src="pasar.jpg" alt="Pasar Jalan Utama">
+  </div>
+
+  <div class="badge">02</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Pasar Jalan Utama</h3>
+    <div class="meta">
+      <span class="cat">Kehidupan</span>
+      <span class="tag-mono">02/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="gallery-item"
+     style="--i:2"
+     data-cat="kehidupan"
+     data-title="Jembatan"
+     data-num="03/24">
+
+  <div class="frame">
+    <img src="jembatan.jpg" alt="Jembatan">
+  </div>
+
+  <div class="badge">03</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Jembatan</h3>
+    <div class="meta">
+      <span class="cat">Kehidupan</span>
+      <span class="tag-mono">03/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="gallery-item"
+     style="--i:3"
+     data-cat="fasilitas"
+     data-title="Masjid Pasar Pusat"
+     data-num="04/24">
+
+  <div class="frame">
+    <img src="mpusat.jpg" alt="Masjid Pasar Pusat">
+  </div>
+
+  <div class="badge">04</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Masjid Pasar Pusat</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">04/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="gallery-item"
+     style="--i:4"
+     data-cat="alam"
+     data-title="Sungai"
+     data-num="05/24">
+
+  <div class="frame">
+    <img src="sungai.jpg" alt="Sungai">
+  </div>
+
+  <div class="badge">05</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Sungai</h3>
+    <div class="meta">
+      <span class="cat">Alam</span>
+      <span class="tag-mono">05/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 06 -->
+
+<div class="gallery-item"
+     style="--i:5"
+     data-cat="alam"
+     data-title="Pemandangan Langit"
+     data-num="06/24">
+
+  <div class="frame">
+    <img src="matahari.jpg" alt="Pemandangan Langit">
+  </div>
+
+  <div class="badge">06</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Pemandangan Langit</h3>
+    <div class="meta">
+      <span class="cat">Alam</span>
+      <span class="tag-mono">06/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 07 -->
+
+<div class="gallery-item"
+     style="--i:6"
+     data-cat="alam"
+     data-title="Persawahan"
+     data-num="07/24">
+
+  <div class="frame">
+    <img src="sawah.jpg" alt="Persawahan">
+  </div>
+
+  <div class="badge">07</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Persawahan</h3>
+    <div class="meta">
+      <span class="cat">Alam</span>
+      <span class="tag-mono">07/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 08 -->
+
+<div class="gallery-item"
+     style="--i:7"
+     data-cat="fasilitas"
+     data-title="Masjid Nurul Huda"
+     data-num="08/24">
+
+  <div class="frame">
+    <img src="mhuda.jpg" alt="Masjid Nurul Huda">
+  </div>
+
+  <div class="badge">08</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Masjid Nurul Huda</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">08/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 09 -->
+
+<div class="gallery-item"
+     style="--i:8"
+     data-cat="fasilitas"
+     data-title="Masjid Sebangkau"
+     data-num="09/24">
+
+  <div class="frame">
+    <img src="msbkw.jpg" alt="Masjid Sebangkau">
+  </div>
+
+  <div class="badge">09</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Masjid Sebangkau</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">09/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="gallery-item"
+     style="--i:9"
+     data-cat="fasilitas"
+     data-title="Gereja"
+     data-num="10/24">
+
+  <div class="frame">
+    <img src="gereja.jpg" alt="Gereja">
+  </div>
+
+  <div class="badge">10</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Gereja</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">10/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="gallery-item"
+     style="--i:10"
+     data-cat="fasilitas"
+     data-title="Kelenteng"
+     data-num="11/24">
+
+  <div class="frame">
+    <img src="kelenteng.jpg" alt="Kelenteng">
+  </div>
+
+  <div class="badge">11</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Kelenteng</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">11/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="gallery-item"
+     style="--i:11"
+     data-cat="fasilitas"
+     data-title="SMKN 1 Semparuk"
+     data-num="12/24">
+
+  <div class="frame">
+    <img src="smk.jpg" alt="SMKN 1 Semparuk">
+  </div>
+
+  <div class="badge">12</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>SMKN 1 Semparuk</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">12/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="gallery-item"
+     style="--i:12"
+     data-cat="fasilitas"
+     data-title="MTsN 2 Sambas"
+     data-num="13/24">
+
+  <div class="frame">
+    <img src="mts.jpg" alt="MTsN 2 Sambas">
+  </div>
+
+  <div class="badge">13</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>MTsN 2 Sambas</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">13/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="gallery-item"
+     style="--i:13"
+     data-cat="fasilitas"
+     data-title="SDN 6 Semparuk"
+     data-num="14/24">
+
+  <div class="frame">
+    <img src="sd6.jpg" alt="SDN 6 Semparuk">
+  </div>
+
+  <div class="badge">14</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>SDN 6 Semparuk</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">14/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 15 -->
+
+<div class="gallery-item"
+     style="--i:14"
+     data-cat="fasilitas"
+     data-title="SDN 12 Semparuk"
+     data-num="15/24">
+
+  <div class="frame">
+    <img src="sd12.jpg" alt="SDN 12 Semparuk">
+  </div>
+
+  <div class="badge">15</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>SDN 12 Semparuk</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">15/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="gallery-item"
+     style="--i:15"
+     data-cat="fasilitas"
+     data-title="Kantor Camat Semparuk"
+     data-num="16/24">
+
+  <div class="frame">
+    <img src="kcamat.jpg" alt="Kantor Camat Semparuk">
+  </div>
+
+  <div class="badge">16</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Kantor Camat Semparuk</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">16/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="gallery-item"
+     style="--i:16"
+     data-cat="fasilitas"
+     data-title="Kantor Desa Semparuk"
+     data-num="17/24">
+
+  <div class="frame">
+    <img src="kdesa.jpg" alt="Kantor Desa Semparuk">
+  </div>
+
+  <div class="badge">17</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Kantor Desa Semparuk</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">17/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="gallery-item"
+     style="--i:17"
+     data-cat="fasilitas"
+     data-title="KUA"
+     data-num="18/24">
+
+  <div class="frame">
+    <img src="kua.jpg" alt="KUA">
+  </div>
+
+  <div class="badge">18</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>KUA</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">18/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="gallery-item"
+     style="--i:18"
+     data-cat="fasilitas"
+     data-title="Pelabuhan Kapal"
+     data-num="19/24">
+
+  <div class="frame">
+    <img src="pelabuhan.jpg" alt="Pelabuhan Kapal">
+  </div>
+
+  <div class="badge">19</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Pelabuhan Kapal</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">19/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 20 -->
+
+<div class="gallery-item"
+     style="--i:19"
+     data-cat="alam"
+     data-title="Lapangan Sepak Bola"
+     data-num="20/24">
+
+  <div class="frame">
+    <img src="bola.jpg" alt="Lapangan Sepak Bola">
+  </div>
+
+  <div class="badge">20</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Lapangan Sepak Bola</h3>
+    <div class="meta">
+      <span class="cat">Alam</span>
+      <span class="tag-mono">20/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 21 -->
+
+<div class="gallery-item"
+     style="--i:20"
+     data-cat="fasilitas"
+     data-title="Puskesmas Semparuk"
+     data-num="21/24">
+
+  <div class="frame">
+    <img src="puskesmas.jpg" alt="Puskesmas Semparuk">
+  </div>
+
+  <div class="badge">21</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Puskesmas Semparuk</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">21/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 22 -->
+
+<div class="gallery-item"
+     style="--i:21"
+     data-cat="fasilitas"
+     data-title="PDAM"
+     data-num="22/24">
+
+  <div class="frame">
+    <img src="pdam.jpg" alt="PDAM">
+  </div>
+
+  <div class="badge">22</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>PDAM</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">22/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 23 -->
+
+<div class="gallery-item"
+     style="--i:22"
+     data-cat="fasilitas"
+     data-title="SiteRadar TNI AU"
+     data-num="23/24">
+
+  <div class="frame">
+    <img src="siteradar.jpg" alt="SiteRadar TNI AU">
+  </div>
+
+  <div class="badge">23</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>SiteRadar TNI AU</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">23/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 24 -->
+
+<div class="gallery-item"
+     style="--i:23"
+     data-cat="fasilitas"
+     data-title="Polsek Semparuk"
+     data-num="24/24">
+
+  <div class="frame">
+    <img src="polsek.jpg" alt="Polsek Semparuk">
+  </div>
+
+  <div class="badge">24</div>
+
+  <div class="expand">
+    <svg width="16" height="16" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 3h6v6"/>
+      <path d="M9 21H3v-6"/>
+      <path d="M21 3l-7 7"/>
+      <path d="M3 21l7-7"/>
+    </svg>
+  </div>
+
+  <div class="overlay">
+    <h3>Polsek Semparuk</h3>
+    <div class="meta">
+      <span class="cat">Fasilitas</span>
+      <span class="tag-mono">24/24</span>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     PENUTUP
+     ===================================================== -->
+
+<section class="wrap gallery-closing">
+
+  <div class="eyebrow">
+    Semua Cerita Punya Tempat
+  </div>
+
+  <h2>
+    Semparuk bukan hanya
+    untuk dilihat.
+  </h2>
+
+  <p>
+    Kenali lebih jauh tempat, masyarakat, dan kehidupan
+    yang membentuk Desa Semparuk.
+  </p>
+
+  <a href="profil.html">
+    Kenali Profil Desa
+    <span>↗</span>
+  </a>
+
+</section>
+
+
+</section>
+
+
+<!-- =====================================================
+     LIGHTBOX
+     ===================================================== -->
+
+<div class="lightbox" id="lightbox">
+
+  <div class="lightbox-inner">
+
+    <button
+      class="lb-btn lb-close"
+      id="lbClose"
+      aria-label="Tutup">
+
+      <svg width="18" height="18"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2">
+
+        <path d="M18 6 6 18"/>
+        <path d="M6 6l12 12"/>
+
+      </svg>
+
+    </button>
+
+
+    <button
+      class="lb-btn lb-prev"
+      id="lbPrev"
+      aria-label="Sebelumnya">
+
+      <svg width="18" height="18"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2">
+
+        <path d="M15 18l-6-6 6-6"/>
+
+      </svg>
+
+    </button>
+
+
+    <button
+      class="lb-btn lb-next"
+      id="lbNext"
+      aria-label="Berikutnya">
+
+      <svg width="18" height="18"
+           viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2">
+
+        <path d="M9 18l6-6 6-6"/>
+
+      </svg>
+
+    </button>
+
+
+    <div
+      class="lightbox-media"
+      id="lbMedia">
+    </div>
+
+
+    <div class="lightbox-cap">
+
+      <div>
+
+        <h3 id="lbTitle"></h3>
+
+        <div
+          class="cat"
+          id="lbCat">
+        </div>
+
+      </div>
+
+      <div
+        class="tag-mono"
+        id="lbNum">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
 </main>
-<footer class="filmfoot">© SEMPARUK · SITUS PERKENALAN DESA · KALIMANTAN BARAT</footer>
+
+
+<footer class="filmfoot">
+  © SEMPARUK · SITUS PERKENALAN DESA · KALIMANTAN BARAT
+</footer>
+
+
 <script src="script.js"></script>
+
 </body>
 </html>

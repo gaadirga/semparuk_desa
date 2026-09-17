@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,0..144,400&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -31,13 +31,10 @@
 
 .home-hero{
   min-height:620px;
-
   display:grid;
   grid-template-columns:1.15fr .85fr;
   align-items:center;
-
   gap:55px;
-
   padding:85px 0 65px;
 }
 
@@ -49,20 +46,15 @@
   display:inline-flex;
   align-items:center;
   gap:9px;
-
   padding:8px 14px;
-
   border:1px solid rgba(37,107,184,.16);
   border-radius:999px;
-
   background:rgba(255,255,255,.7);
 
   font-family:"IBM Plex Mono",monospace;
   font-size:10px;
-
   letter-spacing:.1em;
   text-transform:uppercase;
-
   color:var(--blue-600);
 
   margin-bottom:22px;
@@ -70,14 +62,10 @@
 
 .home-kicker::before{
   content:"";
-
   width:7px;
   height:7px;
-
   border-radius:50%;
-
   background:var(--blue-500);
-
   box-shadow:0 0 0 5px rgba(58,135,216,.1);
 }
 
@@ -85,13 +73,9 @@
   margin:0 0 24px;
 
   font-family:"Fraunces",serif;
-
   font-size:clamp(68px,9vw,120px);
-
   line-height:.86;
-
   font-weight:500;
-
   letter-spacing:-.055em;
 
   color:var(--blue-800);
@@ -99,13 +83,10 @@
 
 .home-description{
   max-width:610px;
-
   margin:0 0 26px;
 
   color:var(--ink-mut);
-
   font-size:15px;
-
   line-height:1.85;
 }
 
@@ -113,7 +94,6 @@
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-
   margin-bottom:28px;
 }
 
@@ -144,7 +124,6 @@
 
 .home-visual{
   position:relative;
-
   min-height:430px;
 
   display:flex;
@@ -159,7 +138,6 @@
   height:380px;
 
   border:1px solid rgba(58,135,216,.18);
-
   border-radius:50%;
 }
 
@@ -167,11 +145,9 @@
   content:"";
 
   position:absolute;
-
   inset:34px;
 
   border:1px dashed rgba(58,135,216,.18);
-
   border-radius:50%;
 }
 
@@ -195,7 +171,6 @@
 
 .home-card{
   position:relative;
-
   z-index:2;
 
   width:min(335px,90%);
@@ -203,7 +178,6 @@
   padding:28px;
 
   border:1px solid rgba(255,255,255,.9);
-
   border-radius:26px;
 
   background:rgba(255,255,255,.78);
@@ -218,9 +192,7 @@
   margin-bottom:17px;
 
   font-family:"IBM Plex Mono",monospace;
-
   font-size:9px;
-
   letter-spacing:.12em;
 
   color:#7892a8;
@@ -230,11 +202,8 @@
   margin:0 0 16px;
 
   font-family:"Fraunces",serif;
-
   font-size:34px;
-
   line-height:1;
-
   font-weight:500;
 
   color:#214c73;
@@ -244,15 +213,12 @@
   margin:0 0 22px;
 
   color:#63798d;
-
   font-size:12px;
-
   line-height:1.8;
 }
 
 .home-card-line{
   height:1px;
-
   margin-bottom:17px;
 
   background:rgba(37,107,184,.12);
@@ -261,13 +227,11 @@
 .home-coordinates{
   display:flex;
   justify-content:space-between;
-
   gap:12px;
 
   color:#698198;
 
   font-family:"IBM Plex Mono",monospace;
-
   font-size:9px;
 }
 
@@ -278,7 +242,6 @@
 
 .home-ticker{
   width:100%;
-
   overflow:hidden;
 
   border-top:1px solid var(--sky-200);
@@ -289,7 +252,6 @@
 
 .home-ticker-track{
   display:flex;
-
   width:max-content;
 
   animation:homeTicker 30s linear infinite;
@@ -303,9 +265,7 @@
   color:var(--blue-600);
 
   font-family:"IBM Plex Mono",monospace;
-
   font-size:10px;
-
   letter-spacing:.14em;
 
   white-space:nowrap;
@@ -336,7 +296,6 @@
   align-items:flex-end;
 
   gap:35px;
-
   margin-bottom:34px;
 }
 
@@ -346,9 +305,7 @@
   color:#6e8aa2;
 
   font-family:"IBM Plex Mono",monospace;
-
   font-size:10px;
-
   letter-spacing:.08em;
 }
 
@@ -358,25 +315,18 @@
   color:#1b4267;
 
   font-family:"Fraunces",serif;
-
   font-size:clamp(38px,4.5vw,58px);
-
   line-height:.98;
-
   font-weight:500;
-
   letter-spacing:-.025em;
 }
 
 .home-section-desc{
   max-width:440px;
-
   margin:0;
 
   color:#6a7e91;
-
   font-size:13px;
-
   line-height:1.8;
 }
 
@@ -399,7 +349,6 @@
   padding:34px;
 
   border:1px solid rgba(93,165,232,.15);
-
   border-radius:25px;
 
   background:
@@ -416,11 +365,8 @@
   color:#214c73;
 
   font-family:"Fraunces",serif;
-
   font-size:30px;
-
   line-height:1.08;
-
   font-weight:500;
 }
 
@@ -430,7 +376,6 @@
   color:#60768a;
 
   font-size:13px;
-
   line-height:1.85;
 }
 
@@ -444,21 +389,17 @@
   color:#60768a;
 
   font-size:14px;
-
   line-height:1.9;
 }
 
 .home-text-link{
   display:inline-flex;
-
   align-items:center;
-
   gap:7px;
 
   color:var(--blue-600);
 
   font-size:12px;
-
   font-weight:700;
 
   text-decoration:none;
@@ -489,7 +430,6 @@
   padding:25px;
 
   border:1px solid rgba(37,107,184,.1);
-
   border-radius:21px;
 
   background:rgba(255,255,255,.68);
@@ -530,9 +470,7 @@
   color:#234d72;
 
   font-family:"Fraunces",serif;
-
   font-size:23px;
-
   font-weight:500;
 }
 
@@ -542,7 +480,6 @@
   color:#718396;
 
   font-size:11px;
-
   line-height:1.7;
 }
 
@@ -569,30 +506,32 @@
   padding:27px;
 
   border:1px solid rgba(37,107,184,.1);
-
   border-radius:24px;
 
-  background:linear-gradient(
-    145deg,
-    #eef7ff,
-    #fff
-  );
+  background:
+    linear-gradient(
+      145deg,
+      #eef7ff,
+      #fff
+    );
 }
 
 .home-life-card:nth-child(2){
-  background:linear-gradient(
-    145deg,
-    #f3f9ff,
-    #e5f2fd
-  );
+  background:
+    linear-gradient(
+      145deg,
+      #f3f9ff,
+      #e5f2fd
+    );
 }
 
 .home-life-card:nth-child(3){
-  background:linear-gradient(
-    145deg,
-    #fff,
-    #edf6ff
-  );
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #edf6ff
+    );
 }
 
 .home-life-number{
@@ -601,7 +540,6 @@
   color:#7891a8;
 
   font-family:"IBM Plex Mono",monospace;
-
   font-size:9px;
 }
 
@@ -611,21 +549,17 @@
   color:#214c73;
 
   font-family:"Fraunces",serif;
-
   font-size:30px;
-
   font-weight:500;
 }
 
 .home-life-card p{
   max-width:300px;
-
   margin:0;
 
   color:#6d8193;
 
   font-size:12px;
-
   line-height:1.75;
 }
 
@@ -639,7 +573,6 @@
   height:175px;
 
   border:1px solid rgba(58,135,216,.14);
-
   border-radius:50%;
 }
 
@@ -652,7 +585,6 @@
   display:grid;
 
   grid-template-columns:1.35fr .8fr .8fr;
-
   grid-template-rows:185px 185px;
 
   gap:12px;
@@ -706,7 +638,6 @@
   color:#365a78;
 
   font-size:9px;
-
   font-weight:600;
 
   backdrop-filter:blur(8px);
@@ -745,11 +676,8 @@
   color:#fff;
 
   font-family:"Fraunces",serif;
-
   font-size:40px;
-
   line-height:1;
-
   font-weight:500;
 }
 
@@ -759,7 +687,6 @@
   color:#c4d7e8;
 
   font-size:13px;
-
   line-height:1.8;
 }
 
@@ -787,13 +714,11 @@
   color:#a9c4db;
 
   font-family:"IBM Plex Mono",monospace;
-
   font-size:8px;
 }
 
 .home-location-detail strong{
   font-size:11px;
-
   font-weight:500;
 }
 
@@ -805,7 +730,6 @@
   justify-content:center;
 
   border:1px solid rgba(37,107,184,.1);
-
   border-radius:27px;
 
   background:
@@ -839,7 +763,6 @@
   place-items:center;
 
   border:1px solid rgba(37,107,184,.14);
-
   border-radius:50%;
 
   background:rgba(255,255,255,.8);
@@ -863,7 +786,6 @@
   padding:65px 35px;
 
   border:1px solid rgba(37,107,184,.1);
-
   border-radius:30px;
 
   text-align:center;
@@ -882,11 +804,8 @@
   color:#1e496e;
 
   font-family:"Fraunces",serif;
-
   font-size:clamp(40px,5.5vw,64px);
-
   line-height:.96;
-
   font-weight:500;
 }
 
@@ -898,7 +817,6 @@
   color:#687d90;
 
   font-size:13px;
-
   line-height:1.8;
 }
 
@@ -1097,8 +1015,10 @@
 ======================================================= -->
 
 <div class="backdrop">
+
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
+
 </div>
 
 
@@ -1116,38 +1036,44 @@
 
   <nav class="chapters" id="chapters">
 
-    <a href="index.html" class="nav-link active">
+    <span class="nav-indicator" id="navIndicator"></span>
+
+    <button data-target="beranda">
       <span class="n">01</span>
-      <span>Beranda</span>
-    </a>
+      Beranda
+    </button>
 
-    <a href="profil.html" class="nav-link">
+    <button data-target="profil">
       <span class="n">02</span>
-      <span>Profil</span>
-    </a>
+      Profil
+    </button>
 
-    <a href="galeri.html" class="nav-link">
+    <button data-target="galeri">
       <span class="n">03</span>
-      <span>Galeri</span>
-    </a>
+      Galeri
+    </button>
 
-    <a href="peta.html" class="nav-link">
+    <button data-target="peta">
       <span class="n">04</span>
-      <span>Peta</span>
-    </a>
+      Peta
+    </button>
 
-    <a href="kontak.html" class="nav-link">
+    <button data-target="kontak">
       <span class="n">05</span>
-      <span>Kontak</span>
-    </a>
+      Kontak
+    </button>
 
   </nav>
 
 
-  <a href="peta.html" class="nav-cta">
+  <button
+    class="nav-cta"
+    onclick="window.location.href='peta.html'">
+
     Lihat Peta
     <span class="arrow">↗</span>
-  </a>
+
+  </button>
 
 </header>
 
@@ -1324,7 +1250,7 @@
         <div>
 
           <div class="home-section-number">
-            01 / TENTANG
+            
           </div>
 
           <h2 class="home-section-title">
@@ -1409,7 +1335,7 @@
         <div>
 
           <div class="home-section-number">
-            02 / RUANG DESA
+          
           </div>
 
           <h2 class="home-section-title">
@@ -1518,7 +1444,7 @@
         <div>
 
           <div class="home-section-number">
-            03 / KEHIDUPAN
+           
           </div>
 
           <h2 class="home-section-title">
@@ -1543,7 +1469,7 @@
         <article class="home-life-card">
 
           <div class="home-life-number">
-            01 — PAGI
+            
           </div>
 
           <h3>
@@ -1564,7 +1490,7 @@
         <article class="home-life-card">
 
           <div class="home-life-number">
-            02 — RUANG
+            
           </div>
 
           <h3>
@@ -1584,7 +1510,7 @@
         <article class="home-life-card">
 
           <div class="home-life-number">
-            03 — BERTEMU
+           
           </div>
 
           <h3>
@@ -1616,7 +1542,7 @@
         <div>
 
           <div class="home-section-number">
-            04 / GALERI
+           
           </div>
 
           <h2 class="home-section-title">
@@ -1733,7 +1659,7 @@
         <div>
 
           <div class="home-section-number">
-            05 / LOKASI
+           
           </div>
 
           <h2 class="home-section-title">

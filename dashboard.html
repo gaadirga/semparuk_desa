@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard Admin — Desa Semparuk</title>
+
+  <style>
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,sans-serif;
+      background:#f4f9ff;
+      color:#1f2937;
+    }
+
+    .header{
+      padding:28px 24px;
+      background:white;
+      border-bottom:1px solid #e5eef8;
+    }
+
+    .header small{
+      color:#5da5e8;
+      font-weight:bold;
+    }
+
+    .header h1{
+      margin:8px 0 4px;
+      color:#256bb8;
+    }
+
+    .header p{
+      margin:0;
+      color:#6b7280;
+    }
+
+    .container{
+      max-width:1000px;
+      margin:auto;
+      padding:30px 20px;
+    }
+
+    .welcome{
+      background:white;
+      border-radius:18px;
+      padding:24px;
+      margin-bottom:24px;
+      box-shadow:0 8px 25px rgba(37,107,184,.08);
+    }
+
+    .welcome h2{
+      margin-top:0;
+      color:#256bb8;
+    }
+
+    .menu{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+    }
+
+    .card{
+      display:block;
+      padding:22px;
+      background:white;
+      border-radius:18px;
+      text-decoration:none;
+      color:#1f2937;
+      border:1px solid #e5eef8;
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 25px rgba(37,107,184,.1);
+    }
+
+    .card span{
+      font-size:28px;
+    }
+
+    .card h3{
+      margin:12px 0 6px;
+      color:#256bb8;
+    }
+
+    .card p{
+      margin:0;
+      color:#6b7280;
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <small>ADMIN PANEL</small>
+    <h1>Desa Semparuk</h1>
+    <p>Panel pengelolaan website Desa Semparuk</p>
+  </header>
+
+  <main class="container">
+
+    <section class="welcome">
+      <h2>Selamat Datang, Admin 👋</h2>
+      <p>
+        Gunakan halaman ini untuk mengelola informasi yang terdapat
+        pada website Desa Semparuk.
+      </p>
+    </section>
+
+    <section class="menu">
+
+      <a href="#" class="card">
+        <span>📝</span>
+        <h3>Aspirasi</h3>
+        <p>Melihat dan mengelola aspirasi masyarakat.</p>
+      </a>
+
+      <a href="#" class="card">
+        <span>🖼️</span>
+        <h3>Galeri</h3>
+        <p>Mengelola foto dan dokumentasi desa.</p>
+      </a>
+
+      <a href="#" class="card">
+        <span>📊</span>
+        <h3>Data Desa</h3>
+        <p>Mengelola informasi dan data desa.</p>
+      </a>
+
+      <a href="#" class="card">
+        <span>⚙️</span>
+        <h3>Pengaturan</h3>
+        <p>Mengelola pengaturan admin website.</p>
+      </a>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

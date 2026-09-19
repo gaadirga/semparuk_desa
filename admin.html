@@ -1,29 +1,52 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Admin Desa Semparuk</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- GOOGLE FONTS -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
 
   <style>
+
     :root{
       --white:#ffffff;
+
       --sky-50:#f4f9ff;
       --sky-100:#e8f3fe;
       --sky-200:#d5eafd;
+
       --blue-400:#5da5e8;
       --blue-500:#3a87d8;
       --blue-600:#256bb8;
       --blue-700:#18558f;
+
       --text:#17324d;
       --muted:#6f8498;
     }
+
 
     *{
       margin:0;
@@ -31,245 +54,498 @@
       box-sizing:border-box;
     }
 
+
     body{
+
       min-height:100vh;
+
       font-family:'Inter',sans-serif;
+
       color:var(--text);
+
       background:
-        radial-gradient(circle at top left, #ffffff 0%, transparent 35%),
-        linear-gradient(135deg, var(--sky-50), var(--sky-100));
+        radial-gradient(
+          circle at top left,
+          #ffffff 0%,
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          var(--sky-50),
+          var(--sky-100)
+        );
+
       display:flex;
+
       align-items:center;
+
       justify-content:center;
+
       padding:24px;
+
     }
+
 
     .login-wrapper{
+
       width:100%;
+
       max-width:430px;
+
     }
+
 
     .brand{
+
       text-align:center;
+
       margin-bottom:25px;
+
     }
+
 
     .brand-icon{
+
       width:58px;
+
       height:58px;
+
       margin:0 auto 14px;
+
       border-radius:18px;
+
       display:flex;
+
       align-items:center;
+
       justify-content:center;
+
       background:var(--white);
-      box-shadow:0 12px 35px rgba(37,107,184,.12);
+
+      box-shadow:
+        0 12px 35px
+        rgba(37,107,184,.12);
+
       font-size:25px;
+
     }
+
 
     .brand small{
+
       display:block;
+
       margin-bottom:5px;
+
       font-family:'IBM Plex Mono',monospace;
+
       font-size:10px;
+
       letter-spacing:1.5px;
+
       color:var(--blue-500);
+
       text-transform:uppercase;
+
     }
+
 
     .brand h1{
+
       font-family:'Fraunces',serif;
+
       font-size:32px;
+
       font-weight:600;
+
       color:var(--blue-700);
+
     }
+
 
     .brand p{
+
       margin-top:8px;
+
       color:var(--muted);
+
       font-size:13px;
+
       line-height:1.6;
+
     }
+
 
     .login-card{
+
       background:rgba(255,255,255,.92);
-      border:1px solid rgba(93,165,232,.18);
+
+      border:
+        1px solid
+        rgba(93,165,232,.18);
+
       border-radius:24px;
+
       padding:30px;
-      box-shadow:0 20px 60px rgba(37,107,184,.12);
+
+      box-shadow:
+        0 20px 60px
+        rgba(37,107,184,.12);
+
     }
+
 
     .card-title{
+
       margin-bottom:22px;
+
     }
+
 
     .card-title span{
+
       font-family:'IBM Plex Mono',monospace;
+
       font-size:10px;
+
       color:var(--blue-500);
+
       letter-spacing:1px;
+
     }
+
 
     .card-title h2{
+
       margin-top:5px;
+
       font-size:20px;
+
       font-weight:600;
+
     }
+
 
     .form-group{
+
       margin-bottom:17px;
+
     }
+
 
     .form-group label{
+
       display:block;
+
       margin-bottom:8px;
+
       font-size:13px;
+
       font-weight:600;
+
     }
 
-    .input-wrap{
-      position:relative;
-    }
 
     .input-wrap input{
+
       width:100%;
+
       height:48px;
-      border:1px solid var(--sky-200);
+
+      border:
+        1px solid
+        var(--sky-200);
+
       border-radius:12px;
+
       padding:0 14px;
+
       outline:none;
+
       background:#fbfdff;
+
       color:var(--text);
+
       font-family:'Inter',sans-serif;
+
       font-size:14px;
+
       transition:.25s ease;
+
     }
+
 
     .input-wrap input:focus{
+
       border-color:var(--blue-400);
-      box-shadow:0 0 0 4px rgba(93,165,232,.10);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(93,165,232,.10);
+
       background:#fff;
+
     }
+
 
     .login-button{
+
       width:100%;
+
       height:49px;
+
       margin-top:6px;
+
       border:0;
+
       border-radius:12px;
-      background:linear-gradient(135deg,var(--blue-500),var(--blue-600));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-500),
+          var(--blue-600)
+        );
+
       color:white;
+
       font-family:'Inter',sans-serif;
+
       font-size:14px;
+
       font-weight:600;
+
       cursor:pointer;
+
       transition:.25s ease;
+
     }
+
 
     .login-button:hover{
+
       transform:translateY(-1px);
-      box-shadow:0 10px 25px rgba(37,107,184,.20);
+
+      box-shadow:
+        0 10px 25px
+        rgba(37,107,184,.20);
+
     }
+
 
     .login-button:disabled{
+
       opacity:.65;
+
       cursor:not-allowed;
+
       transform:none;
+
     }
+
 
     .status{
+
       display:none;
+
       margin-top:15px;
+
       padding:11px 13px;
+
       border-radius:10px;
+
       font-size:12px;
+
       line-height:1.5;
+
       text-align:center;
+
     }
+
 
     .status.error{
+
       display:block;
+
       background:#fff1f1;
+
       color:#b43d3d;
-      border:1px solid #ffd4d4;
+
+      border:
+        1px solid
+        #ffd4d4;
+
     }
+
 
     .status.success{
+
       display:block;
+
       background:#effaf3;
+
       color:#287548;
-      border:1px solid #ccefd8;
+
+      border:
+        1px solid
+        #ccefd8;
+
     }
+
 
     .back{
+
       display:block;
+
       margin-top:22px;
+
       text-align:center;
+
       text-decoration:none;
+
       color:var(--muted);
+
       font-size:12px;
+
       transition:.2s ease;
+
     }
+
 
     .back:hover{
+
       color:var(--blue-600);
+
     }
+
 
     .footer{
+
       margin-top:20px;
+
       text-align:center;
+
       font-family:'IBM Plex Mono',monospace;
+
       font-size:9px;
+
       color:#8ca0b2;
+
       letter-spacing:.4px;
+
     }
+
+
+    /* IFRAME UNTUK KOMUNIKASI DENGAN APPS SCRIPT */
+
+    #loginFrame{
+
+      display:none;
+
+      width:0;
+
+      height:0;
+
+      border:0;
+
+    }
+
 
     @media(max-width:480px){
+
       body{
+
         padding:18px;
+
       }
+
 
       .login-card{
+
         padding:24px 20px;
+
         border-radius:20px;
+
       }
 
+
       .brand h1{
+
         font-size:28px;
+
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <main class="login-wrapper">
 
+
     <div class="brand">
-      <div class="brand-icon">🔐</div>
 
-      <small>DESA SEMPARUK</small>
+      <div class="brand-icon">
+        🔐
+      </div>
 
-      <h1>Admin Panel</h1>
+
+      <small>
+        DESA SEMPARUK
+      </small>
+
+
+      <h1>
+        Admin Panel
+      </h1>
+
 
       <p>
         Masuk untuk mengelola data website Desa Semparuk.
       </p>
+
     </div>
+
+
 
     <section class="login-card">
 
+
       <div class="card-title">
-        <span>01 / LOGIN</span>
-        <h2>Masuk sebagai Admin</h2>
+
+        <span>
+          01 / LOGIN
+        </span>
+
+        <h2>
+          Masuk sebagai Admin
+        </h2>
+
       </div>
 
-      <form id="loginForm">
+
+
+      <form
+        id="loginForm"
+        method="POST"
+        target="loginFrame"
+        action="https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec"
+      >
+
 
         <div class="form-group">
-          <label for="username">Username</label>
+
+          <label for="username">
+            Username
+          </label>
 
           <div class="input-wrap">
+
             <input
               type="text"
               id="username"
@@ -278,13 +554,21 @@
               autocomplete="username"
               required
             >
+
           </div>
+
         </div>
 
+
+
         <div class="form-group">
-          <label for="password">Password</label>
+
+          <label for="password">
+            Password
+          </label>
 
           <div class="input-wrap">
+
             <input
               type="password"
               id="password"
@@ -293,8 +577,12 @@
               autocomplete="current-password"
               required
             >
+
           </div>
+
         </div>
+
+
 
         <button
           type="submit"
@@ -304,119 +592,169 @@
           Masuk ke Admin
         </button>
 
+
         <div
           id="status"
           class="status"
         ></div>
 
+
       </form>
 
-      <a href="index.html" class="back">
+
+
+      <a
+        href="index.html"
+        class="back"
+      >
         ← Kembali ke website
       </a>
 
+
     </section>
 
+
+
     <div class="footer">
+
       DESA SEMPARUK · ADMINISTRATION
+
     </div>
+
 
   </main>
 
 
+
+  <!-- FRAME TERSEMBUNYI -->
+
+  <iframe
+    name="loginFrame"
+    id="loginFrame"
+  ></iframe>
+
+
+
   <script>
 
-    const API_URL =
-      "https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec";
+
+    const form =
+      document.getElementById("loginForm");
 
 
-    const form = document.getElementById("loginForm");
-    const button = document.getElementById("loginButton");
-    const status = document.getElementById("status");
+    const button =
+      document.getElementById("loginButton");
 
 
-    form.addEventListener("submit", async function(e){
-
-      e.preventDefault();
-
-      const username =
-        document.getElementById("username").value.trim();
-
-      const password =
-        document.getElementById("password").value;
+    const status =
+      document.getElementById("status");
 
 
-      status.className = "status";
-      status.textContent = "";
 
-      button.disabled = true;
-      button.textContent = "Memeriksa...";
+    /* =========================
+       TERIMA HASIL LOGIN
+    ========================= */
 
+    window.addEventListener(
+      "message",
+      function(event){
 
-      try{
-
-        const response = await fetch(API_URL, {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-          },
-
-          body: JSON.stringify({
-            username: username,
-            password: password
-          })
-        });
+        if(
+          event.origin !==
+          "https://script.google.com"
+        ){
+          return;
+        }
 
 
-        const result = await response.json();
+        const result = event.data;
+
+
+        if(
+          !result ||
+          typeof result !== "object"
+        ){
+          return;
+        }
+
 
 
         if(result.success){
 
-          status.className = "status success";
-          status.textContent = "Login berhasil. Membuka Admin Panel...";
+          status.className =
+            "status success";
+
+          status.textContent =
+            "Login berhasil! Selamat datang, Admin.";
+
 
           sessionStorage.setItem(
             "adminLoggedIn",
             "true"
           );
 
+
           sessionStorage.setItem(
             "adminUsername",
-            username
+            document.getElementById(
+              "username"
+            ).value.trim()
           );
 
-          setTimeout(function(){
-            window.location.href = "dashboard.html";
-          }, 800);
+
+          button.disabled = true;
+
+          button.textContent =
+            "Login Berhasil ✓";
+
 
         }else{
 
-          status.className = "status error";
-          status.textContent = result.message;
+          status.className =
+            "status error";
+
+          status.textContent =
+            result.message;
+
 
           button.disabled = false;
-          button.textContent = "Masuk ke Admin";
+
+          button.textContent =
+            "Masuk ke Admin";
+
         }
 
-
-      }catch(error){
-
-        console.error(error);
-
-        status.className = "status error";
-
-        status.textContent =
-          "Tidak dapat terhubung ke server. Coba lagi.";
-
-        button.disabled = false;
-        button.textContent = "Masuk ke Admin";
       }
+    );
 
-    });
+
+
+    /* =========================
+       SAAT FORM DIKIRIM
+    ========================= */
+
+    form.addEventListener(
+      "submit",
+      function(){
+
+        status.className =
+          "status";
+
+        status.textContent = "";
+
+
+        button.disabled = true;
+
+        button.textContent =
+          "Memeriksa...";
+
+      }
+    );
+
 
   </script>
 
+
 </body>
+
 </html>

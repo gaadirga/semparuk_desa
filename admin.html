@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
   <meta charset="UTF-8">
@@ -32,16 +33,25 @@
   <style>
 
     :root{
+
       --white:#ffffff;
+
       --sky-50:#f4f9ff;
+
       --sky-100:#e8f3fe;
+
       --sky-200:#d5eafd;
+
       --blue-400:#5da5e8;
+
       --blue-500:#3a87d8;
+
       --blue-600:#256bb8;
+
       --text:#26384a;
+
       --muted:#718096;
-      --danger:#d65c5c;
+
     }
 
 
@@ -189,162 +199,21 @@
     }
 
 
-    .field{
+    /*
+      Apps Script login iframe
+    */
 
-      margin-bottom:17px;
-
-    }
-
-
-    .field label{
+    #loginFrame{
 
       display:block;
 
-      margin-bottom:8px;
-
-      color:var(--text);
-
-      font-size:13px;
-
-      font-weight:600;
-
-    }
-
-
-    .field input{
-
       width:100%;
 
-      padding:13px 14px;
-
-      border:1px solid var(--sky-200);
-
-      border-radius:12px;
-
-      outline:none;
-
-      background:var(--sky-50);
-
-      color:var(--text);
-
-      font-family:'Inter',sans-serif;
-
-      font-size:14px;
-
-      transition:.25s;
-
-    }
-
-
-    .field input:focus{
-
-      border-color:var(--blue-400);
-
-      background:var(--white);
-
-      box-shadow:
-        0 0 0 3px rgba(93,165,232,.12);
-
-    }
-
-
-    .password-box{
-
-      position:relative;
-
-    }
-
-
-    .password-box input{
-
-      padding-right:75px;
-
-    }
-
-
-    .toggle-password{
-
-      position:absolute;
-
-      right:12px;
-
-      top:50%;
-
-      transform:translateY(-50%);
+      height:230px;
 
       border:0;
 
-      background:none;
-
-      color:var(--blue-500);
-
-      cursor:pointer;
-
-      font-family:'IBM Plex Mono',monospace;
-
-      font-size:10px;
-
-    }
-
-
-    .login-btn{
-
-      width:100%;
-
-      margin-top:5px;
-
-      padding:14px;
-
-      border:0;
-
-      border-radius:12px;
-
-      background:var(--blue-600);
-
-      color:white;
-
-      font-family:'Inter',sans-serif;
-
-      font-size:14px;
-
-      font-weight:600;
-
-      cursor:pointer;
-
-      transition:.25s;
-
-    }
-
-
-    .login-btn:hover{
-
-      background:var(--blue-500);
-
-      transform:translateY(-1px);
-
-    }
-
-
-    .login-btn:disabled{
-
-      opacity:.65;
-
-      cursor:not-allowed;
-
-      transform:none;
-
-    }
-
-
-    .status{
-
-      min-height:20px;
-
-      margin-top:15px;
-
-      text-align:center;
-
-      font-size:13px;
+      background:white;
 
     }
 
@@ -353,7 +222,7 @@
 
       display:block;
 
-      margin-top:20px;
+      margin-top:10px;
 
       color:var(--muted);
 
@@ -369,19 +238,6 @@
     .back:hover{
 
       color:var(--blue-600);
-
-    }
-
-
-    #loginFrame{
-
-      display:none;
-
-      width:0;
-
-      height:0;
-
-      border:0;
 
     }
 
@@ -429,9 +285,11 @@
         ADMIN · 06
       </span>
 
+
       <h1>
         Desa Semparuk
       </h1>
+
 
       <p>
         Panel pengelolaan website desa
@@ -449,6 +307,7 @@
           Masuk sebagai Admin
         </h2>
 
+
         <p>
           Silakan masukkan akun admin untuk melanjutkan.
         </p>
@@ -456,78 +315,11 @@
       </div>
 
 
-      <form
-        id="loginForm"
-        method="POST"
-        target="loginFrame"
-        action="https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec"
-      >
-
-
-        <div class="field">
-
-          <label for="username">
-            Username
-          </label>
-
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Masukkan username"
-            autocomplete="username"
-            required
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="password">
-            Password
-          </label>
-
-          <div class="password-box">
-
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Masukkan password"
-              autocomplete="current-password"
-              required
-            >
-
-            <button
-              type="button"
-              class="toggle-password"
-              id="togglePassword"
-            >
-              LIHAT
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <button
-          type="submit"
-          class="login-btn"
-          id="loginBtn"
-        >
-          Masuk
-        </button>
-
-
-        <div
-          class="status"
-          id="status"
-        ></div>
-
-
-      </form>
+      <iframe
+        id="loginFrame"
+        src="https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec"
+        title="Login Admin"
+      ></iframe>
 
 
       <a
@@ -544,157 +336,38 @@
   </main>
 
 
-  <iframe
-    name="loginFrame"
-    id="loginFrame"
-  ></iframe>
-
-
   <script>
-
-
-    const form =
-      document.getElementById("loginForm");
-
-
-    const password =
-      document.getElementById("password");
-
-
-    const loginBtn =
-      document.getElementById("loginBtn");
-
-
-    const status =
-      document.getElementById("status");
-
-
-    const togglePassword =
-      document.getElementById("togglePassword");
-
-
-    togglePassword.addEventListener(
-      "click",
-      function(){
-
-        if(password.type === "password"){
-
-          password.type = "text";
-
-          togglePassword.textContent =
-            "SEMBUNYI";
-
-        }else{
-
-          password.type = "password";
-
-          togglePassword.textContent =
-            "LIHAT";
-
-        }
-
-      }
-    );
-
-
-    form.addEventListener(
-      "submit",
-      function(){
-
-        status.style.color =
-          "#718096";
-
-        status.textContent =
-          "Memeriksa...";
-
-        loginBtn.disabled =
-          true;
-
-        loginBtn.textContent =
-          "Memeriksa...";
-
-      }
-    );
-
 
     window.addEventListener(
       "message",
       function(event){
 
-        try{
-
-          let result = event.data;
+        const data = event.data;
 
 
-          if(typeof result === "string"){
+        if(
+          data &&
+          data.type === "ADMIN_LOGIN" &&
+          data.success === true
+        ){
 
-            result =
-              JSON.parse(result);
-
-          }
-
-
-          if(result.success === true){
-
-            status.style.color =
-              "#256bb8";
-
-            status.textContent =
-              "Login berhasil.";
-
-            loginBtn.textContent =
-              "Berhasil";
-
-
-            sessionStorage.setItem(
-              "adminLoggedIn",
-              "true"
-            );
-
-
-            setTimeout(
-              function(){
-
-                window.location.href =
-                  "dashboard.html";
-
-              },
-              600
-            );
-
-
-          }else{
-
-            status.style.color =
-              "#d65c5c";
-
-            status.textContent =
-              result.message ||
-              "Username atau password salah.";
-
-            loginBtn.disabled =
-              false;
-
-            loginBtn.textContent =
-              "Masuk";
-
-          }
-
-        }catch(error){
-
-          console.log(
-            "Respons tidak dikenali:",
-            error
+          sessionStorage.setItem(
+            "adminLoggedIn",
+            "true"
           );
+
+
+          window.location.href =
+            "dashboard.html";
 
         }
 
       }
     );
 
-
   </script>
 
 
 </body>
+
 </html>

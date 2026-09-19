@@ -4,48 +4,349 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Admin Desa Semparuk</title>
+  <title>Admin — Desa Semparuk</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    :root{
+      --white:#ffffff;
+      --sky-50:#f4f9ff;
+      --sky-100:#e8f3fe;
+      --sky-200:#d5eafd;
+      --blue-400:#5da5e8;
+      --blue-500:#3a87d8;
+      --blue-600:#256bb8;
+      --text:#26384a;
+      --muted:#718096;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
     body{
       margin:0;
       min-height:100vh;
+      background:
+        radial-gradient(circle at top left, #e8f3fe 0%, transparent 38%),
+        var(--sky-50);
+      color:var(--text);
+      font-family:'Inter',sans-serif;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:#f4f9ff;
-      font-family:Arial,sans-serif;
-      color:#256bb8;
+      padding:24px;
     }
 
-    .loading{
+    .login-wrap{
+      width:100%;
+      max-width:430px;
+    }
+
+    .brand{
       text-align:center;
+      margin-bottom:24px;
     }
 
-    .loading h2{
+    .brand-number{
+      display:block;
       margin-bottom:8px;
+      color:var(--blue-400);
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11px;
+      letter-spacing:1px;
     }
 
-    .loading p{
-      color:#6b7280;
+    .brand h1{
+      margin:0;
+      color:var(--blue-600);
+      font-family:'Fraunces',serif;
+      font-size:36px;
+      font-weight:600;
+    }
+
+    .brand p{
+      margin:8px 0 0;
+      color:var(--muted);
       font-size:14px;
     }
+
+    .login-card{
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--sky-200);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 18px 45px rgba(37,107,184,.10);
+    }
+
+    .card-title{
+      margin-bottom:24px;
+    }
+
+    .card-title h2{
+      margin:0 0 6px;
+      color:var(--blue-600);
+      font-family:'Fraunces',serif;
+      font-size:25px;
+    }
+
+    .card-title p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .field{
+      margin-bottom:17px;
+    }
+
+    .field label{
+      display:block;
+      margin-bottom:8px;
+      color:var(--text);
+      font-size:13px;
+      font-weight:600;
+    }
+
+    .field input{
+      width:100%;
+      padding:13px 14px;
+      border:1px solid var(--sky-200);
+      border-radius:12px;
+      outline:none;
+      background:var(--sky-50);
+      color:var(--text);
+      font-family:'Inter',sans-serif;
+      font-size:14px;
+      transition:.25s;
+    }
+
+    .field input:focus{
+      border-color:var(--blue-400);
+      background:white;
+      box-shadow:0 0 0 3px rgba(93,165,232,.12);
+    }
+
+    .password-box{
+      position:relative;
+    }
+
+    .password-box input{
+      padding-right:70px;
+    }
+
+    .toggle-password{
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      border:0;
+      background:none;
+      color:var(--blue-500);
+      cursor:pointer;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:11px;
+    }
+
+    .login-btn{
+      width:100%;
+      margin-top:5px;
+      padding:14px;
+      border:0;
+      border-radius:12px;
+      background:var(--blue-600);
+      color:white;
+      font-family:'Inter',sans-serif;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    .login-btn:hover{
+      background:var(--blue-500);
+      transform:translateY(-1px);
+    }
+
+    .login-btn:disabled{
+      opacity:.65;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    .status{
+      min-height:20px;
+      margin-top:15px;
+      text-align:center;
+      font-size:13px;
+    }
+
+    .back{
+      display:block;
+      margin-top:20px;
+      text-align:center;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:12px;
+    }
+
+    .back:hover{
+      color:var(--blue-600);
+    }
+
+    @media(max-width:480px){
+      .login-card{
+        padding:24px;
+        border-radius:20px;
+      }
+
+      .brand h1{
+        font-size:31px;
+      }
+    }
   </style>
-
-  <script>
-    const ADMIN_URL =
-      "https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec";
-
-    window.location.replace(ADMIN_URL);
-  </script>
 </head>
 
 <body>
 
-  <div class="loading">
-    <h2>Admin Desa Semparuk</h2>
-    <p>Membuka halaman login...</p>
-  </div>
+  <main class="login-wrap">
+
+    <div class="brand">
+      <span class="brand-number">ADMIN · 06</span>
+      <h1>Desa Semparuk</h1>
+      <p>Panel pengelolaan website desa</p>
+    </div>
+
+    <section class="login-card">
+
+      <div class="card-title">
+        <h2>Masuk sebagai Admin</h2>
+        <p>Silakan masukkan akun admin untuk melanjutkan.</p>
+      </div>
+
+      <form id="loginForm">
+
+        <div class="field">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Masukkan username"
+            autocomplete="username"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+
+          <div class="password-box">
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan password"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="toggle-password"
+              id="togglePassword"
+            >
+              LIHAT
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="login-btn" id="loginBtn">
+          Masuk
+        </button>
+
+        <div class="status" id="status"></div>
+
+      </form>
+
+      <a href="index.html" class="back">
+        ← Kembali ke website
+      </a>
+
+    </section>
+
+  </main>
+
+  <script>
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec";
+
+    const form = document.getElementById("loginForm");
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+    const loginBtn = document.getElementById("loginBtn");
+    const status = document.getElementById("status");
+    const togglePassword = document.getElementById("togglePassword");
+
+    togglePassword.addEventListener("click", function(){
+      if(password.type === "password"){
+        password.type = "text";
+        togglePassword.textContent = "SEMBUNYI";
+      }else{
+        password.type = "password";
+        togglePassword.textContent = "LIHAT";
+      }
+    });
+
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+
+      loginBtn.disabled = true;
+      loginBtn.textContent = "Memeriksa...";
+      status.textContent = "";
+      status.style.color = "";
+
+      try{
+        const response = await fetch(API_URL, {
+          method:"POST",
+          headers:{
+            "Content-Type":"text/plain;charset=utf-8"
+          },
+          body:JSON.stringify({
+            username:username.value,
+            password:password.value
+          })
+        });
+
+        const result = await response.json();
+
+        if(result.success){
+          status.style.color = "#256bb8";
+          status.textContent = "Login berhasil.";
+
+          setTimeout(function(){
+            window.location.href = "dashboard.html";
+          }, 500);
+
+        }else{
+          status.style.color = "#d65c5c";
+          status.textContent = result.message;
+
+          loginBtn.disabled = false;
+          loginBtn.textContent = "Masuk";
+        }
+
+      }catch(error){
+        status.style.color = "#d65c5c";
+        status.textContent = "Tidak dapat terhubung ke server.";
+
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Masuk";
+      }
+    });
+  </script>
 
 </body>
 </html>

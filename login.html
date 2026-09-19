@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Admin — Semparuk Sutera</title>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
+        :root {
+
+            --white: #ffffff;
+
+            --sky-50: #f4f9ff;
+            --sky-100: #e8f3fe;
+            --sky-200: #d5eafd;
+            --sky-300: #b7dcfb;
+
+            --blue-300: #8ec4f2;
+            --blue-400: #5da5e8;
+            --blue-500: #3a87d8;
+            --blue-600: #256bb8;
+            --blue-700: #175496;
+            --blue-800: #123f73;
+            --blue-900: #0c3158;
+
+            --ink: #0c2846;
+            --ink-soft: #4c6680;
+            --ink-mut: #5c7793;
+
+            --shadow-blue:
+                0 18px 40px -14px rgba(37,107,184,.35);
+
+            --shadow-blue-sm:
+                0 8px 20px -8px rgba(37,107,184,.30);
+
+            --ring:
+                0 0 0 1px rgba(58,135,216,.14);
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: "Inter", sans-serif;
+
+            color: var(--ink);
+
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(142,196,242,.28),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(58,135,216,.15),
+                    transparent 32%
+                ),
+                var(--sky-50);
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* =====================================================
+           BACKGROUND BLOBS
+        ===================================================== */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 420px;
+            height: 420px;
+
+            left: -180px;
+            top: 25%;
+
+            border-radius: 50%;
+
+            background:
+                rgba(142,196,242,.20);
+
+            filter: blur(90px);
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+            height: 500px;
+
+            right: -220px;
+            bottom: -150px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(58,135,216,.13);
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        /* =====================================================
+           TOPBAR
+        ===================================================== */
+
+        .topbar {
+
+            width: calc(100% - 40px);
+            max-width: 1400px;
+
+            min-height: 76px;
+
+            margin: 18px auto 0;
+
+            padding:
+                12px
+                18px
+                12px
+                24px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            background:
+                rgba(255,255,255,.86);
+
+            border:
+                1px solid rgba(37,107,184,.12);
+
+            border-radius: 24px;
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 14px 35px
+                rgba(37,107,184,.10),
+
+                var(--ring);
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+
+            display: flex;
+            flex-direction: column;
+
+            text-decoration: none;
+
+            color: var(--blue-900);
+
+            font-family: "Fraunces", serif;
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+            line-height: 1;
+
+            letter-spacing: .04em;
+        }
+
+        .brand small {
+
+            margin-top: 5px;
+
+            font-family:
+                "IBM Plex Mono",
+                monospace;
+
+            font-size: 8px;
+
+            font-weight: 500;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+
+            color: var(--ink-mut);
+        }
+
+
+        /* =====================================================
+           TOPBAR RIGHT
+        ===================================================== */
+
+        .topbar-label {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                9px
+                13px;
+
+            border-radius: 999px;
+
+            background:
+                var(--sky-100);
+
+            color:
+                var(--blue-700);
+
+            font-family:
+                "IBM Plex Mono",
+                monospace;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+        .topbar-label i {
+
+            font-size: 10px;
+
+            color: var(--blue-500);
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        main {
+
+            flex: 1;
+
+            width:
+                min(
+                    100%,
+                    1180px
+                );
+
+            margin: 0 auto;
+
+            padding:
+                75px 20px
+                80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =====================================================
+           LOGIN LAYOUT
+        ===================================================== */
+
+        .login-layout {
+
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                420px;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+
+        /* =====================================================
+           LEFT INTRO
+        ===================================================== */
+
+        .intro {
+
+            max-width: 570px;
+        }
+
+
+        .eyebrow {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 20px;
+
+            padding:
+                8px 13px;
+
+            border:
+                1px solid
+                var(--sky-200);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.72);
+
+            color:
+                var(--blue-600);
+
+            font-family:
+                "IBM Plex Mono",
+                monospace;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            letter-spacing: .10em;
+
+            text-transform: uppercase;
+
+            box-shadow:
+                var(--ring);
+        }
+
+
+        .eyebrow i {
+
+            font-size: 10px;
+        }
+
+
+        .intro h1 {
+
+            font-family:
+                "Fraunces",
+                serif;
+
+            font-size:
+                clamp(
+                    50px,
+                    7vw,
+                    82px
+                );
+
+            line-height: .98;
+
+            letter-spacing:
+                -.045em;
+
+            font-weight: 600;
+
+            color:
+                var(--blue-900);
+        }
+
+
+        .intro h1 span {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue-500),
+                    var(--blue-800)
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .intro-description {
+
+            max-width: 510px;
+
+            margin-top: 22px;
+
+            color:
+                var(--ink-soft);
+
+            font-size: 14px;
+
+            line-height: 1.85;
+        }
+
+
+        /* =====================================================
+           MINI INFORMATION
+        ===================================================== */
+
+        .intro-info {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 30px;
+        }
+
+
+        .info-item {
+
+            padding:
+                13px 15px;
+
+            border:
+                1px solid
+                rgba(37,107,184,.10);
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,.65);
+
+            box-shadow:
+                var(--ring);
+        }
+
+
+        .info-item i {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            color:
+                var(--blue-500);
+
+            font-size: 14px;
+        }
+
+
+        .info-item span {
+
+            display: block;
+
+            color:
+                var(--ink-mut);
+
+            font-family:
+                "IBM Plex Mono",
+                monospace;
+
+            font-size: 8px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .05em;
+        }
+
+
+        /* =====================================================
+           LOGIN CARD
+        ===================================================== */
+
+        .login-card {
+
+            width: 100%;
+
+            padding:
+                34px;
+
+            background:
+                rgba(255,255,255,.95);
+
+            border:
+                1px solid
+                rgba(37,107,184,.12);
+
+            border-radius: 27px;
+
+            box-shadow:
+                0 25px 60px
+                rgba(37,107,184,.12),
+
+                var(--ring);
+        }
+
+
+        /* =====================================================
+           CARD HEADER
+        ===================================================== */
+
+        .card-header {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 14px;
+
+            margin-bottom: 27px;
+        }
+
+
+        .logo-icon {
+
+            width: 50px;
+            height: 50px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue-500),
+                    var(--blue-800)
+                );
+
+            color: white;
+
+            font-size: 19px;
+
+            box-shadow:
+                var(--shadow-blue-sm);
+        }
+
+
+        .card-header h2 {
+
+            margin-bottom: 4px;
+
+            font-family:
+                "Fraunces",
+                serif;
+
+            font-size: 27px;
+
+            line-height: 1.1;
+
+            font-weight: 600;
+
+            color:
+                var(--blue-900);
+        }
+
+
+        .card-header p {
+
+            color:
+                var(--ink-mut);
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error {
+
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding:
+                12px 14px;
+
+            border-radius: 12px;
+
+            background:
+                #fff0f0;
+
+            border:
+                1px solid
+                #ffd2d2;
+
+            color:
+                #b4232f;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        .error.show {
+
+            display: block;
+
+            animation:
+                errorIn .25s ease;
+        }
+
+
+        @keyframes errorIn {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(-4px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color:
+                var(--blue-900);
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        .input-wrapper {
+
+            position: relative;
+        }
+
+
+        .input-wrapper i {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                var(--ink-mut);
+
+            font-size: 13px;
+
+            pointer-events: none;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .input-wrapper input {
+
+            width: 100%;
+
+            height: 50px;
+
+            padding:
+                0 15px
+                0 43px;
+
+            border:
+                1px solid
+                var(--sky-200);
+
+            border-radius: 13px;
+
+            outline: none;
+
+            background:
+                #fbfdff;
+
+            color:
+                var(--ink);
+
+            font-family:
+                inherit;
+
+            font-size: 12px;
+
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease,
+                background .2s ease;
+        }
+
+
+        .input-wrapper input::placeholder {
+
+            color:
+                #91a6b9;
+        }
+
+
+        .input-wrapper input:hover {
+
+            background:
+                #ffffff;
+        }
+
+
+        .input-wrapper input:focus {
+
+            background:
+                #ffffff;
+
+            border-color:
+                var(--blue-400);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(58,135,216,.10);
+        }
+
+
+        .input-wrapper input:focus + i {
+
+            color:
+                var(--blue-500);
+        }
+
+
+        /* =====================================================
+           LOGIN BUTTON
+        ===================================================== */
+
+        .login-btn {
+
+            width: 100%;
+
+            height: 51px;
+
+            margin-top: 5px;
+
+            border: 0;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue-500),
+                    var(--blue-700)
+                );
+
+            color:
+                white;
+
+            font-family:
+                inherit;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            box-shadow:
+                var(--shadow-blue-sm);
+
+            transition:
+                .25s ease;
+        }
+
+
+        .login-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                var(--shadow-blue);
+        }
+
+
+        .login-btn:active {
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =====================================================
+           SECURITY NOTE
+        ===================================================== */
+
+        .security-note {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin-top: 18px;
+
+            padding:
+                12px 13px;
+
+            border-radius: 13px;
+
+            background:
+                var(--sky-50);
+
+            border:
+                1px solid
+                var(--sky-200);
+        }
+
+
+        .security-note i {
+
+            margin-top: 2px;
+
+            color:
+                var(--blue-500);
+
+            font-size: 11px;
+        }
+
+
+        .security-note p {
+
+            color:
+                var(--ink-mut);
+
+            font-size: 9px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           BACK
+        ===================================================== */
+
+        .back {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            margin-top: 20px;
+
+            color:
+                var(--ink-mut);
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .back:hover {
+
+            color:
+                var(--blue-600);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            padding:
+                0 20px
+                30px;
+
+            text-align: center;
+
+            color:
+                var(--ink-mut);
+
+            font-size: 9px;
+        }
+
+
+        footer strong {
+
+            color:
+                var(--blue-700);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .login-layout {
+
+                grid-template-columns:
+                    1fr;
+
+                max-width: 500px;
+
+                margin: 0 auto;
+
+                gap: 40px;
+            }
+
+
+            .intro {
+
+                max-width: 100%;
+
+                text-align: center;
+            }
+
+
+            .intro-description {
+
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .intro-info {
+
+                justify-content: center;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .topbar {
+
+                width:
+                    calc(100% - 20px);
+
+                margin-top: 10px;
+
+                min-height: 64px;
+
+                padding:
+                    11px 15px;
+
+                border-radius: 19px;
+            }
+
+
+            .brand {
+
+                font-size: 18px;
+            }
+
+
+            .topbar-label {
+
+                padding:
+                    8px 10px;
+
+                font-size: 8px;
+            }
+
+
+            .topbar-label span {
+
+                display: none;
+            }
+
+
+            main {
+
+                padding:
+                    55px 14px
+                    60px;
+            }
+
+
+            .intro h1 {
+
+                font-size:
+                    clamp(
+                        47px,
+                        15vw,
+                        65px
+                    );
+            }
+
+
+            .intro-description {
+
+                font-size: 12px;
+            }
+
+
+            .intro-info {
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .login-card {
+
+                padding:
+                    24px 20px;
+
+                border-radius: 22px;
+            }
+
+
+            .card-header h2 {
+
+                font-size: 24px;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .intro-info {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .login-card {
+
+                padding:
+                    21px 17px;
+            }
+
+
+            .card-header {
+
+                gap: 11px;
+            }
+
+
+            .logo-icon {
+
+                width: 44px;
+                height: 44px;
+
+                border-radius: 13px;
+
+                font-size: 16px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="topbar">
+
+        <a
+            href="index.html"
+            class="brand">
+
+            SEMPARUK
+
+            <small>
+                Kampung Halaman
+            </small>
+
+        </a>
+
+
+        <div class="topbar-label">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <span>
+                Area Administrasi
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+        <div class="login-layout">
+
+
+            <!-- =================================================
+                 INTRO
+            ================================================== -->
+
+            <section class="intro">
+
+                <div class="eyebrow">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Admin Access
+
+                </div>
+
+
+                <h1>
+
+                    Kelola
+                    <span>Semparuk.</span>
+
+                </h1>
+
+
+                <p class="intro-description">
+
+                    Selamat datang di area administrasi
+                    website Semparuk. Masuk untuk mengelola
+                    informasi, berita, pengaduan warga,
+                    dan konten website.
+
+                </p>
+
+
+                <div class="intro-info">
+
+
+                    <div class="info-item">
+
+                        <i class="fa-solid fa-database"></i>
+
+                        <span>
+                            Data Desa
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <i class="fa-solid fa-newspaper"></i>
+
+                        <span>
+                            Berita
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <i class="fa-solid fa-comments"></i>
+
+                        <span>
+                            Pengaduan
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LOGIN CARD
+            ================================================== -->
+
+            <section class="login-card">
+
+
+                <!-- CARD HEADER -->
+
+                <div class="card-header">
+
+                    <div class="logo-icon">
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Login Admin
+                        </h2>
+
+                        <p>
+                            Panel Administrasi
+                            Semparuk Sutera
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ERROR -->
+
+                <div
+                    class="error"
+                    id="error">
+
+                    <i
+                        class="fa-solid fa-circle-exclamation">
+                    </i>
+
+                    &nbsp;
+
+                    Username atau password salah.
+
+                </div>
+
+
+
+                <!-- FORM -->
+
+                <form
+                    id="loginForm">
+
+
+                    <!-- USERNAME -->
+
+                    <div class="form-group">
+
+                        <label for="username">
+
+                            Username
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="text"
+                                id="username"
+                                placeholder="Masukkan username"
+                                autocomplete="username"
+                                required>
+
+
+                            <i
+                                class="fa-solid fa-user">
+                            </i>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+
+                            Password
+
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Masukkan password"
+                                autocomplete="current-password"
+                                required>
+
+
+                            <i
+                                class="fa-solid fa-lock">
+                            </i>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="login-btn">
+
+                        <i
+                            class="fa-solid fa-right-to-bracket">
+                        </i>
+
+                        Masuk ke Dashboard
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- SECURITY -->
+
+                <div class="security-note">
+
+                    <i
+                        class="fa-solid fa-shield-halved">
+                    </i>
+
+                    <p>
+                        Halaman ini khusus untuk administrator.
+                        Pastikan informasi login tidak dibagikan
+                        kepada orang lain.
+                    </p>
+
+                </div>
+
+
+
+                <!-- BACK -->
+
+                <a
+                    href="index.html"
+                    class="back">
+
+                    <i
+                        class="fa-solid fa-arrow-left">
+                    </i>
+
+                    Kembali ke Website
+
+                </a>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <strong>SEMPARUK</strong>
+        — Kampung Halaman
+
+        <br>
+
+        © 2026 Desa Semparuk — Kabupaten Sambas
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =========================================
+           LOGIN ADMIN
+        ========================================= */
+
+        /*
+           GANTI username dan password di bawah.
+        */
+
+        const ADMIN_USERNAME = "admin";
+
+        const ADMIN_PASSWORD = "dirga123";
+
+
+        document
+        .getElementById("loginForm")
+        .addEventListener(
+            "submit",
+            function(e){
+
+                e.preventDefault();
+
+
+                const username =
+                    document
+                    .getElementById("username")
+                    .value
+                    .trim();
+
+
+                const password =
+                    document
+                    .getElementById("password")
+                    .value;
+
+
+                const error =
+                    document
+                    .getElementById("error");
+
+
+                if(
+                    username === ADMIN_USERNAME &&
+                    password === ADMIN_PASSWORD
+                ){
+
+                    /*
+                     * Tandai bahwa admin
+                     * sudah login.
+                     */
+
+                    sessionStorage.setItem(
+                        "adminLoggedIn",
+                        "true"
+                    );
+
+
+                    /*
+                     * Masuk dashboard.
+                     */
+
+                    window.location.href =
+                        "admin.html";
+
+                }else{
+
+                    error.classList.add("show");
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

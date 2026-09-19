@@ -1,72 +1,325 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
 <head>
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>Admin Pengaduan — Semparuk</title>
 
-  <title>Admin — Desa Semparuk</title>
-
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
+  <!-- FONT AWESOME -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
 
   <style>
+
+    /* =========================================================
+       ROOT
+    ========================================================= */
 
     :root{
 
       --white:#ffffff;
 
       --sky-50:#f4f9ff;
-
       --sky-100:#e8f3fe;
-
       --sky-200:#d5eafd;
+      --sky-300:#b7dcfb;
 
+      --blue-300:#8ec4f2;
       --blue-400:#5da5e8;
-
       --blue-500:#3a87d8;
-
       --blue-600:#256bb8;
+      --blue-700:#175496;
+      --blue-800:#123f73;
+      --blue-900:#0c3158;
 
-      --text:#26384a;
+      --ink:#0c2846;
+      --ink-soft:#4c6680;
+      --ink-mut:#5c7793;
 
-      --muted:#718096;
+      --red:#d94b5b;
+      --red-dark:#b93646;
 
+      --yellow:#d99b27;
+      --green:#15966b;
+
+      --shadow-blue:
+        0 18px 40px -14px rgba(37,107,184,.35);
+
+      --shadow-blue-sm:
+        0 8px 20px -8px rgba(37,107,184,.3);
+
+      --ring:
+        0 0 0 1px rgba(58,135,216,.14);
+
+      --soft-shadow:
+        0 12px 35px rgba(18,63,115,.08);
     }
 
 
+    /* =========================================================
+       DARK MODE
+    ========================================================= */
+
+    body.dark{
+
+      --white:#102a45;
+
+      --sky-50:#071827;
+      --sky-100:#0c2238;
+      --sky-200:#123453;
+      --sky-300:#1c466c;
+
+      --ink:#edf7ff;
+      --ink-soft:#b8cce0;
+      --ink-mut:#8ea8c1;
+
+      --soft-shadow:
+        0 18px 45px rgba(0,0,0,.28);
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
     *{
+      margin:0;
+      padding:0;
       box-sizing:border-box;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
 
-      margin:0;
-
       min-height:100vh;
 
-      padding:24px;
+      font-family:"Inter",sans-serif;
+
+      background:var(--sky-50);
+
+      color:var(--ink);
+
+      line-height:1.6;
+
+      transition:
+        background .3s ease,
+        color .3s ease;
+
+      overflow-x:hidden;
+    }
+
+    body::before{
+
+      content:"";
+
+      position:fixed;
+
+      width:420px;
+      height:420px;
+
+      top:-180px;
+      right:-120px;
+
+      border-radius:50%;
+
+      background:
+        rgba(93,165,232,.18);
+
+      filter:blur(80px);
+
+      pointer-events:none;
+
+      z-index:-2;
+    }
+
+    body::after{
+
+      content:"";
+
+      position:fixed;
+
+      width:350px;
+      height:350px;
+
+      bottom:-180px;
+      left:-120px;
+
+      border-radius:50%;
+
+      background:
+        rgba(183,220,251,.22);
+
+      filter:blur(90px);
+
+      pointer-events:none;
+
+      z-index:-2;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input,
+    select{
+      font-family:inherit;
+    }
+
+    button{
+      border:0;
+    }
+
+
+    /* =========================================================
+       CONTAINER
+    ========================================================= */
+
+    .container{
+
+      width:min(
+        1180px,
+        calc(100% - 40px)
+      );
+
+      margin:auto;
+    }
+
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+
+    .topbar{
+
+      position:sticky;
+
+      top:18px;
+
+      z-index:1000;
+
+      width:
+        min(
+          1180px,
+          calc(100% - 40px)
+        );
+
+      min-height:70px;
+
+      margin:18px auto 0;
+
+      padding:
+        10px
+        12px
+        10px
+        24px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      background:
+        rgba(255,255,255,.88);
+
+      border:
+        1px solid
+        rgba(58,135,216,.14);
+
+      border-radius:999px;
+
+      box-shadow:
+        0 12px 35px
+        rgba(18,63,115,.09);
+
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+
+    body.dark .topbar{
+
+      background:
+        rgba(16,42,69,.9);
+
+      border-color:
+        rgba(142,196,242,.14);
+    }
+
+
+    /* =========================================================
+       BRAND
+    ========================================================= */
+
+    .brand{
+
+      flex-shrink:0;
+
+      color:var(--blue-800);
+
+      font-family:
+        "Fraunces",
+        serif;
+
+      font-size:20px;
+
+      font-weight:700;
+
+      letter-spacing:-.5px;
+    }
+
+    body.dark .brand{
+      color:#fff;
+    }
+
+    .brand small{
+
+      display:block;
+
+      margin-top:-2px;
+
+      color:var(--ink-mut);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+
+      font-weight:500;
+
+      letter-spacing:1.5px;
+
+      text-transform:uppercase;
+    }
+
+
+    /* =========================================================
+       NAV LINKS
+    ========================================================= */
+
+    .chapters{
+
+      position:relative;
 
       display:flex;
 
@@ -74,198 +327,1743 @@
 
       justify-content:center;
 
-      background:
-        radial-gradient(
-          circle at top left,
-          var(--sky-100),
-          transparent 40%
-        ),
-        var(--sky-50);
+      gap:3px;
 
-      color:var(--text);
-
-      font-family:'Inter',sans-serif;
-
+      flex:1;
     }
 
+    .chapters > a{
 
-    .login-wrap{
+      position:relative;
 
-      width:100%;
+      z-index:1;
 
-      max-width:430px;
+      display:flex;
 
-    }
+      align-items:center;
 
+      gap:7px;
 
-    .brand{
+      padding:
+        10px 13px;
 
-      text-align:center;
+      border-radius:999px;
 
-      margin-bottom:24px;
-
-    }
-
-
-    .brand-number{
-
-      display:block;
-
-      margin-bottom:8px;
-
-      color:var(--blue-400);
-
-      font-family:'IBM Plex Mono',monospace;
+      color:var(--blue-700);
 
       font-size:11px;
 
-      letter-spacing:1px;
+      font-weight:700;
 
+      white-space:nowrap;
+
+      transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
     }
 
+    .chapters > a .n{
 
-    .brand h1{
+      font-family:
+        "IBM Plex Mono",
+        monospace;
 
-      margin:0;
+      font-size:8px;
+
+      font-weight:500;
+
+      opacity:.55;
+    }
+
+    .chapters > a:hover{
 
       color:var(--blue-600);
 
-      font-family:'Fraunces',serif;
+      background:
+        rgba(58,135,216,.07);
 
-      font-size:36px;
-
-      font-weight:600;
-
+      transform:translateY(-1px);
     }
 
+    .chapters > a.active{
 
-    .brand p{
+      color:#fff;
 
-      margin:8px 0 0;
-
-      color:var(--muted);
-
-      font-size:14px;
-
-    }
-
-
-    .login-card{
-
-      padding:30px;
-
-      background:rgba(255,255,255,.94);
-
-      border:1px solid var(--sky-200);
-
-      border-radius:24px;
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-500),
+          var(--blue-700)
+        );
 
       box-shadow:
-        0 18px 45px rgba(37,107,184,.10);
-
+        var(--shadow-blue-sm);
     }
 
 
-    .card-title{
+    /* =========================================================
+       NAV ADMIN
+    ========================================================= */
 
-      margin-bottom:24px;
+    .nav-admin{
 
+      color:#fff !important;
+
+      background:
+        linear-gradient(
+          135deg,
+          #d94b5b,
+          #b93646
+        );
+
+      box-shadow:
+        0 7px 18px
+        rgba(217,75,91,.2);
+    }
+
+    .nav-admin:hover{
+
+      color:#fff !important;
+
+      background:
+        linear-gradient(
+          135deg,
+          #e45a69,
+          #c83e4e
+        ) !important;
     }
 
 
-    .card-title h2{
+    /* =========================================================
+       NAV CTA
+    ========================================================= */
 
-      margin:0 0 6px;
+    .nav-cta{
 
-      color:var(--blue-600);
-
-      font-family:'Fraunces',serif;
-
-      font-size:25px;
-
-    }
-
-
-    .card-title p{
-
-      margin:0;
-
-      color:var(--muted);
-
-      font-size:13px;
-
-      line-height:1.6;
-
-    }
-
-
-    /*
-      Apps Script login iframe
-    */
-
-    #loginFrame{
-
-      display:block;
-
-      width:100%;
-
-      height:230px;
+      flex-shrink:0;
 
       border:0;
 
-      background:white;
+      padding:
+        12px 17px;
 
+      border-radius:999px;
+
+      background:
+        var(--blue-900);
+
+      color:white;
+
+      font-size:10px;
+
+      font-weight:700;
+
+      cursor:pointer;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .nav-cta .arrow{
+
+      margin-left:5px;
+
+      font-size:13px;
+    }
+
+    .nav-cta:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:
+        var(--shadow-blue);
     }
 
 
-    .back{
+    /* =========================================================
+       PAGE HEADER
+    ========================================================= */
 
-      display:block;
+    .page-header{
 
-      margin-top:10px;
-
-      color:var(--muted);
-
-      text-align:center;
-
-      text-decoration:none;
-
-      font-size:12px;
-
+      padding:
+        90px 0 55px;
     }
 
+    .eyebrow{
 
-    .back:hover{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      margin-bottom:15px;
 
       color:var(--blue-600);
 
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:10px;
+
+      font-weight:600;
+
+      letter-spacing:1.5px;
+
+      text-transform:uppercase;
+    }
+
+    .eyebrow::before{
+
+      content:"";
+
+      width:28px;
+      height:1px;
+
+      background:var(--blue-400);
+    }
+
+    .page-header h1{
+
+      max-width:850px;
+
+      font-family:
+        "Fraunces",
+        serif;
+
+      font-size:
+        clamp(
+          42px,
+          7vw,
+          78px
+        );
+
+      line-height:.98;
+
+      letter-spacing:-2.5px;
+
+      font-weight:600;
+
+      color:var(--blue-900);
+    }
+
+    body.dark .page-header h1{
+      color:#edf7ff;
+    }
+
+    .page-header h1 span{
+
+      color:var(--blue-500);
+
+      font-style:italic;
+    }
+
+    .page-header p{
+
+      max-width:620px;
+
+      margin-top:20px;
+
+      color:var(--ink-soft);
+
+      font-size:14px;
+
+      line-height:1.8;
     }
 
 
-    @media(max-width:480px){
+    /* =========================================================
+       MAIN
+    ========================================================= */
 
-      body{
+    .main{
 
-        padding:18px;
+      padding:
+        10px 0 80px;
+    }
 
+
+    /* =========================================================
+       TOP BAR
+    ========================================================= */
+
+    .top-bar{
+
+      display:flex;
+
+      align-items:flex-end;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      margin-bottom:25px;
+    }
+
+    .top-bar-left h2{
+
+      font-family:
+        "Fraunces",
+        serif;
+
+      font-size:27px;
+
+      font-weight:600;
+
+      color:var(--blue-900);
+    }
+
+    body.dark .top-bar-left h2{
+      color:#edf7ff;
+    }
+
+    .top-bar-left p{
+
+      margin-top:3px;
+
+      color:var(--ink-mut);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:9px;
+    }
+
+    .admin-actions{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:flex-end;
+
+      gap:8px;
+
+      flex-wrap:wrap;
+    }
+
+
+    /* =========================================================
+       ACTION BUTTONS
+    ========================================================= */
+
+    .admin-action{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      gap:7px;
+
+      min-height:43px;
+
+      padding:
+        10px 15px;
+
+      border-radius:12px;
+
+      font-size:10px;
+
+      font-weight:700;
+
+      cursor:pointer;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+    }
+
+    .admin-action.website{
+
+      color:var(--blue-600);
+
+      background:
+        var(--white);
+
+      border:
+        1px solid
+        rgba(58,135,216,.14);
+
+      box-shadow:
+        var(--ring);
+    }
+
+    .admin-action.website:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:
+        var(--shadow-blue-sm);
+    }
+
+    .admin-action.logout{
+
+      color:white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--red),
+          var(--red-dark)
+        );
+
+      box-shadow:
+        0 8px 20px
+        rgba(217,75,91,.16);
+    }
+
+    .admin-action.logout:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 12px 25px
+        rgba(217,75,91,.23);
+    }
+
+    .refresh-btn{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      gap:7px;
+
+      min-height:43px;
+
+      padding:
+        10px 17px;
+
+      border-radius:12px;
+
+      color:#fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue-500),
+          var(--blue-700)
+        );
+
+      font-size:10px;
+
+      font-weight:700;
+
+      cursor:pointer;
+
+      box-shadow:
+        var(--shadow-blue-sm);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .refresh-btn:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:
+        var(--shadow-blue);
+    }
+
+    .refresh-btn:disabled{
+
+      opacity:.6;
+
+      cursor:not-allowed;
+
+      transform:none;
+
+      box-shadow:none;
+    }
+
+
+    /* =========================================================
+       STATS GRID
+    ========================================================= */
+
+    .stats-grid{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(5,1fr);
+
+      gap:13px;
+
+      margin-bottom:20px;
+    }
+
+    .stat-card{
+
+      position:relative;
+
+      overflow:hidden;
+
+      padding:20px;
+
+      background:
+        var(--white);
+
+      border:
+        1px solid
+        rgba(58,135,216,.12);
+
+      border-radius:20px;
+
+      box-shadow:
+        var(--soft-shadow);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .stat-card::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:80px;
+      height:80px;
+
+      right:-30px;
+      bottom:-35px;
+
+      border-radius:50%;
+
+      background:
+        rgba(93,165,232,.08);
+    }
+
+    .stat-card:hover{
+
+      transform:translateY(-3px);
+
+      box-shadow:
+        var(--shadow-blue-sm);
+    }
+
+    .stat-icon{
+
+      width:40px;
+      height:40px;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      margin-bottom:16px;
+
+      border-radius:12px;
+
+      color:var(--blue-600);
+
+      background:
+        var(--sky-100);
+    }
+
+    .stat-card h3{
+
+      font-family:
+        "Fraunces",
+        serif;
+
+      font-size:30px;
+
+      line-height:1;
+
+      color:var(--blue-900);
+
+      margin-bottom:5px;
+    }
+
+    body.dark .stat-card h3{
+      color:#edf7ff;
+    }
+
+    .stat-card p{
+
+      color:var(--ink-mut);
+
+      font-size:10px;
+
+      font-weight:600;
+    }
+
+
+    /* =========================================================
+       DASHBOARD GRID
+    ========================================================= */
+
+    .dashboard-grid{
+
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:18px;
+
+      margin-bottom:20px;
+    }
+
+    .card{
+
+      background:
+        var(--white);
+
+      border:
+        1px solid
+        rgba(58,135,216,.12);
+
+      border-radius:22px;
+
+      box-shadow:
+        var(--soft-shadow);
+
+      padding:24px;
+
+      transition:
+        background .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .card-header{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:15px;
+
+      margin-bottom:18px;
+    }
+
+    .card-header h2{
+
+      font-family:
+        "Fraunces",
+        serif;
+
+      color:var(--blue-900);
+
+      font-size:20px;
+
+      font-weight:600;
+    }
+
+    body.dark .card-header h2{
+      color:#edf7ff;
+    }
+
+    .card-header span{
+
+      color:var(--ink-mut);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+
+      text-transform:uppercase;
+
+      letter-spacing:.5px;
+    }
+
+
+    /* =========================================================
+       CHART
+    ========================================================= */
+
+    .chart-wrapper{
+
+      min-height:250px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+    }
+
+    .chart{
+
+      position:relative;
+
+      width:185px;
+      height:185px;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      border-radius:50%;
+
+      background:
+        var(--sky-100);
+
+      box-shadow:
+        0 10px 30px
+        rgba(37,107,184,.08);
+    }
+
+    .chart::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:115px;
+      height:115px;
+
+      border-radius:50%;
+
+      background:
+        var(--white);
+    }
+
+    .chart-center{
+
+      position:relative;
+
+      z-index:2;
+
+      text-align:center;
+    }
+
+    .chart-center strong{
+
+      display:block;
+
+      font-family:
+        "Fraunces",
+        serif;
+
+      font-size:30px;
+
+      line-height:1;
+
+      color:var(--blue-900);
+    }
+
+    body.dark .chart-center strong{
+      color:#edf7ff;
+    }
+
+    .chart-center span{
+
+      display:block;
+
+      margin-top:5px;
+
+      color:var(--ink-mut);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+
+      text-transform:uppercase;
+    }
+
+
+    /* =========================================================
+       LEGEND
+    ========================================================= */
+
+    .legend{
+
+      display:grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:10px;
+
+      margin-top:18px;
+    }
+
+    .legend-item{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      padding:
+        9px 11px;
+
+      border-radius:10px;
+
+      background:
+        var(--sky-50);
+
+      border:
+        1px solid
+        rgba(58,135,216,.08);
+
+      font-size:10px;
+    }
+
+    .legend-left{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:7px;
+    }
+
+    .legend-dot{
+
+      width:8px;
+      height:8px;
+
+      border-radius:50%;
+    }
+
+    .dot-baru{
+      background:#3a87d8;
+    }
+
+    .dot-diproses{
+      background:#22b99d;
+    }
+
+    .dot-selesai{
+      background:#e6ac36;
+    }
+
+    .dot-ditolak{
+      background:#d94b5b;
+    }
+
+
+    /* =========================================================
+       LATEST LIST
+    ========================================================= */
+
+    .latest-list{
+
+      display:flex;
+
+      flex-direction:column;
+
+      gap:9px;
+    }
+
+    .latest-item{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:15px;
+
+      padding:
+        13px;
+
+      border-radius:13px;
+
+      background:
+        var(--sky-50);
+
+      border:
+        1px solid
+        rgba(58,135,216,.09);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+    }
+
+    .latest-item:hover{
+
+      transform:translateX(2px);
+
+      border-color:
+        rgba(58,135,216,.2);
+    }
+
+    .latest-info{
+
+      min-width:0;
+    }
+
+    .latest-info strong{
+
+      display:block;
+
+      color:var(--ink);
+
+      font-size:11px;
+
+      white-space:nowrap;
+
+      overflow:hidden;
+
+      text-overflow:ellipsis;
+    }
+
+    .latest-info span{
+
+      display:block;
+
+      margin-top:3px;
+
+      color:var(--ink-mut);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+    }
+
+
+    /* =========================================================
+       STATUS BADGE
+    ========================================================= */
+
+    .status-badge{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:
+        5px 9px;
+
+      border-radius:999px;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+
+      font-weight:600;
+
+      text-transform:capitalize;
+
+      white-space:nowrap;
+    }
+
+    .status-baru{
+
+      color:#256bb8;
+
+      background:#dcecff;
+    }
+
+    .status-diproses{
+
+      color:#087b68;
+
+      background:#d8f7f0;
+    }
+
+    .status-selesai{
+
+      color:#96640c;
+
+      background:#fff0c8;
+    }
+
+    .status-ditolak{
+
+      color:#b93646;
+
+      background:#ffe0e4;
+    }
+
+
+    /* =========================================================
+       TABLE CARD
+    ========================================================= */
+
+    .table-card{
+
+      padding:0;
+
+      overflow:hidden;
+    }
+
+    .table-header{
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:20px;
+
+      padding:24px;
+
+      border-bottom:
+        1px solid
+        rgba(58,135,216,.1);
+    }
+
+    .table-header h2{
+
+      color:var(--blue-900);
+
+      font-family:
+        "Fraunces",
+        serif;
+
+      font-size:21px;
+
+      font-weight:600;
+    }
+
+    body.dark .table-header h2{
+      color:#edf7ff;
+    }
+
+    .table-header p{
+
+      margin-top:3px;
+
+      color:var(--ink-mut);
+
+      font-size:10px;
+    }
+
+
+    /* =========================================================
+       SEARCH
+    ========================================================= */
+
+    .search-box{
+
+      position:relative;
+
+      width:250px;
+    }
+
+    .search-box i{
+
+      position:absolute;
+
+      left:13px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      color:var(--ink-mut);
+
+      font-size:11px;
+    }
+
+    .search-box input{
+
+      width:100%;
+
+      height:40px;
+
+      padding:
+        0 13px 0 34px;
+
+      border:
+        1px solid
+        rgba(58,135,216,.14);
+
+      border-radius:11px;
+
+      outline:none;
+
+      background:
+        var(--sky-50);
+
+      color:var(--ink);
+
+      font-size:10px;
+
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .search-box input:focus{
+
+      border-color:
+        var(--blue-400);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(58,135,216,.1);
+    }
+
+
+    /* =========================================================
+       TABLE
+    ========================================================= */
+
+    .table-container{
+
+      width:100%;
+
+      overflow-x:auto;
+    }
+
+    table{
+
+      width:100%;
+
+      min-width:900px;
+
+      border-collapse:collapse;
+    }
+
+    thead{
+
+      background:
+        var(--sky-50);
+    }
+
+    th{
+
+      padding:
+        13px 15px;
+
+      color:var(--ink-mut);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+
+      font-weight:600;
+
+      letter-spacing:.6px;
+
+      text-align:left;
+
+      text-transform:uppercase;
+
+      white-space:nowrap;
+    }
+
+    td{
+
+      padding:
+        14px 15px;
+
+      border-top:
+        1px solid
+        rgba(58,135,216,.08);
+
+      color:var(--ink);
+
+      font-size:10px;
+
+      vertical-align:middle;
+    }
+
+    tbody tr{
+
+      transition:
+        background .2s ease;
+    }
+
+    tbody tr:hover{
+
+      background:
+        rgba(58,135,216,.035);
+    }
+
+    .kode{
+
+      color:var(--blue-600);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:9px;
+
+      font-weight:600;
+
+      white-space:nowrap;
+    }
+
+    .nama{
+
+      font-weight:700;
+    }
+
+    .judul{
+
+      max-width:220px;
+
+      white-space:nowrap;
+
+      overflow:hidden;
+
+      text-overflow:ellipsis;
+    }
+
+    .tanggal{
+
+      color:var(--ink-mut);
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+
+      white-space:nowrap;
+    }
+
+
+    /* =========================================================
+       ACTION BUTTONS
+    ========================================================= */
+
+    .action-buttons{
+
+      display:flex;
+
+      gap:5px;
+    }
+
+    .action-btn{
+
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:5px;
+
+      padding:
+        7px 9px;
+
+      border-radius:8px;
+
+      font-size:8px;
+
+      font-weight:700;
+
+      cursor:pointer;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .detail-btn{
+
+      color:var(--blue-600);
+
+      background:
+        rgba(58,135,216,.1);
+    }
+
+    .delete-btn{
+
+      color:#c0394a;
+
+      background:
+        rgba(217,75,91,.1);
+    }
+
+    .action-btn:hover{
+
+      transform:translateY(-1px);
+    }
+
+
+    /* =========================================================
+       EMPTY / LOADING
+    ========================================================= */
+
+    .empty{
+
+      padding:
+        50px 20px;
+
+      text-align:center;
+
+      color:var(--ink-mut);
+
+      font-size:10px;
+    }
+
+    .empty i{
+
+      display:block;
+
+      margin-bottom:10px;
+
+      font-size:28px;
+
+      opacity:.4;
+    }
+
+    .loading{
+
+      padding:
+        50px 20px;
+
+      text-align:center;
+
+      color:var(--ink-mut);
+
+      font-size:10px;
+    }
+
+    .loading i{
+
+      display:block;
+
+      margin-bottom:10px;
+
+      font-size:24px;
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    .toast{
+
+      position:fixed;
+
+      right:20px;
+      bottom:20px;
+
+      z-index:3000;
+
+      max-width:360px;
+
+      padding:
+        13px 18px;
+
+      border-radius:13px;
+
+      color:#fff;
+
+      background:
+        var(--blue-900);
+
+      font-size:10px;
+
+      box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.2);
+
+      transform:
+        translateY(100px);
+
+      opacity:0;
+
+      pointer-events:none;
+
+      transition:
+        .3s ease;
+    }
+
+    .toast.show{
+
+      transform:
+        translateY(0);
+
+      opacity:1;
+    }
+
+    .toast.error{
+
+      background:
+        var(--red-dark);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer{
+
+      margin-top:30px;
+
+      padding:
+        35px 0;
+
+      color:#b8cce0;
+
+      background:
+        var(--blue-900);
+
+      text-align:center;
+
+      font-family:
+        "IBM Plex Mono",
+        monospace;
+
+      font-size:8px;
+
+      letter-spacing:.5px;
+    }
+
+
+    /* =========================================================
+       MOBILE NAV
+    ========================================================= */
+
+    .mobile-menu-btn{
+
+      display:none;
+
+      width:40px;
+      height:40px;
+
+      align-items:center;
+      justify-content:center;
+
+      border-radius:12px;
+
+      color:var(--blue-700);
+
+      background:
+        var(--sky-100);
+
+      cursor:pointer;
+
+      font-size:14px;
+    }
+
+    body.dark .mobile-menu-btn{
+
+      color:#fff;
+
+      background:
+        rgba(255,255,255,.08);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE 1050
+    ========================================================= */
+
+    @media(max-width:1050px){
+
+      .chapters > a{
+
+        padding:
+          9px 9px;
+
+        font-size:10px;
       }
 
+      .nav-cta{
 
-      .login-card{
+        padding:
+          11px 13px;
+      }
 
-        padding:24px;
+      .stats-grid{
+
+        grid-template-columns:
+          repeat(3,1fr);
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE 850
+    ========================================================= */
+
+    @media(max-width:850px){
+
+      .topbar{
+
+        position:sticky;
 
         border-radius:20px;
 
+        padding:
+          10px 12px
+          10px 18px;
       }
 
+      .chapters{
 
-      .brand h1{
+        position:absolute;
 
-        font-size:31px;
+        top:78px;
 
+        left:0;
+
+        right:0;
+
+        display:none;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        padding:10px;
+
+        border-radius:18px;
+
+        background:
+          rgba(255,255,255,.96);
+
+        border:
+          1px solid
+          rgba(58,135,216,.12);
+
+        box-shadow:
+          var(--shadow-blue);
+
+        backdrop-filter:blur(18px);
       }
 
+      body.dark .chapters{
+
+        background:
+          rgba(16,42,69,.97);
+      }
+
+      .chapters.show{
+
+        display:flex;
+      }
+
+      .chapters > a{
+
+        width:100%;
+
+        justify-content:flex-start;
+
+        padding:
+          12px 14px;
+
+        border-radius:11px;
+      }
+
+      .nav-cta{
+
+        display:none;
+      }
+
+      .mobile-menu-btn{
+
+        display:flex;
+      }
+
+      .dashboard-grid{
+
+        grid-template-columns:1fr;
+      }
+
+      .top-bar{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+      }
+
+      .admin-actions{
+
+        width:100%;
+
+        justify-content:flex-start;
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE 650
+    ========================================================= */
+
+    @media(max-width:650px){
+
+      .container{
+
+        width:
+          calc(100% - 28px);
+      }
+
+      .topbar{
+
+        width:
+          calc(100% - 28px);
+
+        margin-top:14px;
+      }
+
+      .brand{
+
+        font-size:18px;
+      }
+
+      .page-header{
+
+        padding:
+          75px 0 45px;
+      }
+
+      .page-header h1{
+
+        font-size:
+          clamp(
+            42px,
+            14vw,
+            62px
+          );
+
+        letter-spacing:-2px;
+      }
+
+      .page-header p{
+
+        font-size:12px;
+      }
+
+      .stats-grid{
+
+        grid-template-columns:
+          1fr 1fr;
+
+        gap:10px;
+      }
+
+      .stat-card{
+
+        padding:16px;
+      }
+
+      .stat-card h3{
+
+        font-size:25px;
+      }
+
+      .card{
+
+        padding:18px;
+
+        border-radius:18px;
+      }
+
+      .table-header{
+
+        padding:18px;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+      }
+
+      .search-box{
+
+        width:100%;
+      }
+
+      .admin-actions{
+
+        display:grid;
+
+        grid-template-columns:
+          1fr 1fr;
+
+        width:100%;
+      }
+
+      .admin-action,
+      .refresh-btn{
+
+        width:100%;
+      }
+
+      .refresh-btn{
+
+        grid-column:
+          1 / -1;
+      }
+
+      .legend{
+
+        grid-template-columns:1fr;
+      }
+
+      .toast{
+
+        left:14px;
+
+        right:14px;
+
+        bottom:14px;
+
+        max-width:none;
+
+        text-align:center;
+      }
+    }
+
+
+    /* =========================================================
+       RESPONSIVE 430
+    ========================================================= */
+
+    @media(max-width:430px){
+
+      .stats-grid{
+
+        grid-template-columns:1fr;
+      }
+
+      .admin-actions{
+
+        grid-template-columns:1fr;
+      }
+
+      .refresh-btn{
+
+        grid-column:auto;
+      }
+
+      .chart{
+
+        width:165px;
+        height:165px;
+      }
+
+      .chart::before{
+
+        width:103px;
+        height:103px;
+      }
     }
 
   </style>
@@ -276,91 +2074,2110 @@
 <body>
 
 
-  <main class="login-wrap">
+  <!-- =======================================================
+       NAVBAR
+  ======================================================== -->
+
+  <header class="topbar">
+
+    <a href="index.html" class="brand">
+
+      SEMPARUK
+
+      <small>
+        Panel Administrasi
+      </small>
+
+    </a>
 
 
-    <div class="brand">
+    <nav class="chapters" id="chapters">
 
-      <span class="brand-number">
-        ADMIN · 06
+      <a href="index.html">
+        <span class="n">01</span>
+        Beranda
+      </a>
+
+      <a href="profil.html">
+        <span class="n">02</span>
+        Profil
+      </a>
+
+      <a href="galeri.html">
+        <span class="n">03</span>
+        Galeri
+      </a>
+
+      <a href="peta.html">
+        <span class="n">04</span>
+        Peta
+      </a>
+
+      <a href="kontak.html">
+        <span class="n">05</span>
+        Kontak
+      </a>
+
+      <a
+        href="pengaduan.html"
+        class="nav-complaint"
+      >
+        <span class="n">06</span>
+        Pengaduan
+      </a>
+
+      <a
+        href="admin.html"
+        class="nav-admin active"
+      >
+        <span class="n">07</span>
+        Admin 🔐
+      </a>
+
+    </nav>
+
+
+    <button
+      type="button"
+      class="nav-cta"
+      onclick="window.location.href='peta.html'"
+    >
+
+      Lihat Peta
+
+      <span class="arrow">
+        ↗
       </span>
 
+    </button>
+
+
+    <button
+      type="button"
+      class="mobile-menu-btn"
+      onclick="toggleMenu()"
+      title="Menu"
+    >
+
+      <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+  </header>
+
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <section class="page-header">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        SEMPARUK · ADMINISTRASI
+      </div>
 
       <h1>
-        Desa Semparuk
+        Dashboard
+        <span>Pengaduan.</span>
       </h1>
 
-
       <p>
-        Panel pengelolaan website desa
+        Kelola, pantau, dan tindak lanjuti laporan
+        pengaduan warga Desa Semparuk Sutera
+        melalui satu dashboard administrasi.
       </p>
 
     </div>
 
-
-    <section class="login-card">
-
-
-      <div class="card-title">
-
-        <h2>
-          Masuk sebagai Admin
-        </h2>
+  </section>
 
 
-        <p>
-          Silakan masukkan akun admin untuk melanjutkan.
-        </p>
+
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
+  <main class="main">
+
+    <div class="container">
+
+
+      <!-- TOP BAR -->
+
+      <div class="top-bar">
+
+        <div class="top-bar-left">
+
+          <h2>
+            Ringkasan Pengaduan
+          </h2>
+
+          <p id="lastUpdate">
+            Memuat data...
+          </p>
+
+        </div>
+
+
+        <div class="admin-actions">
+
+          <a
+            href="index.html"
+            class="admin-action website"
+            title="Kembali ke website"
+          >
+
+            <i class="fa-solid fa-globe"></i>
+
+            Lihat Website
+
+          </a>
+
+
+          <button
+            onclick="logoutAdmin()"
+            class="admin-action logout"
+            title="Logout"
+          >
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+          </button>
+
+
+          <button
+            class="refresh-btn"
+            id="refreshBtn"
+            onclick="loadData()"
+            title="Refresh data"
+          >
+
+            <i class="fa-solid fa-rotate"></i>
+
+            Refresh Data
+
+          </button>
+
+        </div>
 
       </div>
 
 
-      <iframe
-        id="loginFrame"
-        src="https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec"
-        title="Login Admin"
-      ></iframe>
+
+      <!-- ===================================================
+           STATISTICS
+      ==================================================== -->
+
+      <div class="stats-grid">
 
 
-      <a
-        href="index.html"
-        class="back"
-      >
-        ← Kembali ke website
-      </a>
+        <!-- TOTAL -->
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-inbox"></i>
+
+          </div>
+
+          <h3 id="totalCount">
+            0
+          </h3>
+
+          <p>
+            Total Pengaduan
+          </p>
+
+        </div>
 
 
-    </section>
+        <!-- BARU -->
 
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-bell"></i>
+
+          </div>
+
+          <h3 id="baruCount">
+            0
+          </h3>
+
+          <p>
+            Pengaduan Baru
+          </p>
+
+        </div>
+
+
+        <!-- DIPROSES -->
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-spinner"></i>
+
+          </div>
+
+          <h3 id="diprosesCount">
+            0
+          </h3>
+
+          <p>
+            Sedang Diproses
+          </p>
+
+        </div>
+
+
+        <!-- SELESAI -->
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+          </div>
+
+          <h3 id="selesaiCount">
+            0
+          </h3>
+
+          <p>
+            Selesai
+          </p>
+
+        </div>
+
+
+        <!-- DITOLAK -->
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+          </div>
+
+          <h3 id="ditolakCount">
+            0
+          </h3>
+
+          <p>
+            Ditolak
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ===================================================
+           DASHBOARD
+      ==================================================== -->
+
+      <div class="dashboard-grid">
+
+
+        <!-- STATUS -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h2>
+              Status Pengaduan
+            </h2>
+
+            <span>
+              Statistik saat ini
+            </span>
+
+          </div>
+
+
+          <div class="chart-wrapper">
+
+            <div
+              class="chart"
+              id="statusChart"
+            >
+
+              <div class="chart-center">
+
+                <strong id="chartTotal">
+                  0
+                </strong>
+
+                <span>
+                  Pengaduan
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="legend">
+
+
+            <div class="legend-item">
+
+              <div class="legend-left">
+
+                <div class="legend-dot dot-baru"></div>
+
+                Baru
+
+              </div>
+
+              <strong id="legendBaru">
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="legend-item">
+
+              <div class="legend-left">
+
+                <div class="legend-dot dot-diproses"></div>
+
+                Diproses
+
+              </div>
+
+              <strong id="legendDiproses">
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="legend-item">
+
+              <div class="legend-left">
+
+                <div class="legend-dot dot-selesai"></div>
+
+                Selesai
+
+              </div>
+
+              <strong id="legendSelesai">
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="legend-item">
+
+              <div class="legend-left">
+
+                <div class="legend-dot dot-ditolak"></div>
+
+                Ditolak
+
+              </div>
+
+              <strong id="legendDitolak">
+                0
+              </strong>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TERBARU -->
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <h2>
+              Pengaduan Terbaru
+            </h2>
+
+            <span>
+              5 terakhir
+            </span>
+
+          </div>
+
+
+          <div
+            class="latest-list"
+            id="latestList"
+          >
+
+            <div class="loading">
+
+              <i class="fa-solid fa-spinner fa-spin"></i>
+
+              <div>
+                Memuat data...
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ===================================================
+           TABLE
+      ==================================================== -->
+
+      <div class="card table-card">
+
+
+        <div class="table-header">
+
+          <div>
+
+            <h2>
+              Kelola Pengaduan Warga
+            </h2>
+
+            <p>
+              Daftar seluruh laporan yang masuk.
+            </p>
+
+          </div>
+
+
+          <div class="search-box">
+
+            <i class="fa-solid fa-search"></i>
+
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Cari kode, nama, judul..."
+              oninput="renderTable()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="table-container"
+          id="tableContainer"
+        >
+
+          <div class="loading">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <div>
+              Mengambil data dari Google Sheets...
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
 
   </main>
 
 
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      © 2026 Desa Semparuk —
+      Panel Administrasi Pengaduan
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =======================================================
+       TOAST
+  ======================================================== -->
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
   <script>
 
-    window.addEventListener(
-      "message",
-      function(event){
 
-        const data = event.data;
+    /* =======================================================
+       CEK LOGIN
+    ======================================================== */
+
+    if(
+      sessionStorage.getItem("adminLoggedIn")
+      !==
+      "true"
+    ){
+
+      window.location.href =
+        "login.html";
+
+    }
 
 
-        if(
-          data &&
-          data.type === "ADMIN_LOGIN" &&
-          data.success === true
-        ){
 
-          sessionStorage.setItem(
-            "adminLoggedIn",
-            "true"
+    /* =======================================================
+       API
+    ======================================================== */
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbweigKGIJxlnpFByo9EWOjoKm6jBz40XsMdqUSoGEY8jId5uw1I6D0JTRY6l2okatWseA/exec";
+
+
+
+    /* =======================================================
+       DATA
+    ======================================================== */
+
+    let complaints = [];
+
+
+
+    /* =======================================================
+       NAVBAR
+    ======================================================== */
+
+    function toggleMenu(){
+
+      const chapters =
+        document.getElementById(
+          "chapters"
+        );
+
+      chapters.classList.toggle(
+        "show"
+      );
+
+    }
+
+
+
+    /* =======================================================
+       DARK MODE
+    ======================================================== */
+
+    function toggleTheme(){
+
+      document.body.classList.toggle(
+        "dark"
+      );
+
+      const icon =
+        document.querySelector(
+          "#themeBtn i"
+        );
+
+      if(
+        document.body.classList.contains(
+          "dark"
+        )
+      ){
+
+        if(icon){
+          icon.className =
+            "fa-solid fa-sun";
+        }
+
+        localStorage.setItem(
+          "theme",
+          "dark"
+        );
+
+      }else{
+
+        if(icon){
+          icon.className =
+            "fa-solid fa-moon";
+        }
+
+        localStorage.setItem(
+          "theme",
+          "light"
+        );
+
+      }
+
+    }
+
+
+
+    /* =======================================================
+       LOAD THEME
+    ======================================================== */
+
+    if(
+      localStorage.getItem(
+        "theme"
+      )
+      ===
+      "dark"
+    ){
+
+      document.body.classList.add(
+        "dark"
+      );
+
+    }
+
+
+
+    /* =======================================================
+       LOGOUT
+    ======================================================== */
+
+    function logoutAdmin(){
+
+      const yakin =
+        confirm(
+          "Apakah kamu yakin ingin logout dari panel admin?"
+        );
+
+      if(!yakin){
+
+        return;
+
+      }
+
+      sessionStorage.removeItem(
+        "adminLoggedIn"
+      );
+
+      window.location.href =
+        "login.html";
+
+    }
+
+
+
+    /* =======================================================
+       LOAD DATA
+    ======================================================== */
+
+    function loadData(){
+
+      const refreshBtn =
+        document.getElementById(
+          "refreshBtn"
+        );
+
+      refreshBtn.disabled =
+        true;
+
+      refreshBtn.innerHTML = `
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        Memuat...
+      `;
+
+
+      requestJSONP(
+
+        {
+          action:"semua"
+        },
+
+
+        function(response){
+
+          refreshBtn.disabled =
+            false;
+
+          refreshBtn.innerHTML = `
+            <i class="fa-solid fa-rotate"></i>
+            Refresh Data
+          `;
+
+
+          if(
+            !response ||
+            !response.success
+          ){
+
+            showToast(
+              response?.message ||
+              "Gagal mengambil data.",
+              true
+            );
+
+            return;
+
+          }
+
+
+          complaints =
+            Array.isArray(
+              response.data
+            )
+              ? response.data
+              : [];
+
+
+          updateDashboard();
+
+          renderTable();
+
+
+          document.getElementById(
+            "lastUpdate"
+          ).textContent =
+            "Terakhir diperbarui: " +
+            new Date()
+              .toLocaleString(
+                "id-ID"
+              );
+
+        },
+
+
+        function(){
+
+          refreshBtn.disabled =
+            false;
+
+          refreshBtn.innerHTML = `
+            <i class="fa-solid fa-rotate"></i>
+            Refresh Data
+          `;
+
+
+          showToast(
+            "Google Apps Script sedang lambat. Coba refresh lagi beberapa saat.",
+            true
+          );
+
+        },
+
+        3
+
+      );
+
+    }
+
+
+
+    /* =======================================================
+       JSONP
+    ======================================================== */
+
+    function requestJSONP(
+      params,
+      onSuccess,
+      onError,
+      maxRetries
+    ){
+
+      maxRetries =
+        maxRetries || 3;
+
+      let attempt = 0;
+
+
+      function run(){
+
+        attempt++;
+
+
+        const callbackName =
+          "adminJSONP_" +
+          Date.now() +
+          "_" +
+          Math.random()
+            .toString(36)
+            .substring(2,8);
+
+
+        const script =
+          document.createElement(
+            "script"
           );
 
 
-          window.location.href =
-            "dashboard.html";
+        script.id =
+          callbackName;
+
+
+        let finished =
+          false;
+
+
+        function cleanup(){
+
+          clearTimeout(
+            timeout
+          );
+
+
+          if(
+            script.parentNode
+          ){
+
+            script.parentNode
+              .removeChild(
+                script
+              );
+
+          }
+
+
+          delete window[
+            callbackName
+          ];
 
         }
+
+
+        function fail(){
+
+          if(finished){
+
+            return;
+
+          }
+
+
+          finished =
+            true;
+
+
+          cleanup();
+
+
+          if(
+            attempt <
+            maxRetries
+          ){
+
+            setTimeout(
+              run,
+              700 * attempt
+            );
+
+          }else{
+
+            onError(
+              new Error(
+                "Google Apps Script tidak merespons."
+              )
+            );
+
+          }
+
+        }
+
+
+        const timeout =
+          setTimeout(
+            fail,
+            8000
+          );
+
+
+        window[
+          callbackName
+        ] =
+        function(response){
+
+          if(finished){
+
+            return;
+
+          }
+
+
+          finished =
+            true;
+
+
+          cleanup();
+
+
+          onSuccess(
+            response
+          );
+
+        };
+
+
+        const query =
+          new URLSearchParams();
+
+
+        Object.keys(
+          params
+        ).forEach(
+          function(key){
+
+            query.append(
+              key,
+              params[key]
+            );
+
+          }
+        );
+
+
+        query.append(
+          "callback",
+          callbackName
+        );
+
+
+        query.append(
+          "_",
+          Date.now()
+        );
+
+
+        script.src =
+          API_URL +
+          "?" +
+          query.toString();
+
+
+        script.onerror =
+          fail;
+
+
+        document.body.appendChild(
+          script
+        );
+
+      }
+
+
+      run();
+
+    }
+
+
+
+    /* =======================================================
+       UPDATE DASHBOARD
+    ======================================================== */
+
+    function updateDashboard(){
+
+      const total =
+        complaints.length;
+
+
+      let baru = 0;
+
+      let diproses = 0;
+
+      let selesai = 0;
+
+      let ditolak = 0;
+
+
+      complaints.forEach(
+        function(item){
+
+          const status =
+            String(
+              item.status ||
+              "baru"
+            )
+            .toLowerCase()
+            .trim();
+
+
+          if(
+            status === "baru"
+          ){
+
+            baru++;
+
+          }else if(
+            status === "diproses"
+          ){
+
+            diproses++;
+
+          }else if(
+            status === "selesai"
+          ){
+
+            selesai++;
+
+          }else if(
+            status === "ditolak"
+          ){
+
+            ditolak++;
+
+          }
+
+        }
+      );
+
+
+      document.getElementById(
+        "totalCount"
+      ).textContent =
+        total;
+
+
+      document.getElementById(
+        "baruCount"
+      ).textContent =
+        baru;
+
+
+      document.getElementById(
+        "diprosesCount"
+      ).textContent =
+        diproses;
+
+
+      document.getElementById(
+        "selesaiCount"
+      ).textContent =
+        selesai;
+
+
+      document.getElementById(
+        "ditolakCount"
+      ).textContent =
+        ditolak;
+
+
+      document.getElementById(
+        "chartTotal"
+      ).textContent =
+        total;
+
+
+      document.getElementById(
+        "legendBaru"
+      ).textContent =
+        baru;
+
+
+      document.getElementById(
+        "legendDiproses"
+      ).textContent =
+        diproses;
+
+
+      document.getElementById(
+        "legendSelesai"
+      ).textContent =
+        selesai;
+
+
+      document.getElementById(
+        "legendDitolak"
+      ).textContent =
+        ditolak;
+
+
+      updateChart(
+        baru,
+        diproses,
+        selesai,
+        ditolak,
+        total
+      );
+
+
+      renderLatest();
+
+    }
+
+
+
+    /* =======================================================
+       UPDATE DONUT CHART
+    ======================================================== */
+
+    function updateChart(
+      baru,
+      diproses,
+      selesai,
+      ditolak,
+      total
+    ){
+
+      const chart =
+        document.getElementById(
+          "statusChart"
+        );
+
+
+      if(total === 0){
+
+        chart.style.background =
+          "var(--sky-100)";
+
+        return;
+
+      }
+
+
+      const baruDeg =
+        (baru / total) *
+        360;
+
+
+      const diprosesDeg =
+        (diproses / total) *
+        360;
+
+
+      const selesaiDeg =
+        (selesai / total) *
+        360;
+
+
+      const startDiproses =
+        baruDeg;
+
+
+      const endDiproses =
+        startDiproses +
+        diprosesDeg;
+
+
+      const startSelesai =
+        endDiproses;
+
+
+      const endSelesai =
+        startSelesai +
+        selesaiDeg;
+
+
+      const startDitolak =
+        endSelesai;
+
+
+      chart.style.background = `
+
+        conic-gradient(
+
+          #3a87d8
+          0deg
+          ${baruDeg}deg,
+
+          #22b99d
+          ${startDiproses}deg
+          ${endDiproses}deg,
+
+          #e6ac36
+          ${startSelesai}deg
+          ${endSelesai}deg,
+
+          #d94b5b
+          ${startDitolak}deg
+          360deg
+
+        )
+
+      `;
+
+    }
+
+
+
+    /* =======================================================
+       RENDER TERBARU
+    ======================================================== */
+
+    function renderLatest(){
+
+      const container =
+        document.getElementById(
+          "latestList"
+        );
+
+
+      if(
+        complaints.length === 0
+      ){
+
+        container.innerHTML = `
+
+          <div class="empty">
+
+            <i class="fa-solid fa-inbox"></i>
+
+            <div>
+              Belum ada pengaduan.
+            </div>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      const latest =
+        [...complaints]
+          .sort(
+            function(a,b){
+
+              return (
+                parseDate(
+                  b.tanggal
+                )
+                -
+                parseDate(
+                  a.tanggal
+                )
+              );
+
+            }
+          )
+          .slice(0,5);
+
+
+      container.innerHTML =
+        latest
+          .map(
+            function(item){
+
+              const status =
+                normalizeStatus(
+                  item.status
+                );
+
+
+              return `
+
+                <div class="latest-item">
+
+                  <div class="latest-info">
+
+                    <strong>
+                      ${escapeHTML(
+                        item.judul ||
+                        "-"
+                      )}
+                    </strong>
+
+                    <span>
+                      ${escapeHTML(
+                        item.kode ||
+                        "-"
+                      )}
+                      ·
+                      ${escapeHTML(
+                        item.nama ||
+                        "-"
+                      )}
+                    </span>
+
+                  </div>
+
+
+                  <span
+                    class="status-badge status-${status}"
+                  >
+                    ${escapeHTML(
+                      status
+                    )}
+                  </span>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join("");
+
+    }
+
+
+
+    /* =======================================================
+       RENDER TABLE
+    ======================================================== */
+
+    function renderTable(){
+
+      const container =
+        document.getElementById(
+          "tableContainer"
+        );
+
+
+      const search =
+        document
+          .getElementById(
+            "searchInput"
+          )
+          .value
+          .toLowerCase()
+          .trim();
+
+
+      let filtered =
+        complaints.filter(
+          function(item){
+
+            const text = [
+
+              item.kode,
+              item.nama,
+              item.kategori,
+              item.judul,
+              item.lokasi,
+              item.status
+
+            ]
+            .join(" ")
+            .toLowerCase();
+
+
+            return text.includes(
+              search
+            );
+
+          }
+        );
+
+
+      filtered =
+        filtered.sort(
+          function(a,b){
+
+            return (
+              parseDate(
+                b.tanggal
+              )
+              -
+              parseDate(
+                a.tanggal
+              )
+            );
+
+          }
+        );
+
+
+      if(
+        filtered.length === 0
+      ){
+
+        container.innerHTML = `
+
+          <div class="empty">
+
+            <i class="fa-solid fa-inbox"></i>
+
+            <div>
+
+              ${
+                complaints.length === 0
+                  ? "Belum ada pengaduan."
+                  : "Pengaduan tidak ditemukan."
+              }
+
+            </div>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      let html = `
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>No</th>
+
+              <th>Kode</th>
+
+              <th>Nama</th>
+
+              <th>Kategori</th>
+
+              <th>Judul</th>
+
+              <th>Tanggal</th>
+
+              <th>Status</th>
+
+              <th>Aksi</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+      `;
+
+
+      filtered.forEach(
+        function(item,index){
+
+          const status =
+            normalizeStatus(
+              item.status
+            );
+
+
+          html += `
+
+            <tr>
+
+              <td>
+                ${index + 1}
+              </td>
+
+
+              <td>
+
+                <span class="kode">
+                  ${escapeHTML(
+                    item.kode ||
+                    "-"
+                  )}
+                </span>
+
+              </td>
+
+
+              <td>
+
+                <span class="nama">
+                  ${escapeHTML(
+                    item.nama ||
+                    "-"
+                  )}
+                </span>
+
+              </td>
+
+
+              <td>
+                ${escapeHTML(
+                  item.kategori ||
+                  "-"
+                )}
+              </td>
+
+
+              <td>
+
+                <div
+                  class="judul"
+                  title="${escapeHTML(
+                    item.judul ||
+                    "-"
+                  )}"
+                >
+
+                  ${escapeHTML(
+                    item.judul ||
+                    "-"
+                  )}
+
+                </div>
+
+              </td>
+
+
+              <td>
+
+                <span class="tanggal">
+                  ${escapeHTML(
+                    item.tanggal ||
+                    "-"
+                  )}
+                </span>
+
+              </td>
+
+
+              <td>
+
+                <span
+                  class="status-badge status-${status}"
+                >
+
+                  ${escapeHTML(
+                    status
+                  )}
+
+                </span>
+
+              </td>
+
+
+              <td>
+
+                <div class="action-buttons">
+
+                  <button
+                    class="action-btn detail-btn"
+                    onclick="detailPengaduan('${escapeJS(item.id)}')"
+                  >
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    Detail
+
+                  </button>
+
+
+                  <button
+                    class="action-btn delete-btn"
+                    onclick="hapusPengaduan('${escapeJS(item.id)}')"
+                  >
+
+                    <i class="fa-solid fa-trash"></i>
+
+                    Hapus
+
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }
+      );
+
+
+      html += `
+
+          </tbody>
+
+        </table>
+
+      `;
+
+
+      container.innerHTML =
+        html;
+
+    }
+
+
+
+    /* =======================================================
+       DETAIL
+    ======================================================== */
+
+    function detailPengaduan(id){
+
+      if(!id){
+
+        return;
+
+      }
+
+
+      window.location.href =
+        "detail-pengaduan.html?id=" +
+        encodeURIComponent(id);
+
+    }
+
+
+
+    /* =======================================================
+       HAPUS
+    ======================================================== */
+
+    function hapusPengaduan(id){
+
+      const item =
+        complaints.find(
+          function(data){
+
+            return String(
+              data.id
+            )
+            ===
+            String(id);
+
+          }
+        );
+
+
+      if(!item){
+
+        showToast(
+          "Data tidak ditemukan.",
+          true
+        );
+
+        return;
+
+      }
+
+
+      const yakin =
+        confirm(
+
+          "Yakin ingin menghapus pengaduan " +
+          (item.kode || "") +
+          "?\n\nData yang dihapus tidak dapat dikembalikan."
+
+        );
+
+
+      if(!yakin){
+
+        return;
+
+      }
+
+
+      const formData =
+        new FormData();
+
+
+      formData.append(
+        "action",
+        "hapus"
+      );
+
+
+      formData.append(
+        "id",
+        id
+      );
+
+
+      showToast(
+        "Menghapus pengaduan..."
+      );
+
+
+      fetch(
+        API_URL,
+        {
+          method:"POST",
+
+          body:formData,
+
+          mode:"no-cors"
+        }
+      )
+      .then(
+        function(){
+
+          setTimeout(
+            function(){
+
+              loadData();
+
+              showToast(
+                "Pengaduan berhasil dihapus."
+              );
+
+            },
+            700
+          );
+
+        }
+      )
+      .catch(
+        function(error){
+
+          console.error(
+            error
+          );
+
+          showToast(
+            "Gagal menghapus pengaduan.",
+            true
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =======================================================
+       NORMALIZE STATUS
+    ======================================================== */
+
+    function normalizeStatus(
+      status
+    ){
+
+      const value =
+        String(
+          status ||
+          "baru"
+        )
+        .toLowerCase()
+        .trim();
+
+
+      const allowed = [
+
+        "baru",
+        "diproses",
+        "selesai",
+        "ditolak"
+
+      ];
+
+
+      if(
+        allowed.includes(
+          value
+        )
+      ){
+
+        return value;
+
+      }
+
+
+      return "baru";
+
+    }
+
+
+
+    /* =======================================================
+       PARSE DATE
+    ======================================================== */
+
+    function parseDate(
+      value
+    ){
+
+      if(!value){
+
+        return 0;
+
+      }
+
+
+      const match =
+        String(value).match(
+
+          /^(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2}):(\d{2}))?$/
+
+        );
+
+
+      if(!match){
+
+        const fallback =
+          Date.parse(value);
+
+
+        return isNaN(
+          fallback
+        )
+          ? 0
+          : fallback;
+
+      }
+
+
+      const day =
+        Number(
+          match[1]
+        );
+
+
+      const month =
+        Number(
+          match[2]
+        ) - 1;
+
+
+      const year =
+        Number(
+          match[3]
+        );
+
+
+      const hour =
+        Number(
+          match[4] || 0
+        );
+
+
+      const minute =
+        Number(
+          match[5] || 0
+        );
+
+
+      return new Date(
+        year,
+        month,
+        day,
+        hour,
+        minute
+      ).getTime();
+
+    }
+
+
+
+    /* =======================================================
+       ESCAPE HTML
+    ======================================================== */
+
+    function escapeHTML(
+      value
+    ){
+
+      return String(
+        value ?? ""
+      )
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+
+    }
+
+
+
+    /* =======================================================
+       ESCAPE JAVASCRIPT
+    ======================================================== */
+
+    function escapeJS(
+      value
+    ){
+
+      return String(
+        value ?? ""
+      )
+      .replace(
+        /\\/g,
+        "\\\\"
+      )
+      .replace(
+        /'/g,
+        "\\'"
+      )
+      .replace(
+        /\n/g,
+        "\\n"
+      )
+      .replace(
+        /\r/g,
+        "\\r"
+      );
+
+    }
+
+
+
+    /* =======================================================
+       CLEANUP JSONP
+    ======================================================== */
+
+    function cleanupJSONP(
+      callbackName
+    ){
+
+      const script =
+        document.getElementById(
+          callbackName
+        );
+
+
+      if(script){
+
+        script.remove();
+
+      }
+
+
+      delete window[
+        callbackName
+      ];
+
+    }
+
+
+
+    /* =======================================================
+       TOAST
+    ======================================================== */
+
+    function showToast(
+      message,
+      error = false
+    ){
+
+      const toast =
+        document.getElementById(
+          "toast"
+        );
+
+
+      toast.textContent =
+        message;
+
+
+      toast.classList.toggle(
+        "error",
+        error
+      );
+
+
+      toast.classList.add(
+        "show"
+      );
+
+
+      setTimeout(
+        function(){
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },
+        3000
+      );
+
+    }
+
+
+
+    /* =======================================================
+       CLOSE MOBILE MENU
+    ======================================================== */
+
+    document.addEventListener(
+      "click",
+      function(event){
+
+        const chapters =
+          document.getElementById(
+            "chapters"
+          );
+
+        const menuButton =
+          document.querySelector(
+            ".mobile-menu-btn"
+          );
+
+
+        if(
+          window.innerWidth <= 850 &&
+          chapters.classList.contains(
+            "show"
+          ) &&
+          !chapters.contains(
+            event.target
+          ) &&
+          !menuButton.contains(
+            event.target
+          )
+        ){
+
+          chapters.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+
+
+    /* =======================================================
+       LOAD DATA
+    ======================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function(){
+
+        loadData();
 
       }
     );
@@ -369,5 +4186,4 @@
 
 
 </body>
-
 </html>

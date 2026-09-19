@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Admin — Desa Semparuk</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
 
   <style>
+
     :root{
       --white:#ffffff;
       --sky-50:#f4f9ff;
@@ -25,17 +44,24 @@
       --danger:#d65c5c;
     }
 
+
     *{
       box-sizing:border-box;
     }
 
+
     body{
+
       margin:0;
+
       min-height:100vh;
+
       padding:24px;
 
       display:flex;
+
       align-items:center;
+
       justify-content:center;
 
       background:
@@ -47,134 +73,207 @@
         var(--sky-50);
 
       color:var(--text);
+
       font-family:'Inter',sans-serif;
+
     }
+
 
     .login-wrap{
+
       width:100%;
+
       max-width:430px;
+
     }
+
 
     .brand{
+
       text-align:center;
+
       margin-bottom:24px;
+
     }
 
+
     .brand-number{
+
       display:block;
+
       margin-bottom:8px;
 
       color:var(--blue-400);
 
       font-family:'IBM Plex Mono',monospace;
+
       font-size:11px;
+
       letter-spacing:1px;
+
     }
 
+
     .brand h1{
+
       margin:0;
 
       color:var(--blue-600);
 
       font-family:'Fraunces',serif;
+
       font-size:36px;
+
       font-weight:600;
+
     }
 
+
     .brand p{
+
       margin:8px 0 0;
 
       color:var(--muted);
+
       font-size:14px;
+
     }
 
+
     .login-card{
+
       padding:30px;
 
       background:rgba(255,255,255,.94);
 
       border:1px solid var(--sky-200);
+
       border-radius:24px;
 
       box-shadow:
         0 18px 45px rgba(37,107,184,.10);
+
     }
+
 
     .card-title{
+
       margin-bottom:24px;
+
     }
 
+
     .card-title h2{
+
       margin:0 0 6px;
 
       color:var(--blue-600);
 
       font-family:'Fraunces',serif;
+
       font-size:25px;
+
     }
 
+
     .card-title p{
+
       margin:0;
 
       color:var(--muted);
+
       font-size:13px;
+
       line-height:1.6;
+
     }
+
 
     .field{
+
       margin-bottom:17px;
+
     }
 
+
     .field label{
+
       display:block;
+
       margin-bottom:8px;
 
       color:var(--text);
+
       font-size:13px;
+
       font-weight:600;
+
     }
 
+
     .field input{
+
       width:100%;
+
       padding:13px 14px;
 
       border:1px solid var(--sky-200);
+
       border-radius:12px;
 
       outline:none;
 
       background:var(--sky-50);
+
       color:var(--text);
 
       font-family:'Inter',sans-serif;
+
       font-size:14px;
 
       transition:.25s;
+
     }
 
+
     .field input:focus{
+
       border-color:var(--blue-400);
+
       background:var(--white);
 
       box-shadow:
         0 0 0 3px rgba(93,165,232,.12);
+
     }
+
 
     .password-box{
+
       position:relative;
+
     }
+
 
     .password-box input{
+
       padding-right:75px;
+
     }
 
+
     .toggle-password{
+
       position:absolute;
+
       right:12px;
+
       top:50%;
+
       transform:translateY(-50%);
 
       border:0;
+
       background:none;
 
       color:var(--blue-500);
@@ -182,94 +281,147 @@
       cursor:pointer;
 
       font-family:'IBM Plex Mono',monospace;
+
       font-size:10px;
+
     }
 
+
     .login-btn{
+
       width:100%;
+
       margin-top:5px;
+
       padding:14px;
 
       border:0;
+
       border-radius:12px;
 
       background:var(--blue-600);
+
       color:white;
 
       font-family:'Inter',sans-serif;
+
       font-size:14px;
+
       font-weight:600;
 
       cursor:pointer;
 
       transition:.25s;
+
     }
+
 
     .login-btn:hover{
+
       background:var(--blue-500);
+
       transform:translateY(-1px);
+
     }
+
 
     .login-btn:disabled{
+
       opacity:.65;
+
       cursor:not-allowed;
+
       transform:none;
+
     }
 
+
     .status{
+
       min-height:20px;
+
       margin-top:15px;
 
       text-align:center;
+
       font-size:13px;
+
     }
 
+
     .back{
+
       display:block;
+
       margin-top:20px;
 
       color:var(--muted);
 
       text-align:center;
+
       text-decoration:none;
 
       font-size:12px;
+
     }
+
 
     .back:hover{
+
       color:var(--blue-600);
+
     }
 
-    /* Iframe untuk komunikasi dengan Apps Script */
+
     #loginFrame{
+
       display:none;
+
       width:0;
+
       height:0;
+
       border:0;
+
     }
+
 
     @media(max-width:480px){
 
       body{
+
         padding:18px;
+
       }
+
 
       .login-card{
+
         padding:24px;
+
         border-radius:20px;
+
       }
 
+
       .brand h1{
+
         font-size:31px;
+
       }
 
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <main class="login-wrap">
+
 
     <div class="brand">
 
@@ -289,6 +441,7 @@
 
 
     <section class="login-card">
+
 
       <div class="card-title">
 
@@ -310,6 +463,7 @@
         action="https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec"
       >
 
+
         <div class="field">
 
           <label for="username">
@@ -319,6 +473,7 @@
           <input
             type="text"
             id="username"
+            name="username"
             placeholder="Masukkan username"
             autocomplete="username"
             required
@@ -338,6 +493,7 @@
             <input
               type="password"
               id="password"
+              name="password"
               placeholder="Masukkan password"
               autocomplete="current-password"
               required
@@ -370,6 +526,7 @@
           id="status"
         ></div>
 
+
       </form>
 
 
@@ -380,7 +537,9 @@
         ← Kembali ke website
       </a>
 
+
     </section>
+
 
   </main>
 
@@ -393,30 +552,26 @@
 
   <script>
 
-    const API_URL =
-      "https://script.google.com/macros/s/AKfycbyBFvYCEiIUC1S9t7jKcaav6xk0kthdHNKhEvwhRMbQl7oLGxrtjNQ9GLxC9vYx36rv/exec";
-
 
     const form =
       document.getElementById("loginForm");
 
-    const username =
-      document.getElementById("username");
 
     const password =
       document.getElementById("password");
 
+
     const loginBtn =
       document.getElementById("loginBtn");
+
 
     const status =
       document.getElementById("status");
 
+
     const togglePassword =
       document.getElementById("togglePassword");
 
-
-    /* Tampilkan / sembunyikan password */
 
     togglePassword.addEventListener(
       "click",
@@ -442,94 +597,25 @@
     );
 
 
-    /* Proses login */
-
     form.addEventListener(
       "submit",
-      function(e){
+      function(){
 
-        e.preventDefault();
+        status.style.color =
+          "#718096";
 
+        status.textContent =
+          "Memeriksa...";
 
-        const usernameValue =
-          username.value.trim();
-
-        const passwordValue =
-          password.value;
-
-
-        if(!usernameValue || !passwordValue){
-          return;
-        }
-
-
-        status.textContent = "";
-
-        loginBtn.disabled = true;
+        loginBtn.disabled =
+          true;
 
         loginBtn.textContent =
           "Memeriksa...";
 
-
-        /*
-          Buat payload untuk dikirim
-          ke Apps Script.
-        */
-
-        const payload = JSON.stringify({
-
-          username: usernameValue,
-
-          password: passwordValue
-
-        });
-
-
-        /*
-          Input tersembunyi.
-          Hanya SATU input bernama payload.
-        */
-
-        const hiddenInput =
-          document.createElement("input");
-
-        hiddenInput.type = "hidden";
-
-        hiddenInput.name = "payload";
-
-        hiddenInput.value = payload;
-
-
-        form.appendChild(hiddenInput);
-
-
-        /*
-          Kirim form ke Apps Script
-          melalui iframe tersembunyi.
-        */
-
-        form.submit();
-
-
-        /*
-          Hapus input setelah dikirim
-          agar tidak menumpuk jika mencoba
-          login lagi.
-        */
-
-        setTimeout(function(){
-
-          hiddenInput.remove();
-
-        },1000);
-
       }
     );
 
-
-    /*
-      Menerima hasil dari Apps Script.
-    */
 
     window.addEventListener(
       "message",
@@ -540,14 +626,10 @@
           let result = event.data;
 
 
-          /*
-            Apps Script mengirim hasil
-            dalam bentuk JSON string.
-          */
-
           if(typeof result === "string"){
 
-            result = JSON.parse(result);
+            result =
+              JSON.parse(result);
 
           }
 
@@ -560,22 +642,25 @@
             status.textContent =
               "Login berhasil.";
 
-
             loginBtn.textContent =
               "Berhasil";
 
 
-            /*
-              Setelah login berhasil,
-              tetap berada di GitHub Pages.
-            */
+            sessionStorage.setItem(
+              "adminLoggedIn",
+              "true"
+            );
 
-            setTimeout(function(){
 
-              window.location.href =
-                "dashboard.html";
+            setTimeout(
+              function(){
 
-            },600);
+                window.location.href =
+                  "dashboard.html";
+
+              },
+              600
+            );
 
 
           }else{
@@ -587,7 +672,8 @@
               result.message ||
               "Username atau password salah.";
 
-            loginBtn.disabled = false;
+            loginBtn.disabled =
+              false;
 
             loginBtn.textContent =
               "Masuk";
@@ -597,7 +683,7 @@
         }catch(error){
 
           console.log(
-            "Respons login tidak dikenali:",
+            "Respons tidak dikenali:",
             error
           );
 
@@ -606,7 +692,9 @@
       }
     );
 
+
   </script>
+
 
 </body>
 </html>

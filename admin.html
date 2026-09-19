@@ -13,8 +13,6 @@
   <title>Admin Desa Semparuk</title>
 
 
-  <!-- GOOGLE FONTS -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link
@@ -107,7 +105,6 @@
     .brand-icon{
 
       width:58px;
-
       height:58px;
 
       margin:0 auto 14px;
@@ -436,8 +433,6 @@
     }
 
 
-    /* IFRAME UNTUK KOMUNIKASI DENGAN APPS SCRIPT */
-
     #loginFrame{
 
       display:none;
@@ -454,9 +449,7 @@
     @media(max-width:480px){
 
       body{
-
         padding:18px;
-
       }
 
 
@@ -626,8 +619,6 @@
 
 
 
-  <!-- FRAME TERSEMBUNYI -->
-
   <iframe
     name="loginFrame"
     id="loginFrame"
@@ -637,37 +628,38 @@
 
   <script>
 
-
     const form =
       document.getElementById("loginForm");
 
-
     const button =
       document.getElementById("loginButton");
-
 
     const status =
       document.getElementById("status");
 
 
-
-    /* =========================
-       TERIMA HASIL LOGIN
-    ========================= */
+    /*
+      TERIMA HASIL LOGIN
+    */
 
     window.addEventListener(
       "message",
       function(event){
 
+        const frame =
+          document.getElementById("loginFrame");
+
+
         if(
-          event.origin !==
-          "https://script.google.com"
+          event.source !==
+          frame.contentWindow
         ){
           return;
         }
 
 
-        const result = event.data;
+        const result =
+          event.data;
 
 
         if(
@@ -676,7 +668,6 @@
         ){
           return;
         }
-
 
 
         if(result.success){
@@ -728,10 +719,9 @@
     );
 
 
-
-    /* =========================
-       SAAT FORM DIKIRIM
-    ========================= */
+    /*
+      SAAT FORM DIKIRIM
+    */
 
     form.addEventListener(
       "submit",
@@ -740,7 +730,8 @@
         status.className =
           "status";
 
-        status.textContent = "";
+        status.textContent =
+          "";
 
 
         button.disabled = true;
@@ -750,7 +741,6 @@
 
       }
     );
-
 
   </script>
 
